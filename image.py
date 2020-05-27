@@ -2,8 +2,9 @@
 # UCT CS HONS
 # fchdyl001@myuct.ac.za
 
-import numpy
+import numpy as np
 from h5py import File as hdf5
+import dask
 import dask.array as da
 
 class image:
@@ -14,7 +15,7 @@ class image:
         self.dimensions = 0
         self.data = null
 
-    def __init__(self,filename, chunk=1000):
+    def __init__(self, filename, chunk=1000):
         self.filename = filename
         self.filetype = filename[self.filename.rfind('.')+1:]
 
@@ -36,9 +37,21 @@ class image:
             print("Unable to read in image file:")
             print(str(e))
 
-    def __getitem__(self,key):
+    def __getitem__(self, key):
         return self.data[key]
 
-    def showStats(self):
+    def getRange(self):
+        if not hasattr(self,"range"):
+            min, max = dask.compute(self.data.min(), self.data.max())
+            self.range = [min, max]
+        return self.range
+
+    def histogram(self, bins=10, range=None):
+        if not range:
+            range = self.getRange()
+        hist, bins = da.histogram(self.data, bins=bins, range=range)
+        return hist.compute()
+
+    def showMetadata(self):
         print("Image %s of type %s" %(self.filename, self.filetype))
         print("%s dimensions of sizes %s" %(self.dimensions, self.shape))
