@@ -5,6 +5,7 @@
 import numpy
 from astropy.io import fits
 from h5py import File as hdf5
+import dask.array as da
 
 class image:
     def __init__(self):
@@ -14,23 +15,26 @@ class image:
         self.shape = []
         self.data = null
 
-    def __init__(self,filename):
+    def __init__(self,filename, chunk=1000):
         self.filename = filename
         self.filetype = filename[self.filename.rfind('.')+1:]
 
         if(self.filetype == "hdf5"):
             f = hdf5(self.filename, 'r')
             if 'DATA' in f['0']:
-                self.data = f['0']['DATA']
-                self.dimensions = len(self.data.shape)
-                self.shape = self.data.shape
+                d = f['0']['DATA']
+                self.dimensions = len(d.shape)
+                self.shape = d.shape
+                self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
             else:
                 print("Unable to read in hdf5 file")
 
         elif(self.filetype == "fits"):
-            self.data = fits.getdata(self.filename)
-            self.dimensions = len(self.data.shape)
-            self.shape = self.data.shape
+            f = fits.open(self.filename, memmap=True)
+            d = f[0].data
+            self.dimensions = len(d.shape)
+            self.shape = d.shape
+            self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
 
         else:
             print("Filetype %s not supported" %self.filetype)
