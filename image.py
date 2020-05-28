@@ -6,6 +6,7 @@ import numpy as np
 from h5py import File as hdf5
 import dask
 import dask.array as da
+import dask_image.ndfilters as di
 
 class image:
     def __init__(self):
@@ -51,6 +52,10 @@ class image:
             range = self.getRange()
         hist, bins = da.histogram(self.data, bins=bins, range=range)
         return hist.compute()
+
+    def smooth(self, sigma=1):
+        smoothed_arr = di.gaussian_filter(self.data, sigma)
+        return smoothed_arr.compute()
 
     def showMetadata(self):
         print("Image %s of type %s" %(self.filename, self.filetype))
