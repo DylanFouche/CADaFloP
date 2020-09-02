@@ -25,10 +25,8 @@ class image:
             if (self.filetype == "hdf5"):
 
                 f = hdf5(self.filename, 'r')
-
                 if 'DATA' not in f['0']:
                     raise Exception("Unexpected format in hdf file.")
-
                 d = f['0']['DATA']
                 self.shape = d.shape
                 self.dimensions = len(self.shape)
@@ -37,10 +35,8 @@ class image:
             elif (self.filetype == "fits"):
 
                 f = fits.open(self.filename, memmap=True)
-
-                if not hasattr(f[0], "data"):
+                if "data" not in dir(f[0]):
                     raise Exception("Unexpected format in fits file.")
-
                 d = f[0].data
                 self.shape = d.shape
                 self.dimensions = len(self.shape)
@@ -56,22 +52,25 @@ class image:
     def __getitem__(self, key):
         return self.data[key]
 
+    def __str__(self):
+        s = ""
+        s += ("Image %s of type %s \n" %(self.filename, self.filetype))
+        s += ("%s dimensions of sizes %s \n" %(self.dimensions, self.shape))
+        s += ("Data: %s \n" %(self.data))
+        return s
+
     def getRange(self):
-        if not hasattr(self,"range"):
+        if "range" not in dir(self):
             min, max = dask.compute(self.data.min(), self.data.max())
             self.range = [min, max]
         return self.range
 
     def histogram(self, bins=10, range=None):
-        if not range:
+        if range is None:
             range = self.getRange()
         hist, bins = da.histogram(self.data, bins=bins, range=range)
         return hist.compute()
 
-    def smooth(self, sigma=1):
+    def smoothed(self, sigma=1):
         smoothed_arr = di.gaussian_filter(self.data, sigma)
         return smoothed_arr.compute()
-
-    def showMetadata(self):
-        print("Image %s of type %s" %(self.filename, self.filetype))
-        print("%s dimensions of sizes %s" %(self.dimensions, self.shape))
