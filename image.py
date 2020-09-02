@@ -3,6 +3,7 @@
 # fchdyl001@myuct.ac.za
 
 import numpy as np
+from astropy.io import fits
 from h5py import File as hdf5
 import dask
 import dask.array as da
@@ -21,18 +22,32 @@ class image:
         self.filetype = filename[self.filename.rfind('.')+1:]
 
         try:
-            if (self.filetype != "hdf5"):
+            if (self.filetype == "hdf5"):
+
+                f = hdf5(self.filename, 'r')
+
+                if 'DATA' not in f['0']:
+                    raise Exception("Unexpected format in hdf file.")
+
+                d = f['0']['DATA']
+                self.shape = d.shape
+                self.dimensions = len(self.shape)
+                self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
+
+            elif (self.filetype == "fits"):
+
+                f = fits.open(self.filename, memmap=True)
+
+                if not hasattr(f[0], "data"):
+                    raise Exception("Unexpected format in fits file.")
+
+                d = f[0].data
+                self.shape = d.shape
+                self.dimensions = len(self.shape)
+                self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
+
+            else:
                 raise Exception("Unsupported file type.")
-
-            f = hdf5(self.filename, 'r')
-
-            if 'DATA' not in f['0']:
-                raise Exception("Unexpected format in hdf file.")
-
-            d = f['0']['DATA']
-            self.shape = d.shape
-            self.dimensions = len(self.shape)
-            self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
 
         except Exception as e:
             print("Unable to read in image file:")
