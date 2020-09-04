@@ -11,10 +11,10 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import defs_pb2 as defs__pb2
-import enums_pb2 as enums__pb2
-import open_catalog_file_pb2 as open__catalog__file__pb2
-import contour_pb2 as contour__pb2
+from src.protobuf import defs_pb2 as defs__pb2
+from src.protobuf import enums_pb2 as enums__pb2
+from src.protobuf import open_catalog_file_pb2 as open__catalog__file__pb2
+from src.protobuf import contour_pb2 as contour__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
