@@ -4,6 +4,7 @@
 
 import socket
 import logging
+import traceback
 
 import numpy as np
 
@@ -27,12 +28,10 @@ class Server:
 
         while True:
             try:
-                msg = recv_message(clientSocket, register_viewer_pb2.RegisterViewer)
-                logging.info("\t[Server]\tClient %s registered as a viewer with id %s.", clientAddress, msg.session_id)
-
-                ack = register_viewer_pb2.RegisterViewerAck()
-                ack.session_id = msg.session_id
-                send_message(clientSocket, ack)
-                logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK for id %s to client %s.", ack.session_id, clientAddress)
+                msg_type, msg_id, msg = recv_message(clientSocket)
+                logging.info("\t[Server]\tClient %s registered as a viewer with session id %s.", clientAddress, msg.session_id)
+                ack = send_register_viewer_ack(clientSocket, msg.session_id)
+                logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s to client %s.", ack.session_id, clientAddress)
             except:
                 logging.error("\t[Server]\tUnable to process incoming message from client %s.", clientAddress)
+                logging.error(traceback.print_exc())
