@@ -36,17 +36,14 @@ def decode_varint(data):
     """ Decode a protobuf varint to an int """
     return _DecodeVarint(data, 0)[0]
 
-def send_message(conn, msg_type, msg, prependSize=True):
-    """ Send a message, prefixed with its message type and (optionally) size, to a TPC/IP socket """
+def send_message(conn, msg_type, msg):
+    """ Send a message, prefixed with its event type to a TPC/IP socket """
     header = header_format.pack(msg_type, 14, uuid.uuid4().int % np.iinfo(np.uint32()).max)
     payload = msg.SerializeToString()
-    if prependSize:
-        size = encode_varint(len(payload))
-        payload = size + payload
     conn.send(header + payload)
 
 def recv_message(conn):
-    """ Receive a message, prefixed with its message type and size, from a TCP/IP socket """
+    """ Receive a message, prefixed with its event type from a TCP/IP socket """
     data = b''
     # Recieve the message header
     while True:
@@ -57,11 +54,8 @@ def recv_message(conn):
             pass
     # Get message type
     message_type, icd_version, message_id = header_format.unpack(data)
-    # Recieve payload size
-    data = conn.recv(1)
-    size = decode_varint(data)
     # Recieve and decode payload
-    data = conn.recv(size)
+    data = conn.recv(1024)
     message = message_type_code_to_protobuf_obj.get(message_type)()
     message.ParseFromString(data)
     # Return message type, message id, and protobuf message object

@@ -29,7 +29,7 @@ class Server:
         while True:
             try:
                 msg_type, msg_id, msg = recv_message(clientSocket)
-                logging.info("\t[Server]\tClient %s registered as a viewer with session id %s.", clientAddress, msg.session_id)
+                logging.info("\t[Server]\tGot REGISTER_VIEWER with session id %s from client %s.", msg.session_id, clientAddress)
                 ack = send_register_viewer_ack(clientSocket, msg.session_id)
                 logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s to client %s.", ack.session_id, clientAddress)
             except:
