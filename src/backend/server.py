@@ -49,3 +49,7 @@ class Server:
             except:
                 logging.error("\t[Server]\tUnable to process incoming message from client %s.", client_address)
                 logging.error(traceback.print_exc())
+
+
+if __name__ == "__main__":
+    server = Server()
