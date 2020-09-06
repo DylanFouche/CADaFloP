@@ -25,17 +25,17 @@ def handle_message(conn, addr, msg_type, msg_id, msg):
     handler(conn, addr, msg_id, msg)
 
 class Server:
-    def __init__(self, server_port=3003):
-        logging.info("\t[Server]\tStarting a server on port %s.", server_port)
+    def __init__(self, port, address):
+        logging.info("\t[Server]\tStarting a server on port %s.", port)
 
         # Open a TCP socket to listen on
         try:
             server_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-            server_socket.bind(('localhost', server_port))
+            server_socket.bind((address, port))
             server_socket.listen(1)
-            logging.info("\t[Server]\tListening on port %s.", server_port)
+            logging.info("\t[Server]\tListening on port %s.", port)
         except:
-            logging.error("\t[Server]\tUnable to listen on port %s.", server_port)
+            logging.error("\t[Server]\tUnable to listen on port %s.", port)
 
         # Wait for a client to connect
         client_socket, client_address = server_socket.accept()

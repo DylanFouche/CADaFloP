@@ -11,7 +11,7 @@ import time
 import sys
 
 from src.frontend.client import *
-from src.backend import server
+from src.backend.server import *
 
 option_string = """
 What would you like to do?
@@ -23,7 +23,7 @@ def main(args):
 
     # Start a Dask server
     logging.info("\t[Main]\t\tStarting the server...")
-    serverThread = threading.Thread(target=server.Server, daemon=True)
+    serverThread = threading.Thread(target=Server, args=(args.dask_port, args.dask_address), daemon=True)
     serverThread.start()
     logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
