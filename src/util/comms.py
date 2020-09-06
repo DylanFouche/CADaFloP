@@ -11,9 +11,6 @@ import uuid
 
 import numpy as np
 
-from google.protobuf.internal.encoder import _VarintEncoder
-from google.protobuf.internal.decoder import _DecodeVarint
-
 from src.protobuf import register_viewer_pb2
 from src.protobuf import enums_pb2
 
@@ -25,16 +22,6 @@ message_type_code_to_protobuf_obj = {
 }
 
 header_format = bitstruct.compile('u16u16u32')
-
-def encode_varint(value):
-    """ Encode an int as a protobuf varint """
-    data = []
-    _VarintEncoder()(data.append, value, False)
-    return b''.join(data)
-
-def decode_varint(data):
-    """ Decode a protobuf varint to an int """
-    return _DecodeVarint(data, 0)[0]
 
 def send_message(conn, msg_type, msg):
     """ Send a message, prefixed with its event type to a TPC/IP socket """
@@ -49,11 +36,11 @@ def recv_message(conn):
     while True:
         try:
             data += conn.recv(8)
-            break
+            if len(data) > 0:
+                message_type, icd_version, message_id = header_format.unpack(data)
+                break
         except IndexError:
             pass
-    # Get message type
-    message_type, icd_version, message_id = header_format.unpack(data)
     # Recieve and decode payload
     data = conn.recv(1024)
     message = message_type_code_to_protobuf_obj.get(message_type)()
