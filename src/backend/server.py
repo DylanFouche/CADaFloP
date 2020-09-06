@@ -21,7 +21,7 @@ message_type_code_to_event_handler = {
     enums_pb2.EventType.REGISTER_VIEWER: __on_register_viewer
 }
 
-def __handle_message(conn, addr, msg_type, msg_id, msg):
+def handle_message(conn, addr, msg_type, msg_id, msg):
     """ Decide which handler to invoke for the given message type """
     handler = message_type_code_to_event_handler.get(msg_type)
     handler(conn, addr, msg_id, msg)
@@ -51,10 +51,10 @@ class Server:
         while True:
             try:
                 msg_type, msg_id, msg = recv_message(client_socket)
-                __handle_message(client_socket, client_address, msg_type, msg_id, msg)
+                handle_message(client_socket, client_address, msg_type, msg_id, msg)
             except:
                 logging.error("\t[Server]\tUnable to process incoming message from client %s.", client_address)
-                logging.error(traceback.print_exc())
+                traceback.print_exc()
 
 
 if __name__ == "__main__":

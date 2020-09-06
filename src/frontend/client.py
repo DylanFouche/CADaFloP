@@ -39,4 +39,4 @@ class Client:
             logging.info("\t[%s]\tGot REGISTER_VIEWER_ACK with session id %s from server on %s.", self.name, ack.session_id, self.server_port)
         except:
             logging.error("\t[%s]\tUnable to register as a viewer with server on %s.", self.name, self.server_port)
-            logging.error(traceback.print_exc())
+            traceback.print_exc()
