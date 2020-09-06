@@ -11,21 +11,27 @@ import numpy as np
 from src.protobuf import register_viewer_pb2
 from src.util.comms import *
 
-def on_register_viewer(conn, addr, msg_id, msg):
+def __on_register_viewer(conn, addr, msg_id, msg):
+    """ Handle the REGISTER_VIEWER message """
     logging.info("\t[Server]\tGot REGISTER_VIEWER with session id %s from client %s.", msg.session_id, addr)
     ack = send_register_viewer_ack(conn, msg.session_id)
     logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s to client %s.", ack.session_id, addr)
 
 message_type_code_to_event_handler = {
-    enums_pb2.EventType.REGISTER_VIEWER: on_register_viewer
+    enums_pb2.EventType.REGISTER_VIEWER: __on_register_viewer
 }
 
-def handle_message(conn, addr, msg_type, msg_id, msg):
+def __handle_message(conn, addr, msg_type, msg_id, msg):
+    """ Decide which handler to invoke for the given message type """
     handler = message_type_code_to_event_handler.get(msg_type)
     handler(conn, addr, msg_id, msg)
 
+
 class Server:
+
     def __init__(self, port, address):
+        """ Open a socket on the given port and address, listen forever """
+
         logging.info("\t[Server]\tStarting a server on port %s.", port)
 
         # Open a TCP socket to listen on
@@ -45,7 +51,7 @@ class Server:
         while True:
             try:
                 msg_type, msg_id, msg = recv_message(client_socket)
-                handle_message(client_socket, client_address, msg_type, msg_id, msg)
+                __handle_message(client_socket, client_address, msg_type, msg_id, msg)
             except:
                 logging.error("\t[Server]\tUnable to process incoming message from client %s.", client_address)
                 logging.error(traceback.print_exc())

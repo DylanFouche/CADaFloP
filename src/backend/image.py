@@ -10,14 +10,9 @@ import dask.array as da
 import dask_image.ndfilters as di
 
 class image:
-    def __init__(self):
-        self.filename = ""
-        self.filetype = ""
-        self.shape = []
-        self.dimensions = 0
-        self.data = null
 
     def __init__(self, filename, chunk=1000):
+        """ Construct image object from given file """
         self.filename = filename
         self.filetype = filename[self.filename.rfind('.')+1:]
 
@@ -60,17 +55,20 @@ class image:
         return s
 
     def getRange(self):
+        """ Compute the range of image data values, if we haven't already """
         if "range" not in dir(self):
             min, max = dask.compute(self.data.min(), self.data.max())
             self.range = [min, max]
         return self.range
 
     def histogram(self, bins=10, range=None):
+        """ Compute histrogram for image """
         if range is None:
             range = self.getRange()
         hist, bins = da.histogram(self.data, bins=bins, range=range)
         return hist.compute()
 
     def smoothed(self, sigma=1):
+        """ Apply a Gaussian filter over image """
         smoothed_arr = di.gaussian_filter(self.data, sigma)
         return smoothed_arr.compute()

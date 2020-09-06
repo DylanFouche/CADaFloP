@@ -23,14 +23,8 @@ message_type_code_to_protobuf_obj = {
 
 header_format = bitstruct.compile('u16u16u32')
 
-def send_message(conn, msg_type, msg):
-    """ Send a message, prefixed with its event type to a TPC/IP socket """
-    header = header_format.pack(msg_type, 14, uuid.uuid4().int % np.iinfo(np.uint32()).max)
-    payload = msg.SerializeToString()
-    conn.send(header + payload)
-
 def recv_message(conn):
-    """ Receive a message, prefixed with its event type from a TCP/IP socket """
+    """ Receive a message with header from a TCP/IP socket """
     data = b''
     # Recieve the message header
     while True:
@@ -48,11 +42,17 @@ def recv_message(conn):
     # Return message type, message id, and protobuf message object
     return (message_type, message_id, message)
 
+def __send_message(conn, msg_type, msg):
+    """ Send a message with header to a TPC/IP socket """
+    header = header_format.pack(msg_type, 14, uuid.uuid4().int % np.iinfo(np.uint32()).max)
+    payload = msg.SerializeToString()
+    conn.send(header + payload)
+
 def send_register_viewer(conn):
     """ Construct and send a REGISTER_VIEWER message """
     message = register_viewer_pb2.RegisterViewer()
     message.session_id = np.uint32(uuid.uuid4().int % np.iinfo(np.uint32()).max)
-    send_message(conn, enums_pb2.EventType.REGISTER_VIEWER, message)
+    __send_message(conn, enums_pb2.EventType.REGISTER_VIEWER, message)
     return message
 
 def send_register_viewer_ack(conn, client_session_id):
@@ -60,5 +60,5 @@ def send_register_viewer_ack(conn, client_session_id):
     message = register_viewer_pb2.RegisterViewerAck()
     message.session_id = client_session_id
     message.success = True
-    send_message(conn, enums_pb2.EventType.REGISTER_VIEWER_ACK, message)
+    __send_message(conn, enums_pb2.EventType.REGISTER_VIEWER_ACK, message)
     return message
