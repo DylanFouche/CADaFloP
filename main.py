@@ -24,7 +24,7 @@ def main(args):
 
     # Start a Dask server
     logging.info("\t[Main]\t\tStarting the server...")
-    serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port, args.base), daemon=True)
+    serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port), daemon=True)
     serverThread.start()
     logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
@@ -64,7 +64,7 @@ def main(args):
             if not file:
                 file = "h_m51_b_s05_drz_sci.fits"
             for client in clients:
-                client.open_file(file, directory)
+                client.open_file(file, args.base + directory)
 
         elif (option == 'q'):
             sys.exit(0)

@@ -2,9 +2,14 @@
 # UCT CS HONS
 # fchdyl001@myuct.ac.za
 
+import logging
+import traceback
+
 import numpy as np
+
 from astropy.io import fits
 from h5py import File as hdf5
+
 import dask
 import dask.array as da
 import dask_image.ndfilters as di
@@ -41,8 +46,9 @@ class Image:
                 raise Exception("Unsupported file type.")
 
         except Exception as e:
-            print("Unable to read in image file:")
-            print(str(e))
+            logging.error("[Image]\tFailed to instantiate image object.")
+            traceback.print_exc()
+            raise e
 
     def __getitem__(self, key):
         return self.data[key]
