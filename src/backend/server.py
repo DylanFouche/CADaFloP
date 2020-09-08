@@ -31,21 +31,26 @@ class Server:
 
     async def __handle(self, websocket, path):
 
-        async for message in websocket:
-            try:
-                message_type, message_id, message_payload = unpack_message(message)
-                handler = MESSAGE_TYPE_CODE_TO_EVENT_HANDLER.get(message_type)
-                await handler(websocket, message_payload)
-            except:
-                logging.error("\t[Server]\tUnable to process message from client.")
-                traceback.print_exc()
+        logging.info("\t[Server]\tClient connection opened.")
+
+        try:
+            async for message in websocket:
+                try:
+                    message_type, message_id, message_payload = unpack_message(message)
+                    handler = MESSAGE_TYPE_CODE_TO_EVENT_HANDLER.get(message_type)
+                    await handler(websocket, message_payload)
+                except:
+                    logging.error("\t[Server]\tUnable to process message from client.")
+                    traceback.print_exc()
+        except:
+            logging.warn("\t[Server]\tClient connection closed.")
 
     def __init__(self, address, port):
 
         event_loop = asyncio.new_event_loop()
         asyncio.set_event_loop(event_loop)
 
-        server = websockets.serve(self.__handle, address, port, loop=event_loop)
+        server = websockets.serve(self.__handle, address, port, loop=event_loop, ping_interval=None)
 
         logging.info("\t[Server]\tStarting a server on ws://%s:%s", address, port)
 
