@@ -2,60 +2,52 @@
 # UCT CS HONS
 # fchdyl001@myuct.ac.za
 
-import socket
 import logging
+import threading
 import traceback
 
 import numpy as np
 
+import asyncio
+import websockets
+
 from src.protobuf import register_viewer_pb2
+from src.protobuf import enums_pb2
+
 from src.util.comms import *
 
-def __on_register_viewer(conn, addr, msg_id, msg):
+async def __on_register_viewer(ws, msg):
     """ Handle the REGISTER_VIEWER message """
-    logging.info("\t[Server]\tGot REGISTER_VIEWER with session id %s from client %s.", msg.session_id, addr)
-    ack = send_register_viewer_ack(conn, msg.session_id)
-    logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s to client %s.", ack.session_id, addr)
+    logging.info("\t[Server]\tGot REGISTER_VIEWER with session id %s.", msg.session_id)
+    ack, ack_type = construct_register_viewer_ack(msg.session_id)
+    await ws.send(pack_message(ack, ack_type))
+    logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s.", ack.session_id)
 
-message_type_code_to_event_handler = {
+MESSAGE_TYPE_CODE_TO_EVENT_HANDLER = {
     enums_pb2.EventType.REGISTER_VIEWER: __on_register_viewer
 }
 
-def handle_message(conn, addr, msg_type, msg_id, msg):
-    """ Decide which handler to invoke for the given message type """
-    handler = message_type_code_to_event_handler.get(msg_type)
-    handler(conn, addr, msg_id, msg)
-
-
 class Server:
 
-    def __init__(self, port, address):
-        """ Open a socket on the given port and address, listen forever """
+    async def __handle(self, websocket, path):
 
-        logging.info("\t[Server]\tStarting a server on port %s.", port)
-
-        # Open a TCP socket to listen on
-        try:
-            server_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-            server_socket.bind((address, port))
-            server_socket.listen(1)
-            logging.info("\t[Server]\tListening on port %s.", port)
-        except:
-            logging.error("\t[Server]\tUnable to listen on port %s.", port)
-
-        # Wait for a client to connect
-        client_socket, client_address = server_socket.accept()
-        logging.info("\t[Server]\tConnection from %s has been established.", client_address)
-
-        # Handle incoming messages
-        while True:
+        async for message in websocket:
             try:
-                msg_type, msg_id, msg = recv_message(client_socket)
-                handle_message(client_socket, client_address, msg_type, msg_id, msg)
+                message_type, message_id, message_payload = unpack_message(message)
+                handler = MESSAGE_TYPE_CODE_TO_EVENT_HANDLER.get(message_type)
+                await handler(websocket, message_payload)
             except:
-                logging.error("\t[Server]\tUnable to process incoming message from client %s.", client_address)
+                logging.error("\t[Server]\tUnable to process message from client.")
                 traceback.print_exc()
 
+    def __init__(self, address, port):
 
-if __name__ == "__main__":
-    server = Server()
+        event_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(event_loop)
+
+        server = websockets.serve(self.__handle, address, port, loop=event_loop)
+
+        logging.info("\t[Server]\tStarting a server on ws://%s:%s", address, port)
+
+        asyncio.get_event_loop().run_until_complete(server)
+        asyncio.get_event_loop().run_forever()

@@ -23,27 +23,27 @@ def main(args):
 
     # Start a Dask server
     logging.info("\t[Main]\t\tStarting the server...")
-    serverThread = threading.Thread(target=Server, args=(args.dask_port, args.dask_address), daemon=True)
+    serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port), daemon=True)
     serverThread.start()
     logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
     time.sleep(1)
 
-    clients = list()
+    clients = set()
 
     # Create a Dask client
     logging.info("\t[Main]\t\tCreating a DASK client...")
-    dask_client = Client("DaskClient", args.dask_port, args.dask_address)
+    dask_client = Client("DaskClient", args.dask_address, args.dask_port)
     logging.info("\t[Main]\t\tCreated a DASK client object successfully.")
-    clients.append(dask_client)
+    clients.add(dask_client)
 
     if args.connect_to_carta:
 
         # Create a CARTA client
         logging.info("\t[Main]\t\tCreating a CARTA client...")
-        carta_client = Client("CartaClient", args.carta_port, args.carta_address)
+        carta_client = Client("CartaClient", args.carta_address, args.carta_port)
         logging.info("\t[Main]\t\tCreated a CARTA client object successfully.")
-        clients.append(carta_client)
+        clients.add(carta_client)
 
     time.sleep(1)
 
