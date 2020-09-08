@@ -11,8 +11,8 @@ import websockets
 from src.protobuf import register_viewer_pb2
 from src.protobuf import enums_pb2
 
-from src.util.comms import *
-
+from src.util.message_provider import *
+from src.util.message_header import *
 
 class Client:
 
@@ -40,10 +40,10 @@ class Client:
         async def __register_viewer(self):
             try:
                 req, req_type = construct_register_viewer()
-                await self.ws.send(pack_message(req, req_type))
+                await self.ws.send(add_message_header(req, req_type))
                 logging.info("\t[%s]\tSent REGISTER_VIEWER with session id %s to server %s.", self.name, req.session_id, self.server)
                 message = await self.ws.recv()
-                ack_type, ack_id, ack = unpack_message(message)
+                ack_type, ack_id, ack = strip_message_header(message)
                 if ack.success:
                     logging.info("\t[%s]\tGot a successful REGISTER_VIEWER_ACK with session id %s from server %s.", self.name, ack.session_id, self.server)
                 else:
@@ -59,10 +59,10 @@ class Client:
         async def __open_file(self):
             try:
                 req, req_type = construct_open_file(file, directory)
-                await self.ws.send(pack_message(req, req_type))
+                await self.ws.send(add_message_header(req, req_type))
                 logging.info("\t[%s]\tSent OPEN_FILE for file %s to server %s.", self.name, req.directory + req.file, self.server)
                 message = await self.ws.recv()
-                ack_type, ack_id, ack = unpack_message(message)
+                ack_type, ack_id, ack = strip_message_header(message)
                 if ack.success:
                     logging.info("\t[%s]\tGot a successful OPEN_FILE_ACK for file %s from server %s.", self.name, req.directory + req.file, self.server)
                 else:

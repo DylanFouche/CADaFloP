@@ -3,8 +3,8 @@
 # fchdyl001@myuct.ac.za
 
 import logging
-import threading
 import traceback
+import threading
 
 import numpy as np
 
@@ -15,10 +15,10 @@ from src.protobuf import enums_pb2
 from src.protobuf import register_viewer_pb2
 from src.protobuf import open_file_pb2
 
+from src.util.message_provider import *
+from src.util.message_header import *
 
 from src.backend.image import Image
-
-from src.util.comms import *
 
 class Server:
 
@@ -26,7 +26,7 @@ class Server:
         """ Handle the REGISTER_VIEWER message """
         logging.info("\t[Server]\tGot REGISTER_VIEWER with session id %s.", msg.session_id)
         ack, ack_type = construct_register_viewer_ack(msg.session_id)
-        await ws.send(pack_message(ack, ack_type))
+        await ws.send(add_message_header(ack, ack_type))
         logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s.", ack.session_id)
 
     async def __on_open_file(self, ws, msg):
@@ -40,7 +40,7 @@ class Server:
             ack.success = False
             logging.error("\t[Server]\tUnable to open file %s.", msg.directory + msg.file)
             traceback.print_exc()
-        await ws.send(pack_message(ack, ack_type))
+        await ws.send(add_message_header(ack, ack_type))
         logging.info("\t[Server]\tSent OPEN_FILE_ACK.")
 
     MESSAGE_TYPE_CODE_TO_EVENT_HANDLER = {
@@ -54,7 +54,7 @@ class Server:
         try:
             async for message in websocket:
                 try:
-                    message_type, message_id, message_payload = unpack_message(message)
+                    message_type, message_id, message_payload = strip_message_header(message)
                     handler = self.MESSAGE_TYPE_CODE_TO_EVENT_HANDLER.get(message_type)
                     await handler(self, websocket, message_payload)
                 except:
