@@ -47,7 +47,7 @@ class Client:
                 if ack.success:
                     logging.info("\t[%s]\tGot a successful REGISTER_VIEWER_ACK with session id %s from server %s.", self.name, ack.session_id, self.server)
                 else:
-                    logging.warn("\t[%s]\tGot an unsuccessful REGISTER_VIEWER_ACK with session id %s from server %s.", self.name, ack.session_id, self.server)
+                    logging.warn("\t[%s]\tGot an unsuccessful REGISTER_VIEWER_ACK with session id %s from server %s. Message: %s", self.name, ack.session_id, self.server, ack.message)
             except:
                 logging.error("\t[%s]\tUnable to register as a viewer with server %s.", self.name, self.server)
                 traceback.print_exc()
@@ -66,7 +66,7 @@ class Client:
                 if ack.success:
                     logging.info("\t[%s]\tGot a successful OPEN_FILE_ACK for file %s from server %s.", self.name, req.directory + req.file, self.server)
                 else:
-                    logging.warn("\t[%s]\tGot an unsuccessful OPEN_FILE_ACK for file %s from server %s.", self.name, req.directory + req.file, self.server)
+                    logging.warn("\t[%s]\tGot an unsuccessful OPEN_FILE_ACK for file %s from server %s. Message: %s", self.name, req.directory + req.file, self.server, ack.message)
             except:
                 logging.error("\t[%s]\tUnable to open file %s on server %s.", self.name, req.directory + req.file, self.server)
                 traceback.print_exc()

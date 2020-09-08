@@ -30,7 +30,7 @@ EVENT_HEADER = struct.Struct('HHI')
 
 def pack_message(msg, msg_type):
     """ Prefix a given protobuf message with a header """
-    header = EVENT_HEADER.pack(msg_type, 14, uuid.uuid4().int % np.iinfo(np.uint32()).max)
+    header = EVENT_HEADER.pack(msg_type, ICD_VERSION, uuid.uuid4().int % np.iinfo(np.uint32()).max)
     payload = msg.SerializeToString()
     return header + payload
 
