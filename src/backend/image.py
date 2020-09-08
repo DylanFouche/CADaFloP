@@ -9,7 +9,7 @@ import dask
 import dask.array as da
 import dask_image.ndfilters as di
 
-class image:
+class Image:
 
     def __init__(self, filename, chunk=1000):
         """ Construct image object from given file """

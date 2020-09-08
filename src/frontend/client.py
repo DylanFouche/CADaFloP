@@ -44,9 +44,31 @@ class Client:
                 logging.info("\t[%s]\tSent REGISTER_VIEWER with session id %s to server %s.", self.name, req.session_id, self.server)
                 message = await self.ws.recv()
                 ack_type, ack_id, ack = unpack_message(message)
-                logging.info("\t[%s]\tGot REGISTER_VIEWER_ACK with session id %s from server %s.", self.name, ack.session_id, self.server)
+                if ack.success:
+                    logging.info("\t[%s]\tGot a successful REGISTER_VIEWER_ACK with session id %s from server %s.", self.name, ack.session_id, self.server)
+                else:
+                    logging.warn("\t[%s]\tGot an unsuccessful REGISTER_VIEWER_ACK with session id %s from server %s.", self.name, ack.session_id, self.server)
             except:
                 logging.error("\t[%s]\tUnable to register as a viewer with server %s.", self.name, self.server)
                 traceback.print_exc()
 
         asyncio.get_event_loop().run_until_complete(__register_viewer(self))
+
+    def open_file(self, file, directory):
+        """ Send an OPEN_FILE to server and wait for OPEN_FILE_ACK response """
+        async def __open_file(self):
+            try:
+                req, req_type = construct_open_file(file, directory)
+                await self.ws.send(pack_message(req, req_type))
+                logging.info("\t[%s]\tSent OPEN_FILE for file %s to server %s.", self.name, req.directory + req.file, self.server)
+                message = await self.ws.recv()
+                ack_type, ack_id, ack = unpack_message(message)
+                if ack.success:
+                    logging.info("\t[%s]\tGot a successful OPEN_FILE_ACK for file %s from server %s.", self.name, req.directory + req.file, self.server)
+                else:
+                    logging.warn("\t[%s]\tGot an unsuccessful OPEN_FILE_ACK for file %s from server %s.", self.name, req.directory + req.file, self.server)
+            except:
+                logging.error("\t[%s]\tUnable to open file %s on server %s.", self.name, req.directory + req.file, self.server)
+                traceback.print_exc()
+
+        asyncio.get_event_loop().run_until_complete(__open_file(self))
