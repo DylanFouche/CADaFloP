@@ -60,21 +60,54 @@ class Image:
         s += ("Data: %s \n" %(self.data))
         return s
 
-    def getRange(self):
+    def get_range(self):
         """ Compute the range of image data values, if we haven't already """
-        if "range" not in dir(self):
-            min, max = dask.compute(self.data.min(), self.data.max())
-            self.range = [min, max]
-        return self.range
+        try:
+            if "range" not in dir(self):
+                min, max = dask.compute(self.data.min(), self.data.max())
+                self.range = [min, max]
+            return self.range
+        except Exception as e:
+            logging.error("[Image]\tFailed to instantiate image object.")
+            traceback.print_exc()
+            raise e
 
-    def histogram(self, bins=10, range=None):
+    def get_histogram(self, bins=10, range=None):
         """ Compute histrogram for image """
-        if range is None:
-            range = self.getRange()
-        hist, bins = da.histogram(self.data, bins=bins, range=range)
-        return hist.compute()
+        try:
+            if range is None:
+                range = self.get_range()
+            hist, bins = da.histogram(self.data, bins=bins, range=range)
+            return hist.compute()
+        except Exception as e:
+            logging.error("[Image]\tFailed to compute histogram.")
+            traceback.print_exc()
 
-    def smoothed(self, sigma=1):
+    def get_mean(self):
+        """ Compute mean over image data """
+        try:
+            if "mean" not in dir(self):
+                self.mean = self.data.mean().compute()
+            return self.mean
+        except Exception as e:
+            logging.error("[Image]\tFailed to compute mean.")
+            traceback.print_exc()
+
+    def get_std_dev(self):
+        """ Compute standard deviation over image data """
+        try:
+            if "std" not in dir(self):
+                self.std = self.data.std().compute()
+            return self.std
+        except Exception as e:
+            logging.error("[Image]\tFailed to compute standard deviation.")
+            traceback.print_exc()
+
+    def get_smoothed(self, sigma=1):
         """ Apply a Gaussian filter over image """
-        smoothed_arr = di.gaussian_filter(self.data, sigma)
-        return smoothed_arr.compute()
+        try:
+            smoothed_arr = di.gaussian_filter(self.data, sigma)
+            return smoothed_arr.compute()
+        except Exception as e:
+            logging.error("[Image]\tFailed to compute smoothed image.")
+            traceback.print_exc()
