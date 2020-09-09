@@ -15,8 +15,9 @@ from src.backend.server import *
 
 option_string = """
 What would you like to do?
-0: REGISTER_VIEWER
-1: OPEN_FILE
+0: Register viewer
+1: Open file
+2: Get region histogram
 q: Quit the program
 """
 
@@ -51,12 +52,13 @@ def main(args):
     while True:
         option = input(option_string)
 
-        # Process user input
         if (option == '0'):
+            # Register viewer
             for client in clients:
                 client.register_viewer()
 
         elif (option == '1'):
+            # Open file
             directory = input("Enter file directory (default ''): ")
             if not directory:
                 directory = ''
@@ -65,6 +67,13 @@ def main(args):
                 file = "h_m51_b_s05_drz_sci.fits"
             for client in clients:
                 client.open_file(file, args.base + directory)
+
+        elif (option == '2'):
+            # Get histogram
+            num_bins = int(input("Enter number of bins for histogram: "))
+            for client in clients:
+                histo, mean, std_dev = client.get_region_histogram(num_bins)
+                #print("histo:{}, mean:{}, std_dev:{}".format(histo, mean, std_dev))
 
         elif (option == 'q'):
             sys.exit(0)

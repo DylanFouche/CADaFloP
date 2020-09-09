@@ -8,9 +8,6 @@ import traceback
 import asyncio
 import websockets
 
-from src.protobuf import register_viewer_pb2
-from src.protobuf import enums_pb2
-
 from src.util.message_provider import *
 from src.util.message_header import *
 
@@ -72,3 +69,21 @@ class Client:
                 traceback.print_exc()
 
         asyncio.get_event_loop().run_until_complete(__open_file(self))
+
+    def get_region_histogram(self, num_bins):
+        """ Wait to recieve a REGION_HISTOGRAM_DATA. This should be done after an open_file """
+        async def __get_region_histogram(self):
+            try:
+                req, req_type = construct_set_histogram_requirements(num_bins)
+                await self.ws.send(add_message_header(req, req_type))
+                logging.info("\t[%s]\tSent SET_HISTOGRAM_REQUIREMENTS to server %s.", self.name, self.server)
+                message = await self.ws.recv()
+                histo_type, histo_id, histo = strip_message_header(message)
+                logging.info("\t[%s]\tGot REGION_HISTOGRAM_DATA back from server %s.", self.name, self.server)
+                return (histo.histograms[0].bins, histo.histograms[0].mean, histo.histograms[0].std_dev)
+
+            except:
+                logging.error("\t[%s]\tUnable to get histogram from server %s.", self.name, self.server)
+                traceback.print_exc()
+
+        return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))

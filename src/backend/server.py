@@ -4,7 +4,6 @@
 
 import logging
 import traceback
-import threading
 
 import numpy as np
 
@@ -12,8 +11,6 @@ import asyncio
 import websockets
 
 from src.protobuf import enums_pb2
-from src.protobuf import register_viewer_pb2
-from src.protobuf import open_file_pb2
 
 from src.util.message_provider import *
 from src.util.message_header import *
@@ -43,9 +40,25 @@ class Server:
         await ws.send(add_message_header(ack, ack_type))
         logging.info("\t[Server]\tSent OPEN_FILE_ACK.")
 
+    async def __on_set_histogram_requirements(self, ws, msg):
+        """ Handle the SET_HISTOGRAM_REQUIREMENTS message """
+        logging.info("\t[Server]\tGot SET_HISTOGRAM_REQUIREMENTS.")
+        try:
+            histo_num_bins = msg.histograms[0].num_bins
+            raw_histogram = self.image.get_histogram(bins=histo_num_bins)
+            mean = self.image.get_mean()
+            std_dev = self.image.get_std_dev()
+            histo, histo_type = construct_region_histogram_data(histo_num_bins, raw_histogram, mean, std_dev)
+            await ws.send(add_message_header(histo, histo_type))
+            logging.info("\t[Server]\tSent REGION_HISTOGRAM_DATA.")
+        except:
+            logging.error("\t[Server]\tUnable to compute histogram")
+            traceback.print_exc()
+
     MESSAGE_TYPE_CODE_TO_EVENT_HANDLER = {
         enums_pb2.EventType.REGISTER_VIEWER: __on_register_viewer,
-        enums_pb2.EventType.OPEN_FILE: __on_open_file
+        enums_pb2.EventType.OPEN_FILE: __on_open_file,
+        enums_pb2.EventType.SET_HISTOGRAM_REQUIREMENTS: __on_set_histogram_requirements
     }
 
     async def __serve(self, websocket, path):
