@@ -13,10 +13,11 @@ from src.util.message_header import *
 
 class Client:
 
-    def __init__(self, name, address, port):
+    def __init__(self, name, address, port, is_carta_client=False):
         """ Create a client object with a connection to a server """
         self.name = name
         self.server = "ws://{}:{}/websocket".format(address, port)
+        self.carta = is_carta_client
         self.connect_to_server()
 
     def connect_to_server(self):
@@ -64,6 +65,9 @@ class Client:
                     logging.info("\t[%s]\tGot a successful OPEN_FILE_ACK for file %s from server %s.", self.name, req.directory + req.file, self.server)
                 else:
                     logging.warn("\t[%s]\tGot an unsuccessful OPEN_FILE_ACK for file %s from server %s. Message: %s", self.name, req.directory + req.file, self.server, ack.message)
+                if self.carta:
+                    # ignore default histogram sent after OPEN_FILE
+                    discard = await self.ws.recv()
             except:
                 logging.error("\t[%s]\tUnable to open file %s on server %s.", self.name, req.directory + req.file, self.server)
                 traceback.print_exc()

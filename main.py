@@ -43,7 +43,7 @@ def main(args):
 
         # Create a CARTA client
         logging.info("\t[Main]\t\tCreating a CARTA client...")
-        carta_client = Client("CartaClient", args.carta_address, args.carta_port)
+        carta_client = Client("CartaClient", args.carta_address, args.carta_port, is_carta_client=True)
         logging.info("\t[Main]\t\tCreated a CARTA client object successfully.")
         clients.add(carta_client)
 
