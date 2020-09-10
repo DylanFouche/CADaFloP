@@ -5,6 +5,8 @@
 import logging
 import traceback
 
+import math
+
 import numpy as np
 
 from astropy.io import fits
@@ -72,9 +74,11 @@ class Image:
             traceback.print_exc()
             raise e
 
-    def get_histogram(self, bins=10, range=None):
+    def get_histogram(self, bins=None, range=None):
         """ Compute histrogram for image """
         try:
+            if bins is None:
+                bins = self.get_default_num_bins()
             if range is None:
                 range = self.get_range()
             hist, bins = da.histogram(self.data, bins=bins, range=range)
@@ -111,3 +115,7 @@ class Image:
         except Exception as e:
             logging.error("[Image]\tFailed to compute smoothed image.")
             traceback.print_exc()
+
+    def get_default_num_bins(self):
+        """ Return the default number of bins as int(std::max(sqrt(_image_shape(0) * _image_shape(1)), 2.0)) """
+        return int(max(2, math.sqrt(self.shape[0] * self.shape[1])))
