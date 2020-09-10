@@ -44,7 +44,7 @@ class Server:
         """ Handle the SET_HISTOGRAM_REQUIREMENTS message """
         logging.info("\t[Server]\tGot SET_HISTOGRAM_REQUIREMENTS.")
         try:
-            histo_num_bins = msg.histograms[0].num_bins
+            histo_num_bins = msg.histograms[0].num_bins if msg.histograms[0].num_bins > 0 else None
             raw_histogram = self.image.get_histogram(bins=histo_num_bins)
             mean = self.image.get_mean()
             std_dev = self.image.get_std_dev()

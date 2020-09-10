@@ -10,8 +10,12 @@ import threading
 import time
 import sys
 
+import unittest
+
 from src.frontend.client import *
 from src.backend.server import *
+
+from src.test.test_histogram import *
 
 option_string = """
 What would you like to do?
@@ -23,74 +27,84 @@ q: Quit the program
 
 def main(args):
 
-    # Start a Dask server
-    logging.info("\t[Main]\t\tStarting the server...")
-    serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port), daemon=True)
-    serverThread.start()
-    logging.info("\t[Main]\t\tCreated a server thread successfully.")
+    if args.tests:
 
-    time.sleep(1)
+        tester = unittest.TextTestRunner()
+        suite = unittest.TestSuite()
+        suite.addTests(unittest.makeSuite(HistogramTests))
+        tester.run(suite)
 
-    clients = set()
+    else:
 
-    # Create a Dask client
-    logging.info("\t[Main]\t\tCreating a DASK client...")
-    dask_client = Client("DaskClient", args.dask_address, args.dask_port)
-    logging.info("\t[Main]\t\tCreated a DASK client object successfully.")
-    clients.add(dask_client)
+        # Start a Dask server
+        logging.info("\t[Main]\t\tStarting the server...")
+        serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port), daemon=True)
+        serverThread.start()
+        logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
-    if args.connect_to_carta:
+        time.sleep(1)
 
-        # Create a CARTA client
-        logging.info("\t[Main]\t\tCreating a CARTA client...")
-        carta_client = Client("CartaClient", args.carta_address, args.carta_port, is_carta_client=True)
-        logging.info("\t[Main]\t\tCreated a CARTA client object successfully.")
-        clients.add(carta_client)
+        clients = set()
 
-    time.sleep(1)
+        # Create a Dask client
+        logging.info("\t[Main]\t\tCreating a DASK client...")
+        dask_client = Client("DaskClient", args.dask_address, args.dask_port)
+        logging.info("\t[Main]\t\tCreated a DASK client object successfully.")
+        clients.add(dask_client)
 
-    while True:
-        option = input(option_string)
+        if args.connect_to_carta:
 
-        if (option == '0'):
-            # Register viewer
-            for client in clients:
-                client.register_viewer()
+            # Create a CARTA client
+            logging.info("\t[Main]\t\tCreating a CARTA client...")
+            carta_client = Client("CartaClient", args.carta_address, args.carta_port, is_carta_client=True)
+            logging.info("\t[Main]\t\tCreated a CARTA client object successfully.")
+            clients.add(carta_client)
 
-        elif (option == '1'):
-            # Open file
-            directory = input("Enter file directory (default ''): ")
-            if not directory:
-                directory = ''
-            file = input("Enter file name (default 'h_m51_b_s05_drz_sci.fits'):")
-            if not file:
-                file = "h_m51_b_s05_drz_sci.fits"
-            for client in clients:
-                client.open_file(file, args.base + directory)
+        time.sleep(1)
 
-        elif (option == '2'):
-            # Get histogram
-            num_bins = int(input("Enter number of bins for histogram: "))
-            for client in clients:
-                histo, mean, std_dev = client.get_region_histogram(num_bins)
-                #print("histo:{}, mean:{}, std_dev:{}".format(histo, mean, std_dev))
+        while True:
+            option = input(option_string)
 
-        elif (option == 'q'):
-            sys.exit(0)
+            if (option == '0'):
+                # Register viewer
+                for client in clients:
+                    client.register_viewer()
 
-        else:
-            print("Invalid option!")
+            elif (option == '1'):
+                # Open file
+                directory = input("Enter file directory (default ''): ")
+                if not directory:
+                    directory = ''
+                file = input("Enter file name (default 'h_m51_b_s05_drz_sci.fits'):")
+                if not file:
+                    file = "h_m51_b_s05_drz_sci.fits"
+                for client in clients:
+                    client.open_file(file, args.base + directory)
+
+            elif (option == '2'):
+                # Get histogram
+                num_bins = int(input("Enter number of bins for histogram: "))
+                for client in clients:
+                    histo, mean, std_dev = client.get_region_histogram(num_bins)
+
+            elif (option == 'q'):
+                sys.exit(0)
+
+            else:
+                print("Invalid option!")
 
 if __name__ == "__main__":
 
     argparser = argparse.ArgumentParser(description='Interface with our Dask server and the CARTA server.')
-    argparser.add_argument('-c', '--connect_to_carta', help="Establish a connection with CARTA back-end", default=False)
-    argparser.add_argument('--dask_address', help="Host address for our Dask python server", default='localhost')
-    argparser.add_argument('--carta_address', help="Host address for the CARTA back-end server", default='localhost')
-    argparser.add_argument('--dask_port', help="Port for our Dask python server", default=3003)
-    argparser.add_argument('--carta_port', help="Port for the CARTA back-end server", default=3002)
+
+    argparser.add_argument('-c', '--connect_to_carta', help="Establish a connection with CARTA back-end", action='store_true')
+    argparser.add_argument('-v', '--verbose', help="Enable verbose info logging to console", action='store_true')
+    argparser.add_argument('-t', '--tests', help="Enable unit testing", action='store_true')
     argparser.add_argument('-b', '--base', help="Root directory of image data", default="/data/cadaflop/Data/")
-    argparser.add_argument('-v', '--verbose', help="Enable verbose info logging to console", default=False)
+    argparser.add_argument('--dask_address', help="Host address for our Dask python server", type=str, default='localhost')
+    argparser.add_argument('--carta_address', help="Host address for the CARTA back-end server", type=str, default='localhost')
+    argparser.add_argument('--dask_port', help="Port for our Dask python server", type=int, default=3003)
+    argparser.add_argument('--carta_port', help="Port for the CARTA back-end server", type=int, default=3002)
 
     args = argparser.parse_args()
 

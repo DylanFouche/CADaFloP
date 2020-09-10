@@ -65,7 +65,7 @@ def construct_region_histogram_data(num_bins, bins, mean, std_dev):
     message.region_id = -1
     message.progress = 1
     histogram = defs_pb2.Histogram()
-    histogram.num_bins = num_bins
+    histogram.num_bins = num_bins if num_bins is not None else -1
     histogram.bins.extend(bins)
     histogram.mean = mean
     histogram.std_dev = std_dev

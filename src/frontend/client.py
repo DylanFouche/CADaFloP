@@ -74,7 +74,7 @@ class Client:
 
         asyncio.get_event_loop().run_until_complete(__open_file(self))
 
-    def get_region_histogram(self, num_bins):
+    def get_region_histogram(self, num_bins=-1):
         """ Wait to recieve a REGION_HISTOGRAM_DATA. This should be done after an open_file """
         async def __get_region_histogram(self):
             try:
