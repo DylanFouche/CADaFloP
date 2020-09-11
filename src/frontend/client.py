@@ -8,6 +8,8 @@ import traceback
 import asyncio
 import websockets
 
+import os
+
 from src.util.message_provider import *
 from src.util.message_header import *
 
@@ -91,3 +93,9 @@ class Client:
                 traceback.print_exc()
 
         return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))
+
+    def clear_cache_and_open_file_and_get_region_histogram(self, file, directory, num_bins=-1):
+        """ Clear cache, open file and get histogram. Used in performance testing """
+        os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
+        self.open_file(file, directory)
+        return self.get_region_histogram(num_bins)

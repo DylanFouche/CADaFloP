@@ -27,12 +27,17 @@ q: Quit the program
 
 def main(args):
 
-    if args.tests:
+    if args.unit_tests:
 
         tester = unittest.TextTestRunner()
         suite = unittest.TestSuite()
-        suite.addTests(unittest.makeSuite(HistogramTests))
+        suite.addTests(unittest.makeSuite(HistogramUnitTests))
         tester.run(suite)
+
+    elif args.performance_tests:
+
+        tester = HistogramPerformanceTests()
+        tester.run()
 
     else:
 
@@ -99,7 +104,8 @@ if __name__ == "__main__":
 
     argparser.add_argument('-c', '--connect_to_carta', help="Establish a connection with CARTA back-end", action='store_true')
     argparser.add_argument('-v', '--verbose', help="Enable verbose info logging to console", action='store_true')
-    argparser.add_argument('-t', '--tests', help="Enable unit testing", action='store_true')
+    argparser.add_argument('-t', '--unit_tests', help="Run unit tests", action='store_true')
+    argparser.add_argument('-p', '--performance_tests', help="Run performance tests", action='store_true')
     argparser.add_argument('-b', '--base', help="Root directory of image data", default="/data/cadaflop/Data/")
     argparser.add_argument('--dask_address', help="Host address for our Dask python server", type=str, default='localhost')
     argparser.add_argument('--carta_address', help="Host address for the CARTA back-end server", type=str, default='localhost')
