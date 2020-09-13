@@ -62,31 +62,6 @@ class Image:
         s += ("Data: %s \n" %(self.data))
         return s
 
-    def get_range(self):
-        """ Compute the range of image data values, if we haven't already """
-        try:
-            if "range" not in dir(self):
-                min, max = dask.compute(self.data.min(), self.data.max())
-                self.range = [min, max]
-            return self.range
-        except Exception as e:
-            logging.error("[Image]\tFailed to instantiate image object.")
-            traceback.print_exc()
-            raise e
-
-    def get_histogram(self, bins=None, range=None):
-        """ Compute histrogram for image """
-        try:
-            if bins is None:
-                bins = self.get_default_num_bins()
-            if range is None:
-                range = self.get_range()
-            hist, bins = da.histogram(self.data, bins=bins, range=range)
-            return hist.compute()
-        except Exception as e:
-            logging.error("[Image]\tFailed to compute histogram.")
-            traceback.print_exc()
-
     def get_mean(self):
         """ Compute mean over image data """
         try:
@@ -97,14 +72,87 @@ class Image:
             logging.error("[Image]\tFailed to compute mean.")
             traceback.print_exc()
 
+    def get_min(self):
+        """ Find min value of image data """
+        try:
+            if "min" not in dir(self):
+                self.min = self.data.min().compute()
+            return self.min
+        except:
+            logging.error("[Image]\tFailed to compute min.")
+            traceback.print_exc()
+
+    def get_argmin(self):
+        """ Find argmin value of image data """
+        try:
+            if "argmin" not in dir(self):
+                self.argmin = self.data.argmin().compute()
+            return self.argmin
+        except:
+            logging.error("[Image]\tFailed to compute argmin.")
+            traceback.print_exc()
+
+    def get_max(self):
+        """ Find max value of image data """
+        try:
+            if "max" not in dir(self):
+                self.max = self.data.max().compute()
+            return self.max
+        except:
+            logging.error("[Image]\tFailed to compute max.")
+            traceback.print_exc()
+
+    def get_argmax(self):
+        """ Find argmax value of image data """
+        try:
+            if "argmax" not in dir(self):
+                self.argmax = self.data.argmax().compute()
+            return self.argmax
+        except:
+            logging.error("[Image]\tFailed to compute argmax.")
+            traceback.print_exc()
+
+    def get_range(self):
+        """ Compute the range of image data values, if we haven't already """
+        try:
+            if "range" not in dir(self):
+                self.range = [self.get_min(), self.get_max()]
+            return self.range
+        except:
+            logging.error("[Image]\tFailed to compute range.")
+            traceback.print_exc()
+
     def get_std_dev(self):
         """ Compute standard deviation over image data """
         try:
             if "std" not in dir(self):
                 self.std = self.data.std().compute()
             return self.std
-        except Exception as e:
+        except:
             logging.error("[Image]\tFailed to compute standard deviation.")
+            traceback.print_exc()
+
+    def get_sum(self):
+        """ Compute sum over image data """
+        try:
+            if "sum" not in dir(self):
+                self.sum = self.data.sum().compute()
+            return self.sum
+        except:
+            logging.error("[Image]\tFailed to compute sum.")
+            traceback.print_exc()
+
+    def get_histogram(self, bins=None, range=None):
+        """ Compute histrogram for image """
+        try:
+            if bins is None:
+                bins = self.get_default_num_bins()
+            if range is None:
+                range = self.get_range()
+            hist, bins = da.histogram(self.data, bins=bins, range=range)
+            return hist.compute()
+        except:
+            logging.error("[Image]\tFailed to compute histogram.")
             traceback.print_exc()
 
     def get_smoothed(self, sigma=1):
@@ -112,7 +160,7 @@ class Image:
         try:
             smoothed_arr = di.gaussian_filter(self.data, sigma)
             return smoothed_arr.compute()
-        except Exception as e:
+        except:
             logging.error("[Image]\tFailed to compute smoothed image.")
             traceback.print_exc()
 

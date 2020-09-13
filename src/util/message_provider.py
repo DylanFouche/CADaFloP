@@ -9,10 +9,14 @@ from src.protobuf import defs_pb2
 from src.protobuf import enums_pb2
 from src.protobuf import register_viewer_pb2
 from src.protobuf import open_file_pb2
-from src.protobuf import region_histogram_pb2
 from src.protobuf import region_requirements_pb2
+from src.protobuf import region_histogram_pb2
+from src.protobuf import region_stats_pb2
 
 from src.util.message_header import *
+
+STATS_TYPES = [enums_pb2.StatsType.Sum, enums_pb2.StatsType.Mean, enums_pb2.StatsType.Sigma,
+               enums_pb2.StatsType.Min, enums_pb2.StatsType.Max]
 
 def construct_register_viewer():
     """ Construct a REGISTER_VIEWER message """
@@ -70,4 +74,25 @@ def construct_region_histogram_data(num_bins, bins, mean, std_dev):
     histogram.mean = mean
     histogram.std_dev = std_dev
     message.histograms.append(histogram)
+    return (message, message_type)
+
+def construct_set_stats_requirements():
+    message_type = enums_pb2.EventType.SET_STATS_REQUIREMENTS
+    message = region_requirements_pb2.SetStatsRequirements()
+    message.file_id = 1
+    message.region_id = -1
+    for stat in STATS_TYPES:
+        message.stats.append(stat)
+    return (message, message_type)
+
+def construct_region_stats_data(stats):
+    message_type = enums_pb2.EventType.REGION_STATS_DATA
+    message = region_stats_pb2.RegionStatsData()
+    message.file_id = 1
+    message.region_id = -1
+    for i in range(len(stats)):
+        stat_value = defs_pb2.StatisticsValue()
+        stat_value.stats_type = STATS_TYPES[i]
+        stat_value.value = stats[i]
+        message.statistics.append(stat_value)
     return (message, message_type)

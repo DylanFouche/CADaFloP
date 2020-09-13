@@ -11,8 +11,9 @@ from src.protobuf import defs_pb2
 from src.protobuf import enums_pb2
 from src.protobuf import register_viewer_pb2
 from src.protobuf import open_file_pb2
-from src.protobuf import region_histogram_pb2
 from src.protobuf import region_requirements_pb2
+from src.protobuf import region_histogram_pb2
+from src.protobuf import region_stats_pb2
 
 # The ICD protocol version number
 ICD_VERSION = 17
@@ -30,7 +31,9 @@ message_type_code_to_protobuf_obj = {
     enums_pb2.EventType.OPEN_FILE: open_file_pb2.OpenFile,
     enums_pb2.EventType.OPEN_FILE_ACK: open_file_pb2.OpenFileAck,
     enums_pb2.EventType.SET_HISTOGRAM_REQUIREMENTS: region_requirements_pb2.SetHistogramRequirements,
-    enums_pb2.EventType.REGION_HISTOGRAM_DATA: region_histogram_pb2.RegionHistogramData
+    enums_pb2.EventType.REGION_HISTOGRAM_DATA: region_histogram_pb2.RegionHistogramData,
+    enums_pb2.EventType.SET_STATS_REQUIREMENTS: region_requirements_pb2.SetStatsRequirements,
+    enums_pb2.EventType.REGION_STATS_DATA: region_stats_pb2.RegionStatsData
 }
 
 def add_message_header(msg, msg_type):

@@ -77,7 +77,7 @@ class Client:
         asyncio.get_event_loop().run_until_complete(__open_file(self))
 
     def get_region_histogram(self, num_bins=-1):
-        """ Wait to recieve a REGION_HISTOGRAM_DATA. This should be done after an open_file """
+        """ Send a SET_HISTOGRAM_REQUIREMENTS and wait to recieve a REGION_HISTOGRAM_DATA. """
         async def __get_region_histogram(self):
             try:
                 req, req_type = construct_set_histogram_requirements(num_bins)
@@ -89,10 +89,31 @@ class Client:
                 return (histo.histograms[0].bins, histo.histograms[0].mean, histo.histograms[0].std_dev)
 
             except:
-                logging.error("\t[%s]\tUnable to get histogram from server %s.", self.name, self.server)
+                logging.error("\t[%s]\tUnable to get region histogram from server %s.", self.name, self.server)
                 traceback.print_exc()
 
         return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))
+
+    def get_region_statistics(self):
+        """ Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA. """
+        async def __get_region_statistics(self):
+            try:
+                req, req_type = construct_set_stats_requirements()
+                await self.ws.send(add_message_header(req, req_type))
+                logging.info("\t[%s]\tSent SET_STATS_REQUIREMETNS to server %s.", self.name, self.server)
+                message = await self.ws.recv()
+                stats_type, stats_id, stats = strip_message_header(message)
+                logging.info("\t[%s]\tGot REGION_STATS_DATA back from server %s.", self.name, self.server)
+                stat_list = []
+                for stat in stats.statistics:
+                    stat_list.append(stat.value)
+                return stat_list
+
+            except:
+                logging.error("\t[%s]\tUnable to get region statistics from server %s.", self.name, self.server)
+                traceback.print_exc()
+
+        return asyncio.get_event_loop().run_until_complete(__get_region_statistics(self))
 
     def clear_cache_and_open_file_and_get_region_histogram(self, file, directory, num_bins=-1):
         """ Clear cache, open file and get histogram. Used in performance testing """

@@ -22,6 +22,7 @@ What would you like to do?
 0: Register viewer
 1: Open file
 2: Get region histogram
+3: Get region statistics
 q: Quit the program
 """
 
@@ -91,6 +92,11 @@ def main(args):
                 num_bins = int(input("Enter number of bins for histogram: "))
                 for client in clients:
                     histo, mean, std_dev = client.get_region_histogram(num_bins)
+
+            elif (option == '3'):
+                # Get stats
+                for client in clients:
+                    stats = client.get_region_statistics()
 
             elif (option == 'q'):
                 sys.exit(0)

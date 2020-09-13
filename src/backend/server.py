@@ -52,13 +52,27 @@ class Server:
             await ws.send(add_message_header(histo, histo_type))
             logging.info("\t[Server]\tSent REGION_HISTOGRAM_DATA.")
         except:
-            logging.error("\t[Server]\tUnable to compute histogram")
+            logging.error("\t[Server]\tUnable to compute region histogram")
+            traceback.print_exc()
+
+    async def __on_set_statistics_requirements(self, ws, msg):
+        """ Handle the SET_STATS_REQUIREMENTS message """
+        logging.info("\t[Server]\tGot SET_STATS_REQUIREMENTS.")
+        try:
+            raw_stats = [self.image.get_sum(), self.image.get_mean(), self.image.get_std_dev(),
+                         self.image.get_min(), self.image.get_max()]
+            stats, stats_type = construct_region_stats_data(raw_stats)
+            await ws.send(add_message_header(stats, stats_type))
+            logging.info("\t[Server]\tSent REGION_STATS_DATA.")
+        except:
+            logging.error("\t[Server]\tUnable to compute region statistics")
             traceback.print_exc()
 
     MESSAGE_TYPE_CODE_TO_EVENT_HANDLER = {
         enums_pb2.EventType.REGISTER_VIEWER: __on_register_viewer,
         enums_pb2.EventType.OPEN_FILE: __on_open_file,
-        enums_pb2.EventType.SET_HISTOGRAM_REQUIREMENTS: __on_set_histogram_requirements
+        enums_pb2.EventType.SET_HISTOGRAM_REQUIREMENTS: __on_set_histogram_requirements,
+        enums_pb2.EventType.SET_STATS_REQUIREMENTS: __on_set_statistics_requirements
     }
 
     async def __serve(self, websocket, path):
