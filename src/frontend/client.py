@@ -116,7 +116,13 @@ class Client:
         return asyncio.get_event_loop().run_until_complete(__get_region_statistics(self))
 
     def clear_cache_and_open_file_and_get_region_histogram(self, file, directory, num_bins=-1):
-        """ Clear cache, open file and get histogram. Used in performance testing """
+        """ Clear cache, open file and get region histogram. Used in performance testing """
         os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
         self.open_file(file, directory)
         return self.get_region_histogram(num_bins)
+
+    def clear_cache_and_open_file_and_get_region_statistics(self, file, directory):
+        """ Clear cache, open file, and get region statistics. Used in performance testing """
+        os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
+        self.open_file(file, directory)
+        return self.get_region_statistics()

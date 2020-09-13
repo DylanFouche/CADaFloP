@@ -3,15 +3,10 @@
 # fchdyl001@myuct.ac.za
 
 import unittest
-import timeit
-
 import logging
-
 import threading
 import time
-
 import statistics
-
 import sys
 
 from collections import Iterable

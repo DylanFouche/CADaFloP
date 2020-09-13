@@ -15,7 +15,8 @@ import unittest
 from src.frontend.client import *
 from src.backend.server import *
 
-from src.test.test_histogram import *
+from src.test.unit_tests import *
+from src.test.performance_tests import *
 
 option_string = """
 What would you like to do?
@@ -32,13 +33,14 @@ def main(args):
 
         tester = unittest.TextTestRunner()
         suite = unittest.TestSuite()
-        suite.addTests(unittest.makeSuite(HistogramUnitTests))
+        suite.addTests(unittest.makeSuite(UnitTests))
         tester.run(suite)
 
     elif args.performance_tests:
 
-        tester = HistogramPerformanceTests()
-        tester.run()
+        tester = PerformanceTests()
+        tester.run_histogram_tests()
+        tester.run_statistics_tests()
 
     else:
 
