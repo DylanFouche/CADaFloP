@@ -21,13 +21,12 @@ class UnitTests(unittest.TestCase):
         """ Called before tests, instantiate clients and server """
 
         self.directory = "/data/cadaflop/Data/"
-
         self.TEST_FILES = {"h_m51_b_s05_drz_sci.fits", "orion.fits"}
 
         # Start a Dask server (assume CARTA server already running)
         serverThread = threading.Thread(target=Server, args=('localhost', 3003), daemon=True)
         serverThread.start()
-        time.sleep(1)
+        time.sleep(15)
 
         # Instantiate dask client
         self.dask_client = Client("DaskClient", 'localhost', 3003)

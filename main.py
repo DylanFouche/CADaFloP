@@ -38,7 +38,7 @@ def main(args):
 
     elif args.performance_tests:
 
-        tester = PerformanceTests()
+        tester = PerformanceTests(args.cluster, args.carta)
         tester.run_histogram_tests()
         tester.run_statistics_tests()
 
@@ -46,7 +46,7 @@ def main(args):
 
         # Start a Dask server
         logging.info("\t[Main]\t\tStarting the server...")
-        serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port), daemon=True)
+        serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port, args.cluster), daemon=True)
         serverThread.start()
         logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
@@ -60,7 +60,7 @@ def main(args):
         logging.info("\t[Main]\t\tCreated a DASK client object successfully.")
         clients.add(dask_client)
 
-        if args.connect_to_carta:
+        if args.carta:
 
             # Create a CARTA client
             logging.info("\t[Main]\t\tCreating a CARTA client...")
@@ -110,10 +110,11 @@ if __name__ == "__main__":
 
     argparser = argparse.ArgumentParser(description='Interface with our Dask server and the CARTA server.')
 
-    argparser.add_argument('-c', '--connect_to_carta', help="Establish a connection with CARTA back-end", action='store_true')
+    argparser.add_argument('-c', '--carta', help="Establish a connection with CARTA back-end", action='store_true')
     argparser.add_argument('-v', '--verbose', help="Enable verbose info logging to console", action='store_true')
     argparser.add_argument('-t', '--unit_tests', help="Run unit tests", action='store_true')
     argparser.add_argument('-p', '--performance_tests', help="Run performance tests", action='store_true')
+    argparser.add_argument('-hpc', '--cluster', help="Distribute Dask work over our cluster", action='store_true')
     argparser.add_argument('-b', '--base', help="Root directory of image data", default="/data/cadaflop/Data/")
     argparser.add_argument('--dask_address', help="Host address for our Dask python server", type=str, default='localhost')
     argparser.add_argument('--carta_address', help="Host address for the CARTA back-end server", type=str, default='localhost')
