@@ -18,8 +18,11 @@ import dask_image.ndfilters as di
 
 class Image:
 
-    def __init__(self, filename, chunk=1000):
+    def __init__(self, client, filename, chunk=None):
         """ Construct image object from given file """
+
+        self.client = client
+
         self.filename = filename
         self.filetype = filename[self.filename.rfind('.')+1:]
 
@@ -32,7 +35,8 @@ class Image:
                 d = f['0']['DATA']
                 self.shape = d.shape
                 self.dimensions = len(self.shape)
-                self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
+                chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
+                self.data = da.from_array(d, chunks=chunk_size)
 
             elif (self.filetype == "fits"):
 
@@ -42,10 +46,14 @@ class Image:
                 d = f[0].data
                 self.shape = d.shape
                 self.dimensions = len(self.shape)
-                self.data = da.from_array(d, chunks=([chunk] * self.dimensions))
+                chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
+                self.data = da.from_array(d, chunks=chunk_size)
 
             else:
                 raise Exception("Unsupported file type.")
+
+            if self.client is not None:
+                self.data = self.client.persist(self.data)
 
         except Exception as e:
             logging.error("[Image]\tFailed to instantiate image object.")

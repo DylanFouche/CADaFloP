@@ -10,6 +10,8 @@ import numpy as np
 import asyncio
 import websockets
 
+import dask.distributed
+
 from src.protobuf import enums_pb2
 
 from src.util.message_provider import *
@@ -31,7 +33,7 @@ class Server:
         logging.info("\t[Server]\tGot OPEN_FILE with file %s and directory %s.", msg.file, msg.directory)
         ack, ack_type = construct_open_file_ack()
         try:
-            self.image = Image(msg.directory + msg.file)
+            self.image = Image(self.client, msg.directory + msg.file)
             logging.info("\t[Server]\tOpened file %s successfully.", msg.directory + msg.file)
         except:
             ack.success = False
@@ -90,9 +92,20 @@ class Server:
         except:
             logging.warn("\t[Server]\tClient connection closed.")
 
-    def __init__(self, address, port):
+    def __init__(self, address, port, cluster=False):
         """ Start a server on given address:port and run forever """
-        self.image = None
+
+        if cluster:
+            # Instantiate an unmanaged cluster for Dask
+            self.cluster = dask.distributed.SSHCluster(
+                ['localhost',       # scheduler
+                 'localhost',       # worker 1
+                 '192.168.80.12',   # worker 2
+                 '192.168.80.14',   # worker 3
+                 '192.168.80.18'])  # worker 4
+            self.client = dask.distributed.Client(self.cluster)
+        else:
+            self.client = None
 
         event_loop = asyncio.new_event_loop()
         asyncio.set_event_loop(event_loop)
