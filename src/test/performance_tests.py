@@ -61,7 +61,7 @@ class PerformanceTests():
             self.client = Client("DaskClient", 'localhost', 3003)
 
             dask_qualifier = 'distributed' if cluster else 'local'
-            logging.critical("Executing performance tests against dask {} server".format("dask_qualifier"))
+            logging.critical("Executing performance tests against dask {} server".format(dask_qualifier))
 
         # Register client as viewer
         self.client.register_viewer()

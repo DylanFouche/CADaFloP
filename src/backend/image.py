@@ -18,7 +18,7 @@ import dask_image.ndfilters as di
 
 class Image:
 
-    def __init__(self, client, filename, chunk=None):
+    def __init__(self, filename, client=None, chunk=None):
         """ Construct image object from given file """
 
         self.client = client

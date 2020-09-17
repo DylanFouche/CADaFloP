@@ -33,7 +33,7 @@ class Server:
         logging.info("\t[Server]\tGot OPEN_FILE with file %s and directory %s.", msg.file, msg.directory)
         ack, ack_type = construct_open_file_ack()
         try:
-            self.image = Image(self.client, msg.directory + msg.file)
+            self.image = Image(msg.directory + msg.file, client=self.client)
             logging.info("\t[Server]\tOpened file %s successfully.", msg.directory + msg.file)
         except:
             ack.success = False
@@ -99,10 +99,10 @@ class Server:
             # Instantiate an unmanaged cluster for Dask
             self.cluster = dask.distributed.SSHCluster(
                 ['localhost',       # scheduler
-                 'localhost',       # worker 1
-                 '192.168.80.12',   # worker 2
-                 '192.168.80.14',   # worker 3
-                 '192.168.80.18'])  # worker 4
+                 'localhost',       # worker 0
+                 '192.168.80.18',   # worker 1
+                 '192.168.80.14',   # worker 2
+                 '192.168.80.12'])  # worker 3
             self.client = dask.distributed.Client(self.cluster)
         else:
             self.client = None
