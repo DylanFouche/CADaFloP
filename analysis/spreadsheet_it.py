@@ -15,20 +15,29 @@ with xlsxwriter.Workbook('data/results.xlsx') as workbook:
     for file in sys.argv[1:]:
 
         means = []
+        devs = []
 
         with open(file, "r") as f:
             for line in f:
                 if line[0:5] == "Mean:":
                     means.append(float(line[6:].rstrip()))
+                elif line[0:8] == "Std dev:":
+                    devs.append(float(line[9:].rstrip()))
 
-        carta_histo = means[0:20]
-        carta_stats = means[20:40]
+        carta_histo_mean = means[0:20]
+        carta_histo_dev = devs[0:20]
+        carta_stats_mean = means[20:40]
+        carta_stats_dev = devs[20:40]
 
-        dask_local_histo = means[40:60]
-        dask_local_stats = means[60:80]
+        dask_local_histo_mean = means[40:60]
+        dask_local_histo_dev = devs[40:60]
+        dask_local_stats_mean = means[60:80]
+        dask_local_stats_dev = devs[60:80]
 
-        dask_distributed_histo = means[80:100]
-        dask_distributed_stats = means[100:120]
+        dask_distributed_histo_mean = means[80:100]
+        dask_distributed_histo_dev = devs[80:100]
+        dask_distributed_stats_mean = means[100:120]
+        dask_distributed_stats_dev = devs[100:120]
 
         worksheet = workbook.add_worksheet(file[file.find('/')+1:file.find('.')]+'-histogram')
 
@@ -39,13 +48,26 @@ with xlsxwriter.Workbook('data/results.xlsx') as workbook:
         worksheet.write(1,3,"Dask (distributed)")
 
         for row, data in enumerate(dimensions):
-            worksheet.write(row+2, 0, data)
-        for row, data in enumerate(carta_histo):
-            worksheet.write(row+2, 1, data)
-        for row, data in enumerate(dask_local_histo):
-            worksheet.write(row+2, 2, data)
-        for row, data in enumerate(dask_distributed_histo):
-            worksheet.write(row+2, 3, data)
+            worksheet.write((row*2)+2, 0, data)
+        for i in range(2, len(carta_histo_mean)*2 + 2):
+            if i%2 == 0:
+                worksheet.write(i, 1, "mean")
+            else:
+                worksheet.write(i, 1, "std dev")
+
+        for row, data in enumerate(carta_histo_mean):
+            worksheet.write((row*2)+2, 2, data)
+        for row, data in enumerate(dask_local_histo_mean):
+            worksheet.write((row*2)+2, 3, data)
+        for row, data in enumerate(dask_distributed_histo_mean):
+            worksheet.write((row*2)+2, 4, data)
+
+        for row, data in enumerate(carta_histo_dev):
+            worksheet.write((row*2)+3, 2, data)
+        for row, data in enumerate(dask_local_histo_dev):
+            worksheet.write((row*2)+3, 3, data)
+        for row, data in enumerate(dask_distributed_histo_dev):
+            worksheet.write((row*2)+3, 4, data)
 
         worksheet = workbook.add_worksheet(file[file.find('/')+1:file.find('.')]+'-statistics')
 
@@ -56,10 +78,23 @@ with xlsxwriter.Workbook('data/results.xlsx') as workbook:
         worksheet.write(1,3,"Dask (distributed)")
 
         for row, data in enumerate(dimensions):
-            worksheet.write(row+2, 0, data)
-        for row, data in enumerate(carta_stats):
-            worksheet.write(row+2, 1, data)
-        for row, data in enumerate(dask_local_stats):
-            worksheet.write(row+2, 2, data)
-        for row, data in enumerate(dask_distributed_stats):
-            worksheet.write(row+2, 3, data)
+            worksheet.write((row*2)+2, 0, data)
+        for i in range(2, len(carta_histo_mean)*2 + 2):
+            if i%2 == 0:
+                worksheet.write(i, 1, "mean")
+            else:
+                worksheet.write(i, 1, "std dev")
+
+        for row, data in enumerate(carta_stats_mean):
+            worksheet.write((row*2)+2, 2, data)
+        for row, data in enumerate(dask_local_stats_mean):
+            worksheet.write((row*2)+2, 3, data)
+        for row, data in enumerate(dask_distributed_stats_mean):
+            worksheet.write((row*2)+2, 4, data)
+
+        for row, data in enumerate(carta_stats_dev):
+            worksheet.write((row*2)+3, 2, data)
+        for row, data in enumerate(dask_local_stats_dev):
+            worksheet.write((row*2)+3, 3, data)
+        for row, data in enumerate(dask_distributed_stats_dev):
+            worksheet.write((row*2)+3, 4, data)
