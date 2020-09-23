@@ -14,11 +14,13 @@ from src.backend.server import *
 
 class PerformanceTests():
 
-    def __init__(self, cluster, carta, n=10, fileout="performance.log"):
+    def __init__(self, cluster, carta, ramdisk, n=10):
         """ Instantiate the histogram performance testing class, launch a server and create client objects """
 
         self.n = n
-        self.directory = "/data/cadaflop/Data/"
+        self.ramdisk = ramdisk
+
+        self.directory = "/ramdisk/" if ramdisk else "/data/cadaflop/Data/"
 
         self.TEST_FILES = ['image-1000-1000.fits',
             'image-2000-2000.fits',
@@ -42,6 +44,7 @@ class PerformanceTests():
             'image-20000-20000.fits']
 
         # Log results to file
+        fileout = "data/performance-ram.log" if ramdisk else "data/performance-disk.log"
         file_handler = logging.FileHandler(fileout)
         file_handler.setLevel(logging.CRITICAL)
         logging.getLogger().addHandler(file_handler)
@@ -67,26 +70,50 @@ class PerformanceTests():
         self.client.register_viewer()
 
     def run_histogram_tests(self):
-        """ Execute region histogram performance tests """
+        self.__do_tests(self.client.get_region_histogram , "region histogram")
+
+    def run_statistics_tests(self):
+        self.__do_tests(self.client.get_region_statistics, "region statistics")
+
+    def __do_tests(self, f, fname):
+        """ Execute performance tests for some function f """
         logging.critical("================================================================")
 
         now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        logging.critical("{}: Beginning performance testing for the region histogram function".format(now))
+
+        if self.ramdisk:
+            logging.critical("{}: Beginning performance testing for the {} function with data from memory.".format(now, fname))
+        else:
+            logging.critical("{}: Beginning performance testing for the {} function with data from disk.".format(now, fname))
 
         for test_file in self.TEST_FILES:
+
+            if self.ramdisk:
+                # Put test file in ramdisk
+                os.system('echo "rm -f /ramdisk/* " | sudo bash')
+                os.system('cp /data/cadaflop/Data/{} /ramdisk/ '.format(test_file))
+
             logging.critical("===File: {}===".format(test_file))
 
-            # Warm-up
-            self.__clear_cache_and_open_file_and_execute_function(test_file, self.directory, self.client.get_region_histogram)
+            os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
+            self.__open_file_and_execute_function(f, test_file, self.directory)
 
-            # Do tests
-            logging.critical("Computing region histogram {} times...".format(self.n))
+            logging.critical("Computing region histogram {} times".format(self.n))
 
-            times = timeit.repeat(lambda:
-                self.__clear_cache_and_open_file_and_execute_function(test_file, self.directory, self.client.get_region_histogram),
-                repeat = self.n, number = 1)
+            times = []
 
-            # Log results
+            for i in range(self.n):
+
+                print('.',end='',flush=True)
+
+                os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
+
+                times.append(timeit.timeit(lambda:
+                    self.__open_file_and_execute_function(f, test_file, self.directory),
+                    number = 1))
+
+            print()
+
             logging.critical("Execution times: {}".format(times))
             logging.critical("Mean: {}".format(statistics.mean(times)))
             logging.critical("Variance: {}".format(statistics.variance(times)))
@@ -94,35 +121,7 @@ class PerformanceTests():
 
         logging.critical("================================================================")
 
-    def run_statistics_tests(self, n=10):
-        """ Execute region statistics performance tests """
-        logging.critical("================================================================")
 
-        now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        logging.critical("{}: Beginning performance testing for the region statistics function".format(now))
-
-        for test_file in self.TEST_FILES:
-            logging.critical("===File: {}===".format(test_file))
-
-            # Warm-up
-            self.__clear_cache_and_open_file_and_execute_function(test_file, self.directory, self.client.get_region_statistics)
-
-            # Do tests
-            logging.critical("Computing region statistics {} times...".format(self.n))
-
-            times = timeit.repeat(lambda:
-                self.__clear_cache_and_open_file_and_execute_function(test_file, self.directory, self.client.get_region_statistics),
-                repeat = self.n, number = 1)
-
-            # Log results
-            logging.critical("Execution times: {}".format(times))
-            logging.critical("Mean: {}".format(statistics.mean(times)))
-            logging.critical("Variance: {}".format(statistics.variance(times)))
-            logging.critical("Std dev: {}".format(statistics.stdev(times)))
-
-        logging.critical("================================================================")
-
-    def __clear_cache_and_open_file_and_execute_function(self, file, directory, f):
-        os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
+    def __open_file_and_execute_function(self, f, file, directory):
         self.client.open_file(file, directory)
         return f()

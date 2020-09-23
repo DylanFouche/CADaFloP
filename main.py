@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # D FOUCHE
 # UCT CS HONS
@@ -38,7 +38,7 @@ def main(args):
 
     elif args.performance_tests:
 
-        tester = PerformanceTests(args.cluster, args.carta)
+        tester = PerformanceTests(args.distributed, args.carta, args.ramdisk)
         tester.run_histogram_tests()
         tester.run_statistics_tests()
 
@@ -46,11 +46,11 @@ def main(args):
 
         # Start a Dask server
         logging.info("\t[Main]\t\tStarting the server...")
-        serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port, args.cluster), daemon=True)
+        serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port, args.distributed), daemon=True)
         serverThread.start()
         logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
-        time.sleep(1)
+        time.sleep(15)
 
         clients = set()
 
@@ -114,7 +114,8 @@ if __name__ == "__main__":
     argparser.add_argument('-v', '--verbose', help="Enable verbose info logging to console", action='store_true')
     argparser.add_argument('-t', '--unit_tests', help="Run unit tests", action='store_true')
     argparser.add_argument('-p', '--performance_tests', help="Run performance tests", action='store_true')
-    argparser.add_argument('-hpc', '--cluster', help="Distribute Dask work over our cluster", action='store_true')
+    argparser.add_argument('-d', '--distributed', help="Distribute Dask work over our cluster", action='store_true')
+    argparser.add_argument('-m', '--ramdisk', help="Use test images already in memory", action='store_true')
     argparser.add_argument('-b', '--base', help="Root directory of image data", default="/data/cadaflop/Data/")
     argparser.add_argument('--dask_address', help="Host address for our Dask python server", type=str, default='localhost')
     argparser.add_argument('--carta_address', help="Host address for the CARTA back-end server", type=str, default='localhost')

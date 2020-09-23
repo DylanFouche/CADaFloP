@@ -99,10 +99,9 @@ class Server:
             # Instantiate an unmanaged cluster for Dask
             self.cluster = dask.distributed.SSHCluster(
                 ['localhost',       # scheduler
-                 'localhost',       # worker 0
-                 '192.168.80.18',   # worker 1
-                 '192.168.80.14',   # worker 2
-                 '192.168.80.12'])  # worker 3
+                 '192.168.80.12',   # worker 0
+                 '192.168.80.13',   # worker 1
+                 '192.168.80.14'])  # worker 2
             self.client = dask.distributed.Client(self.cluster)
         else:
             self.client = None
