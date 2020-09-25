@@ -43,9 +43,9 @@ with xlsxwriter.Workbook('data/results.xlsx') as workbook:
 
         worksheet.write(0,0,"Image dimensions")
         worksheet.write(0,1,"Runtime (seconds)")
-        worksheet.write(1,1,"CARTA")
-        worksheet.write(1,2,"Dask (local)")
-        worksheet.write(1,3,"Dask (distributed)")
+        worksheet.write(1,2,"CARTA")
+        worksheet.write(1,3,"Dask (local)")
+        worksheet.write(1,4,"Dask (distributed)")
 
         for row, data in enumerate(dimensions):
             worksheet.write((row*2)+2, 0, data)
@@ -73,9 +73,9 @@ with xlsxwriter.Workbook('data/results.xlsx') as workbook:
 
         worksheet.write(0,0,"Image dimensions")
         worksheet.write(0,1,"Runtime (seconds)")
-        worksheet.write(1,1,"CARTA")
-        worksheet.write(1,2,"Dask (local)")
-        worksheet.write(1,3,"Dask (distributed)")
+        worksheet.write(1,2,"CARTA")
+        worksheet.write(1,3,"Dask (local)")
+        worksheet.write(1,4,"Dask (distributed)")
 
         for row, data in enumerate(dimensions):
             worksheet.write((row*2)+2, 0, data)
