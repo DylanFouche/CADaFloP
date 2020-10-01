@@ -150,7 +150,7 @@ class Image:
             logging.error("[Image]\tFailed to compute sum.")
             traceback.print_exc()
 
-    def get_histogram(self, bins=None, range=None):
+    def get_region_histogram(self, bins=None, range=None):
         """ Compute histrogram for image """
         try:
             if bins is None:
@@ -160,7 +160,14 @@ class Image:
             hist, bins = da.histogram(self.data, bins=bins, range=range)
             return hist.compute()
         except:
-            logging.error("[Image]\tFailed to compute histogram.")
+            logging.error("[Image]\tFailed to compute region histogram.")
+            traceback.print_exc()
+
+    def get_region_statistics(self):
+        try:
+            return dask.compute(self.data.sum(), self.data.mean(), self.data.std(), self.data.min(), self.data.max())
+        except:
+            logging.error("[Image]\tFailed to compute region statistics.")
             traceback.print_exc()
 
     def get_smoothed(self, sigma=1):
