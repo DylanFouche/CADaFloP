@@ -18,7 +18,7 @@ import dask_image.ndfilters as di
 
 class Image:
 
-    def __init__(self, filename, chunk=None):
+    def __init__(self, filename):
         """ Construct image object from given file """
 
         self.filename = filename
@@ -34,7 +34,7 @@ class Image:
                     d = f['0']['DATA']
                     self.shape = d.shape
                     self.dimensions = len(self.shape)
-                    chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
+                    chunk_size = 'auto' if self.shape[0] * self.shape[1] > 25000000 else (1000, 1000)
                     self.data = da.from_array(d, chunks=chunk_size)
 
             elif (self.filetype == "fits"):
@@ -46,7 +46,7 @@ class Image:
                     d = f[0].data
                     self.shape = d.shape
                     self.dimensions = len(self.shape)
-                    chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
+                    chunk_size = 'auto' if self.shape[0] * self.shape[1] > 25000000 else (1000, 1000)
                     self.data = da.from_array(d, chunks=chunk_size)
 
             else:
