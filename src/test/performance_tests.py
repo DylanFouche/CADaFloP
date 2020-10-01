@@ -56,7 +56,7 @@ class PerformanceTests():
             logging.critical("Executing performance tests against CARTA back-end")
         else:
             # Start a Dask server
-            serverThread = threading.Thread(target=Server, args=('localhost', 3003, cluster), daemon=True)
+            serverThread = threading.Thread(target=Server, args=('localhost', 3003, cluster, ramdisk), daemon=True)
             serverThread.start()
             time.sleep(15)
 
@@ -97,8 +97,9 @@ class PerformanceTests():
 
             os.system('echo "sync && echo 3 > /proc/sys/vm/drop_caches" | sudo bash')
             self.__open_file_and_execute_function(f, test_file, self.directory)
+            time.sleep(5)
 
-            logging.critical("Computing region histogram {} times".format(self.n))
+            logging.critical("Computing {} {} times".format(fname, self.n))
 
             times = []
 

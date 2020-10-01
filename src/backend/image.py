@@ -18,10 +18,8 @@ import dask_image.ndfilters as di
 
 class Image:
 
-    def __init__(self, filename, client=None, chunk=None):
+    def __init__(self, filename, chunk=None):
         """ Construct image object from given file """
-
-        self.client = client
 
         self.filename = filename
         self.filetype = filename[self.filename.rfind('.')+1:]
@@ -29,31 +27,30 @@ class Image:
         try:
             if (self.filetype == "hdf5"):
 
-                f = hdf5(self.filename, 'r')
-                if 'DATA' not in f['0']:
-                    raise Exception("Unexpected format in hdf file.")
-                d = f['0']['DATA']
-                self.shape = d.shape
-                self.dimensions = len(self.shape)
-                chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
-                self.data = da.from_array(d, chunks=chunk_size)
+                with hdf5(self.filename, 'r') as f:
+
+                    if 'DATA' not in f['0']:
+                        raise Exception("Unexpected format in hdf file.")
+                    d = f['0']['DATA']
+                    self.shape = d.shape
+                    self.dimensions = len(self.shape)
+                    chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
+                    self.data = da.from_array(d, chunks=chunk_size)
 
             elif (self.filetype == "fits"):
 
-                f = fits.open(self.filename, memmap=True)
-                if "data" not in dir(f[0]):
-                    raise Exception("Unexpected format in fits file.")
-                d = f[0].data
-                self.shape = d.shape
-                self.dimensions = len(self.shape)
-                chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
-                self.data = da.from_array(d, chunks=chunk_size)
+                with fits.open(self.filename, memmap=True) as f:
+
+                    if "data" not in dir(f[0]):
+                        raise Exception("Unexpected format in fits file.")
+                    d = f[0].data
+                    self.shape = d.shape
+                    self.dimensions = len(self.shape)
+                    chunk_size = 'auto' if chunk is None else ([chunk] * self.dimensions)
+                    self.data = da.from_array(d, chunks=chunk_size)
 
             else:
                 raise Exception("Unsupported file type.")
-
-            if self.client is not None:
-                self.data = self.client.persist(self.data)
 
         except Exception as e:
             logging.error("[Image]\tFailed to instantiate image object.")

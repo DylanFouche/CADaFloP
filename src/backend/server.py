@@ -33,8 +33,11 @@ class Server:
         logging.info("\t[Server]\tGot OPEN_FILE with file %s and directory %s.", msg.file, msg.directory)
         ack, ack_type = construct_open_file_ack()
         try:
-            self.image = Image(msg.directory + msg.file, client=self.client)
-            logging.info("\t[Server]\tOpened file %s successfully.", msg.directory + msg.file)
+            if self.image is None or not (msg.directory + msg.file == self.image.filename and self.cache):
+                self.image = Image(msg.directory + msg.file)
+                if self.client is not None:
+                    self.image.data = self.client.persist(self.image.data)
+                logging.info("\t[Server]\tOpened file %s successfully.", msg.directory + msg.file)
         except:
             ack.success = False
             logging.error("\t[Server]\tUnable to open file %s.", msg.directory + msg.file)
@@ -47,7 +50,7 @@ class Server:
         logging.info("\t[Server]\tGot SET_HISTOGRAM_REQUIREMENTS.")
         try:
             histo_num_bins = msg.histograms[0].num_bins if msg.histograms[0].num_bins > 0 else None
-            raw_histogram = self.image.get_histogram(bins=histo_num_bins)
+            raw_histogram = self.image.get_region_histogram(bins=histo_num_bins)
             mean = self.image.get_mean()
             std_dev = self.image.get_std_dev()
             histo, histo_type = construct_region_histogram_data(histo_num_bins, raw_histogram, mean, std_dev)
@@ -61,8 +64,7 @@ class Server:
         """ Handle the SET_STATS_REQUIREMENTS message """
         logging.info("\t[Server]\tGot SET_STATS_REQUIREMENTS.")
         try:
-            raw_stats = [self.image.get_sum(), self.image.get_mean(), self.image.get_std_dev(),
-                         self.image.get_min(), self.image.get_max()]
+            raw_stats = self.image.get_region_statistics()
             stats, stats_type = construct_region_stats_data(raw_stats)
             await ws.send(add_message_header(stats, stats_type))
             logging.info("\t[Server]\tSent REGION_STATS_DATA.")
@@ -92,8 +94,11 @@ class Server:
         except:
             logging.warn("\t[Server]\tClient connection closed.")
 
-    def __init__(self, address, port, cluster=False):
+    def __init__(self, address, port, cluster=False, cache=True):
         """ Start a server on given address:port and run forever """
+
+        self.image = None
+        self.cache = cache
 
         if cluster:
             # Instantiate an unmanaged cluster for Dask
