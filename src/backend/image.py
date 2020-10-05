@@ -7,14 +7,13 @@ import traceback
 
 import math
 
-import numpy as np
-
 from astropy.io import fits
 from h5py import File as hdf5
 
 import dask
 import dask.array as da
 import dask_image.ndfilters as di
+
 
 class Image:
 
@@ -62,9 +61,9 @@ class Image:
 
     def __str__(self):
         s = ""
-        s += ("Image %s of type %s \n" %(self.filename, self.filetype))
-        s += ("%s dimensions of sizes %s \n" %(self.dimensions, self.shape))
-        s += ("Data: %s \n" %(self.data))
+        s += ("Image %s of type %s \n" % (self.filename, self.filetype))
+        s += ("%s dimensions of sizes %s \n" % (self.dimensions, self.shape))
+        s += ("Data: %s \n" % (self.data))
         return s
 
     def get_mean(self):

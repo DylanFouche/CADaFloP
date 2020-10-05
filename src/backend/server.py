@@ -5,8 +5,6 @@
 import logging
 import traceback
 
-import numpy as np
-
 import asyncio
 import websockets
 
@@ -19,28 +17,34 @@ from src.util.message_header import *
 
 from src.backend.image import Image
 
+
 class Server:
 
     async def __on_register_viewer(self, ws, msg):
         """ Handle the REGISTER_VIEWER message """
-        logging.info("\t[Server]\tGot REGISTER_VIEWER with session id %s.", msg.session_id)
+        logging.info(
+            "\t[Server]\tGot REGISTER_VIEWER with session id %s.", msg.session_id)
         ack, ack_type = construct_register_viewer_ack(msg.session_id)
         await ws.send(add_message_header(ack, ack_type))
-        logging.info("\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s.", ack.session_id)
+        logging.info(
+            "\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s.", ack.session_id)
 
     async def __on_open_file(self, ws, msg):
         """ Handle the OPEN_FILE message """
-        logging.info("\t[Server]\tGot OPEN_FILE with file %s and directory %s.", msg.file, msg.directory)
+        logging.info(
+            "\t[Server]\tGot OPEN_FILE with file %s and directory %s.", msg.file, msg.directory)
         ack, ack_type = construct_open_file_ack()
         try:
             if self.image is None or not (msg.directory + msg.file == self.image.filename and self.cache):
                 self.image = Image(msg.directory + msg.file)
                 if self.client is not None:
                     self.image.data = self.client.persist(self.image.data)
-                logging.info("\t[Server]\tOpened file %s successfully.", msg.directory + msg.file)
+                logging.info(
+                    "\t[Server]\tOpened file %s successfully.", msg.directory + msg.file)
         except:
             ack.success = False
-            logging.error("\t[Server]\tUnable to open file %s.", msg.directory + msg.file)
+            logging.error("\t[Server]\tUnable to open file %s.",
+                          msg.directory + msg.file)
             traceback.print_exc()
         await ws.send(add_message_header(ack, ack_type))
         logging.info("\t[Server]\tSent OPEN_FILE_ACK.")
@@ -50,10 +54,12 @@ class Server:
         logging.info("\t[Server]\tGot SET_HISTOGRAM_REQUIREMENTS.")
         try:
             histo_num_bins = msg.histograms[0].num_bins if msg.histograms[0].num_bins > 0 else None
-            raw_histogram = self.image.get_region_histogram(bins=histo_num_bins)
+            raw_histogram = self.image.get_region_histogram(
+                bins=histo_num_bins)
             mean = self.image.get_mean()
             std_dev = self.image.get_std_dev()
-            histo, histo_type = construct_region_histogram_data(histo_num_bins, raw_histogram, mean, std_dev)
+            histo, histo_type = construct_region_histogram_data(
+                histo_num_bins, raw_histogram, mean, std_dev)
             await ws.send(add_message_header(histo, histo_type))
             logging.info("\t[Server]\tSent REGION_HISTOGRAM_DATA.")
         except:
@@ -73,10 +79,14 @@ class Server:
             traceback.print_exc()
 
     MESSAGE_TYPE_CODE_TO_EVENT_HANDLER = {
-        enums_pb2.EventType.REGISTER_VIEWER: __on_register_viewer,
-        enums_pb2.EventType.OPEN_FILE: __on_open_file,
-        enums_pb2.EventType.SET_HISTOGRAM_REQUIREMENTS: __on_set_histogram_requirements,
-        enums_pb2.EventType.SET_STATS_REQUIREMENTS: __on_set_statistics_requirements
+        enums_pb2.EventType.REGISTER_VIEWER:
+            __on_register_viewer,
+        enums_pb2.EventType.OPEN_FILE:
+            __on_open_file,
+        enums_pb2.EventType.SET_HISTOGRAM_REQUIREMENTS:
+            __on_set_histogram_requirements,
+        enums_pb2.EventType.SET_STATS_REQUIREMENTS:
+            __on_set_statistics_requirements
     }
 
     async def __serve(self, websocket, path):
@@ -89,7 +99,8 @@ class Server:
                     handler = self.MESSAGE_TYPE_CODE_TO_EVENT_HANDLER.get(message_type)
                     await handler(self, websocket, message_payload)
                 except:
-                    logging.error("\t[Server]\tUnable to process message from client.")
+                    logging.error(
+                        "\t[Server]\tUnable to process message from client.")
                     traceback.print_exc()
         except:
             logging.warn("\t[Server]\tClient connection closed.")
@@ -114,9 +125,11 @@ class Server:
         event_loop = asyncio.new_event_loop()
         asyncio.set_event_loop(event_loop)
 
-        server = websockets.serve(self.__serve, address, port, loop=event_loop, ping_interval=None)
+        server = websockets.serve(
+            self.__serve, address, port, loop=event_loop, ping_interval=None)
 
-        logging.info("\t[Server]\tStarting a server on ws://%s:%s", address, port)
+        logging.info(
+            "\t[Server]\tStarting a server on ws://%s:%s", address, port)
 
         asyncio.get_event_loop().run_until_complete(server)
         asyncio.get_event_loop().run_forever()

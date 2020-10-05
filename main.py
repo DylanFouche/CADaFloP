@@ -27,6 +27,7 @@ What would you like to do?
 q: Quit the program
 """
 
+
 def main(args):
 
     if args.unit_tests:
@@ -46,7 +47,8 @@ def main(args):
 
         # Start a Dask server
         logging.info("\t[Main]\t\tStarting the server...")
-        serverThread = threading.Thread(target=Server, args=(args.dask_address, args.dask_port, args.distributed), daemon=True)
+        serverThread = threading.Thread(target=Server, args=(
+            args.dask_address, args.dask_port, args.distributed), daemon=True)
         serverThread.start()
         logging.info("\t[Main]\t\tCreated a server thread successfully.")
 
