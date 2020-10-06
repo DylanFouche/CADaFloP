@@ -15,10 +15,17 @@ from src.backend.server import *
 
 
 class PerformanceTests():
+    """A suite of tests to evaluate the performance of our solution."""
 
     def __init__(self, cluster, carta, ramdisk, n=10):
-        """ Instantiate the histogram performance testing class, launch a server and create client objects """
+        """Instantiate the histogram performance testing class, launch a server and create client objects.
 
+        :param cluster: use the Dask distributed cluster if True, use local Dask otherwise
+        :param carta: benchmark the CARTA server if True, benchmark the Dask server otherwise
+        :param ramdisk: use data in memory if True, use data from disk otherwise
+        :param n: the number of times to execute each test case (Default value = 10)
+
+        """
         self.n = n
         self.ramdisk = ramdisk
 
@@ -77,13 +84,20 @@ class PerformanceTests():
         self.client.register_viewer()
 
     def run_histogram_tests(self):
+        """Execute performance tests for the region histogram function."""
         self.__do_tests(self.client.get_region_histogram, "region histogram")
 
     def run_statistics_tests(self):
+        """Execute performance tests for the region statistics function."""
         self.__do_tests(self.client.get_region_statistics, "region statistics")
 
     def __do_tests(self, f, fname):
-        """ Execute performance tests for some function f """
+        """Execute performance tests for some function f.
+
+        :param f: the function to benchmark
+        :param fname: a string name of the function to benchmark
+
+        """
         logging.critical(
             "================================================================")
 
@@ -139,5 +153,13 @@ class PerformanceTests():
             "================================================================")
 
     def __open_file_and_execute_function(self, f, file, directory):
+        """Open a file and execute some function f.
+
+        :param f: the function to execute
+        :param file: the name of the file to open
+        :param directory: the path to the file to open
+        :return: the result of executing function f
+
+        """
         self.client.open_file(file, directory)
         return f()

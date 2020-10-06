@@ -16,12 +16,16 @@ import dask_image.ndfilters as di
 
 
 class Image:
+    """An image object that stores data in a Dask array and provides functions to perform various Dask computations."""
 
     def __init__(self, filename):
-        """ Construct image object from given file """
+        """Construct image object from given file.
 
+        :param filename: The path to the image file to be opened
+
+        """
         self.filename = filename
-        self.filetype = filename[self.filename.rfind('.')+1:]
+        self.filetype = filename[self.filename.rfind('.') + 1:]
 
         try:
             if (self.filetype == "hdf5"):
@@ -57,9 +61,20 @@ class Image:
             raise e
 
     def __getitem__(self, key):
+        """Access a slice of our image data.
+
+        :param key: the index to access
+        :return: returns the image slice at given index
+
+        """
         return self.data[key]
 
     def __str__(self):
+        """Get image metadata in string format.
+
+        :return: string representation of the object
+
+        """
         s = ""
         s += ("Image %s of type %s \n" % (self.filename, self.filetype))
         s += ("%s dimensions of sizes %s \n" % (self.dimensions, self.shape))
@@ -67,17 +82,25 @@ class Image:
         return s
 
     def get_mean(self):
-        """ Compute mean over image data """
+        """Compute mean over image data.
+
+        :return: mean of image data
+
+        """
         try:
             if "mean" not in dir(self):
                 self.mean = self.data.mean().compute()
             return self.mean
-        except Exception as e:
+        except:
             logging.error("[Image]\tFailed to compute mean.")
             traceback.print_exc()
 
     def get_min(self):
-        """ Find min value of image data """
+        """Compute minimum value of image data.
+
+        :return: minimum value of image data
+
+        """
         try:
             if "min" not in dir(self):
                 self.min = self.data.min().compute()
@@ -87,7 +110,11 @@ class Image:
             traceback.print_exc()
 
     def get_argmin(self):
-        """ Find argmin value of image data """
+        """Compute argmin value of image data.
+
+        :return: argmin value of image data
+
+        """
         try:
             if "argmin" not in dir(self):
                 self.argmin = self.data.argmin().compute()
@@ -97,7 +124,11 @@ class Image:
             traceback.print_exc()
 
     def get_max(self):
-        """ Find max value of image data """
+        """Compute maximum value of image data.
+
+        :return: maximum value of image data
+
+        """
         try:
             if "max" not in dir(self):
                 self.max = self.data.max().compute()
@@ -107,7 +138,11 @@ class Image:
             traceback.print_exc()
 
     def get_argmax(self):
-        """ Find argmax value of image data """
+        """Compute argmax value of image data.
+
+        :return: argmax value of image data
+
+        """
         try:
             if "argmax" not in dir(self):
                 self.argmax = self.data.argmax().compute()
@@ -117,7 +152,11 @@ class Image:
             traceback.print_exc()
 
     def get_range(self):
-        """ Compute the range of image data values, if we haven't already """
+        """Compute the range of image data.
+
+        :return: a tuple (minimum, maximum) of image data
+
+        """
         try:
             if "range" not in dir(self):
                 self.range = [self.get_min(), self.get_max()]
@@ -127,7 +166,11 @@ class Image:
             traceback.print_exc()
 
     def get_std_dev(self):
-        """ Compute standard deviation over image data """
+        """Compute standard deviation over image data.
+
+        :return: the standard deviation of image data
+
+        """
         try:
             if "std" not in dir(self):
                 self.std = self.data.std().compute()
@@ -137,7 +180,11 @@ class Image:
             traceback.print_exc()
 
     def get_sum(self):
-        """ Compute sum over image data """
+        """Compute sum over image data.
+
+        :return: the sum of the image data
+
+        """
         try:
             if "sum" not in dir(self):
                 self.sum = self.data.sum().compute()
@@ -147,7 +194,16 @@ class Image:
             traceback.print_exc()
 
     def get_region_histogram(self, bins=None, range=None):
-        """ Compute histrogram for image """
+        """Compute histrogram for image.
+
+        If bins is none, will use get_default_num_bins()
+        If range is none, will use get_range()
+
+        :param bins: The integer number of bins for the histogram (Default value = None)
+        :param range: The minimum and maximum values to count in the histogram (Default value = None)
+        :return: the image histogram
+
+        """
         try:
             if bins is None:
                 bins = self.get_default_num_bins()
@@ -160,6 +216,11 @@ class Image:
             traceback.print_exc()
 
     def get_region_statistics(self):
+        """Compute the sum, mean, std deviation, min, and max of image data in one pass.
+
+        :return: a tuple (sum, mean, std deviation, min, max) of image data
+
+        """
         try:
             return dask.compute(self.data.sum(), self.data.mean(), self.data.std(), self.data.min(), self.data.max())
         except:
@@ -167,7 +228,12 @@ class Image:
             traceback.print_exc()
 
     def get_smoothed(self, sigma=1):
-        """ Apply a Gaussian filter over image """
+        """Apply a Gaussian filter over image.
+
+        :param sigma: The smoothing factor (Default value = 1)
+        :return: a smoothed copy of the image
+
+        """
         try:
             smoothed_arr = di.gaussian_filter(self.data, sigma)
             return smoothed_arr.compute()
@@ -176,5 +242,9 @@ class Image:
             traceback.print_exc()
 
     def get_default_num_bins(self):
-        """ Return the default number of bins as int(std::max(sqrt(_image_shape(0) * _image_shape(1)), 2.0)) """
+        """Get the default number of bins for histogram.
+
+        :return: the default number of bins
+
+        """
         return int(max(2, math.sqrt(self.shape[0] * self.shape[1])))

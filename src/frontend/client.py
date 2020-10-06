@@ -13,16 +13,24 @@ from src.util.message_header import *
 
 
 class Client:
+    """A client object that maintains a connection to a server."""
 
     def __init__(self, name, address, port, is_carta_client=False):
-        """ Create a client object with a connection to a server """
+        """Attempt to connect to server.
+
+        :param name: A string representing this client object
+        :param address: The address of the server to connect to
+        :param port: The port of the server to connect to
+        :param is_carta_client: Connect to the CARTA back-end (Default value = False)
+
+        """
         self.name = name
         self.server = "ws://{}:{}/websocket".format(address, port)
         self.carta = is_carta_client
         self.connect_to_server()
 
     def connect_to_server(self):
-        """ Attempt to connect to server on given port and address """
+        """Attempt to connect to server on given port and address."""
         async def __connect_to_server(self):
             try:
                 websocket = await websockets.connect(self.server, ping_interval=None)
@@ -37,7 +45,7 @@ class Client:
         self.ws = asyncio.get_event_loop().run_until_complete(__connect_to_server(self))
 
     def register_viewer(self):
-        """ Send a REGISTER_VIEWER to server and wait for REGISTER_VIEWER_ACK response """
+        """Send a REGISTER_VIEWER to server and wait for REGISTER_VIEWER_ACK response."""
         async def __register_viewer(self):
             try:
                 req, req_type = construct_register_viewer()
@@ -53,14 +61,18 @@ class Client:
                     logging.warn("\t[%s]\tGot an unsuccessful REGISTER_VIEWER_ACK with session id %s from server %s. Message: %s",
                                  self.name, ack.session_id, self.server, ack.message)
             except:
-                logging.error(
-                    "\t[%s]\tUnable to register as a viewer with server %s.", self.name, self.server)
+                logging.error("\t[%s]\tUnable to register as a viewer with server %s.", self.name, self.server)
                 traceback.print_exc()
 
         asyncio.get_event_loop().run_until_complete(__register_viewer(self))
 
     def open_file(self, file, directory):
-        """ Send an OPEN_FILE to server and wait for OPEN_FILE_ACK response """
+        """Send an OPEN_FILE to server and wait for OPEN_FILE_ACK response.
+
+        :param file: The name of the file to open
+        :param directory: The path to the file to open
+
+        """
         async def __open_file(self):
             try:
                 req, req_type = construct_open_file(file, directory)
@@ -86,7 +98,13 @@ class Client:
         asyncio.get_event_loop().run_until_complete(__open_file(self))
 
     def get_region_histogram(self, num_bins=-1):
-        """ Send a SET_HISTOGRAM_REQUIREMENTS and wait to recieve a REGION_HISTOGRAM_DATA. """
+        """Send a SET_HISTOGRAM_REQUIREMENTS and wait to recieve a REGION_HISTOGRAM_DATA.
+
+        If num_bins is -1, will use default number of bins.
+
+        :param num_bins: The integer number of bins for the histogram (Default value = -1)
+
+        """
         async def __get_region_histogram(self):
             try:
                 req, req_type = construct_set_histogram_requirements(num_bins)
@@ -107,7 +125,7 @@ class Client:
         return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))
 
     def get_region_statistics(self):
-        """ Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA. """
+        """Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA."""
         async def __get_region_statistics(self):
             try:
                 req, req_type = construct_set_stats_requirements()

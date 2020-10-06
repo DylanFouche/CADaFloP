@@ -108,6 +108,7 @@ def main(args):
             else:
                 print("Invalid option!")
 
+
 if __name__ == "__main__":
 
     argparser = argparse.ArgumentParser(description='Interface with our Dask server and the CARTA server.')

@@ -19,9 +19,15 @@ from src.backend.image import Image
 
 
 class Server:
+    """A server object that runs forever to accept and serve incoming websocket connections from clients."""
 
     async def __on_register_viewer(self, ws, msg):
-        """ Handle the REGISTER_VIEWER message """
+        """Handle the REGISTER_VIEWER message.
+
+        :param ws: the client websocket object
+        :param msg: the client message recieved
+
+        """
         logging.info(
             "\t[Server]\tGot REGISTER_VIEWER with session id %s.", msg.session_id)
         ack, ack_type = construct_register_viewer_ack(msg.session_id)
@@ -30,7 +36,12 @@ class Server:
             "\t[Server]\tSent REGISTER_VIEWER_ACK with session id %s.", ack.session_id)
 
     async def __on_open_file(self, ws, msg):
-        """ Handle the OPEN_FILE message """
+        """Handle the OPEN_FILE message.
+
+        :param ws: the client websocket object
+        :param msg: the client message recieved
+
+        """
         logging.info(
             "\t[Server]\tGot OPEN_FILE with file %s and directory %s.", msg.file, msg.directory)
         ack, ack_type = construct_open_file_ack()
@@ -50,7 +61,12 @@ class Server:
         logging.info("\t[Server]\tSent OPEN_FILE_ACK.")
 
     async def __on_set_histogram_requirements(self, ws, msg):
-        """ Handle the SET_HISTOGRAM_REQUIREMENTS message """
+        """Handle the SET_HISTOGRAM_REQUIREMENTS message.
+
+        :param ws: the client websocket object
+        :param msg: the client message recieved
+
+        """
         logging.info("\t[Server]\tGot SET_HISTOGRAM_REQUIREMENTS.")
         try:
             histo_num_bins = msg.histograms[0].num_bins if msg.histograms[0].num_bins > 0 else None
@@ -67,7 +83,12 @@ class Server:
             traceback.print_exc()
 
     async def __on_set_statistics_requirements(self, ws, msg):
-        """ Handle the SET_STATS_REQUIREMENTS message """
+        """Handle the SET_STATS_REQUIREMENTS message.
+
+        :param ws: the client websocket object
+        :param msg: the client message recieved
+
+        """
         logging.info("\t[Server]\tGot SET_STATS_REQUIREMENTS.")
         try:
             raw_stats = self.image.get_region_statistics()
@@ -90,7 +111,12 @@ class Server:
     }
 
     async def __serve(self, websocket, path):
-        """ Serve a new client connection """
+        """Serve a new client connection.
+
+        :param websocket: the client websocket object
+        :param path: the path to the new client
+
+        """
         logging.info("\t[Server]\tClient connection opened.")
         try:
             async for message in websocket:
@@ -106,8 +132,14 @@ class Server:
             logging.warn("\t[Server]\tClient connection closed.")
 
     def __init__(self, address, port, cluster=False, cache=True):
-        """ Start a server on given address:port and run forever """
+        """Start a server on given address:port and run forever.
 
+        :param address: the address of the server
+        :param port: the port number of the server
+        :param cluster: start the dask.distributed scheduler using a cluster of machines (Default value = False)
+        :param cache: don't read in the same image from disk more than once (Default value = True)
+
+        """
         self.image = None
         self.cache = cache
 
@@ -120,6 +152,7 @@ class Server:
                  '192.168.80.14'])  # worker 2
             self.client = dask.distributed.Client(self.cluster)
         else:
+            # Use the default Dask local client
             self.client = None
 
         event_loop = asyncio.new_event_loop()
