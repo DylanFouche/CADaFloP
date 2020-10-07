@@ -1,0 +1,2438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>src.protobuf.defs_pb2 API documentation</title>
+<meta name="description" content="Generated protocol buffer code." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.protobuf.defs_pb2</code></h1>
+</header>
+<section id="section-intro">
+<p>Generated protocol buffer code.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+# Generated by the protocol buffer compiler.  DO NOT EDIT!
+# source: defs.proto
+&#34;&#34;&#34;Generated protocol buffer code.&#34;&#34;&#34;
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
+from google.protobuf import symbol_database as _symbol_database
+# @@protoc_insertion_point(imports)
+
+_sym_db = _symbol_database.Default()
+
+
+from src.protobuf import enums_pb2 as enums__pb2
+
+
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name=&#39;defs.proto&#39;,
+  package=&#39;CARTA&#39;,
+  syntax=&#39;proto3&#39;,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b&#39;\n\ndefs.proto\x12\x05\x43\x41RTA\x1a\x0b\x65nums.proto\&#34;\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\&#34;e\n\x08\x46ileInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1d\n\x04type\x18\x02 \x01(\x0e\x32\x0f.CARTA.FileType\x12\x0c\n\x04size\x18\x03 \x01(\x10\x12\x10\n\x08HDU_list\x18\x04 \x03(\t\x12\x0c\n\x04\x64\x61te\x18\x05 \x01(\x10\&#34;\xd3\x01\n\x10\x46ileInfoExtended\x12\x12\n\ndimensions\x18\x01 \x01(\x0f\x12\r\n\x05width\x18\x02 \x01(\x0f\x12\x0e\n\x06height\x18\x03 \x01(\x0f\x12\r\n\x05\x64\x65pth\x18\x04 \x01(\x0f\x12\x0e\n\x06stokes\x18\x05 \x01(\x0f\x12\x13\n\x0bstokes_vals\x18\x06 \x03(\t\x12*\n\x0eheader_entries\x18\x07 \x03(\x0b\x32\x12.CARTA.HeaderEntry\x12,\n\x10\x63omputed_entries\x18\x08 \x03(\x0b\x32\x12.CARTA.HeaderEntry\&#34;x\n\x0bHeaderEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\x12$\n\nentry_type\x18\x03 \x01(\x0e\x32\x10.CARTA.EntryType\x12\x15\n\rnumeric_value\x18\x04 \x01(\x01\x12\x0f\n\x07\x63omment\x18\x05 \x01(\t\&#34;%\n\tIntBounds\x12\x0b\n\x03min\x18\x01 \x01(\x0f\x12\x0b\n\x03max\x18\x02 \x01(\x0f\&#34;\&#39;\n\x0b\x46loatBounds\x12\x0b\n\x03min\x18\x01 \x01(\x02\x12\x0b\n\x03max\x18\x02 \x01(\x02\&#34;(\n\x0c\x44oubleBounds\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\&#34;I\n\x0bImageBounds\x12\r\n\x05x_min\x18\x01 \x01(\x0f\x12\r\n\x05x_max\x18\x02 \x01(\x0f\x12\r\n\x05y_min\x18\x03 \x01(\x0f\x12\r\n\x05y_max\x18\x04 \x01(\x0f\&#34;1\n\x0e\x41nimationFrame\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x0f\x12\x0e\n\x06stokes\x18\x02 \x01(\x0f\&#34;Y\n\x0eSpatialProfile\x12\r\n\x05start\x18\x01 \x01(\x0f\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x0f\x12\x17\n\x0fraw_values_fp32\x18\x03 \x01(\x0c\x12\x12\n\ncoordinate\x18\x04 \x01(\t\&#34;}\n\x0fSpectralProfile\x12\x12\n\ncoordinate\x18\x01 \x01(\t\x12$\n\nstats_type\x18\x02 \x01(\x0e\x32\x10.CARTA.StatsType\x12\x17\n\x0fraw_values_fp32\x18\x03 \x01(\x0c\x12\x17\n\x0fraw_values_fp64\x18\x04 \x01(\x0c\&#34;F\n\x0fStatisticsValue\x12$\n\nstats_type\x18\x01 \x01(\x0e\x32\x10.CARTA.StatsType\x12\r\n\x05value\x18\x02 \x01(\x01\&#34;\x88\x01\n\tHistogram\x12\x0f\n\x07\x63hannel\x18\x01 \x01(\x0f\x12\x10\n\x08num_bins\x18\x02 \x01(\x0f\x12\x11\n\tbin_width\x18\x03 \x01(\x01\x12\x18\n\x10\x66irst_bin_center\x18\x04 \x01(\x01\x12\x0c\n\x04\x62ins\x18\x05 \x03(\x0f\x12\x0c\n\x04mean\x18\x06 \x01(\x01\x12\x0f\n\x07std_dev\x18\x07 \x01(\x01\&#34;l\n\nRegionInfo\x12&amp;\n\x0bregion_type\x18\x01 \x01(\x0e\x32\x11.CARTA.RegionType\x12$\n\x0e\x63ontrol_points\x18\x02 \x03(\x0b\x32\x0c.CARTA.Point\x12\x10\n\x08rotation\x18\x03 \x01(\x02\&#34;Q\n\x0bRegionStyle\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x63olor\x18\x02 \x01(\t\x12\x12\n\nline_width\x18\x03 \x01(\x0f\x12\x11\n\tdash_list\x18\x04 \x03(\x0f\&#34;\x9a\x01\n\x0f\x43\x61talogFileInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x04type\x18\x02 \x01(\x0e\x32\x16.CARTA.CatalogFileType\x12\x11\n\tfile_size\x18\x03 \x01(\x10\x12\x13\n\x0b\x64\x65scription\x18\x04 \x01(\t\x12\x1d\n\x06\x63oosys\x18\x05 \x03(\x0b\x32\r.CARTA.Coosys\x12\x0c\n\x04\x64\x61te\x18\x06 \x01(\x10\&#34;8\n\x06\x43oosys\x12\x0f\n\x07\x65quinox\x18\x01 \x01(\t\x12\r\n\x05\x65poch\x18\x02 \x01(\t\x12\x0e\n\x06system\x18\x03 \x01(\t\&#34;}\n\rCatalogHeader\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\tdata_type\x18\x02 \x01(\x0e\x32\x11.CARTA.ColumnType\x12\x14\n\x0c\x63olumn_index\x18\x03 \x01(\x0f\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\x12\r\n\x05units\x18\x06 \x01(\t\&#34;\\\n\nColumnData\x12$\n\tdata_type\x18\x01 \x01(\x0e\x32\x11.CARTA.ColumnType\x12\x13\n\x0bstring_data\x18\x02 \x03(\t\x12\x13\n\x0b\x62inary_data\x18\x03 \x01(\x0c\&#34;\x97\x01\n\x0c\x46ilterConfig\x12\x13\n\x0b\x63olumn_name\x18\x01 \x01(\t\x12\x36\n\x13\x63omparison_operator\x18\x02 \x01(\x0e\x32\x19.CARTA.ComparisonOperator\x12\r\n\x05value\x18\x03 \x01(\x01\x12\x17\n\x0fsecondary_value\x18\x04 \x01(\x01\x12\x12\n\nsub_string\x18\x05 \x01(\t\&#34;l\n\x12\x43\x61talogImageBounds\x12\x15\n\rx_column_name\x18\x01 \x01(\t\x12\x15\n\ry_column_name\x18\x02 \x01(\t\x12(\n\x0cimage_bounds\x18\x03 \x01(\x0b\x32\x12.CARTA.ImageBounds\&#34;)\n\x10MatchedFrameList\x12\x15\n\rframe_numbers\x18\x01 \x03(\x02\x62\x06proto3&#39;
+  ,
+  dependencies=[enums__pb2.DESCRIPTOR,])
+
+
+
+
+_POINT = _descriptor.Descriptor(
+  name=&#39;Point&#39;,
+  full_name=&#39;CARTA.Point&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;x&#39;, full_name=&#39;CARTA.Point.x&#39;, index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;y&#39;, full_name=&#39;CARTA.Point.y&#39;, index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=34,
+  serialized_end=63,
+)
+
+
+_FILEINFO = _descriptor.Descriptor(
+  name=&#39;FileInfo&#39;,
+  full_name=&#39;CARTA.FileInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;CARTA.FileInfo.name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;type&#39;, full_name=&#39;CARTA.FileInfo.type&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;size&#39;, full_name=&#39;CARTA.FileInfo.size&#39;, index=2,
+      number=3, type=16, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;HDU_list&#39;, full_name=&#39;CARTA.FileInfo.HDU_list&#39;, index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;date&#39;, full_name=&#39;CARTA.FileInfo.date&#39;, index=4,
+      number=5, type=16, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=65,
+  serialized_end=166,
+)
+
+
+_FILEINFOEXTENDED = _descriptor.Descriptor(
+  name=&#39;FileInfoExtended&#39;,
+  full_name=&#39;CARTA.FileInfoExtended&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;dimensions&#39;, full_name=&#39;CARTA.FileInfoExtended.dimensions&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;width&#39;, full_name=&#39;CARTA.FileInfoExtended.width&#39;, index=1,
+      number=2, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;height&#39;, full_name=&#39;CARTA.FileInfoExtended.height&#39;, index=2,
+      number=3, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;depth&#39;, full_name=&#39;CARTA.FileInfoExtended.depth&#39;, index=3,
+      number=4, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;stokes&#39;, full_name=&#39;CARTA.FileInfoExtended.stokes&#39;, index=4,
+      number=5, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;stokes_vals&#39;, full_name=&#39;CARTA.FileInfoExtended.stokes_vals&#39;, index=5,
+      number=6, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;header_entries&#39;, full_name=&#39;CARTA.FileInfoExtended.header_entries&#39;, index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;computed_entries&#39;, full_name=&#39;CARTA.FileInfoExtended.computed_entries&#39;, index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=169,
+  serialized_end=380,
+)
+
+
+_HEADERENTRY = _descriptor.Descriptor(
+  name=&#39;HeaderEntry&#39;,
+  full_name=&#39;CARTA.HeaderEntry&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;CARTA.HeaderEntry.name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;value&#39;, full_name=&#39;CARTA.HeaderEntry.value&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;entry_type&#39;, full_name=&#39;CARTA.HeaderEntry.entry_type&#39;, index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;numeric_value&#39;, full_name=&#39;CARTA.HeaderEntry.numeric_value&#39;, index=3,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;comment&#39;, full_name=&#39;CARTA.HeaderEntry.comment&#39;, index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=382,
+  serialized_end=502,
+)
+
+
+_INTBOUNDS = _descriptor.Descriptor(
+  name=&#39;IntBounds&#39;,
+  full_name=&#39;CARTA.IntBounds&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;min&#39;, full_name=&#39;CARTA.IntBounds.min&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;max&#39;, full_name=&#39;CARTA.IntBounds.max&#39;, index=1,
+      number=2, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=504,
+  serialized_end=541,
+)
+
+
+_FLOATBOUNDS = _descriptor.Descriptor(
+  name=&#39;FloatBounds&#39;,
+  full_name=&#39;CARTA.FloatBounds&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;min&#39;, full_name=&#39;CARTA.FloatBounds.min&#39;, index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;max&#39;, full_name=&#39;CARTA.FloatBounds.max&#39;, index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=543,
+  serialized_end=582,
+)
+
+
+_DOUBLEBOUNDS = _descriptor.Descriptor(
+  name=&#39;DoubleBounds&#39;,
+  full_name=&#39;CARTA.DoubleBounds&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;min&#39;, full_name=&#39;CARTA.DoubleBounds.min&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;max&#39;, full_name=&#39;CARTA.DoubleBounds.max&#39;, index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=584,
+  serialized_end=624,
+)
+
+
+_IMAGEBOUNDS = _descriptor.Descriptor(
+  name=&#39;ImageBounds&#39;,
+  full_name=&#39;CARTA.ImageBounds&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;x_min&#39;, full_name=&#39;CARTA.ImageBounds.x_min&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;x_max&#39;, full_name=&#39;CARTA.ImageBounds.x_max&#39;, index=1,
+      number=2, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;y_min&#39;, full_name=&#39;CARTA.ImageBounds.y_min&#39;, index=2,
+      number=3, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;y_max&#39;, full_name=&#39;CARTA.ImageBounds.y_max&#39;, index=3,
+      number=4, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=626,
+  serialized_end=699,
+)
+
+
+_ANIMATIONFRAME = _descriptor.Descriptor(
+  name=&#39;AnimationFrame&#39;,
+  full_name=&#39;CARTA.AnimationFrame&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;channel&#39;, full_name=&#39;CARTA.AnimationFrame.channel&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;stokes&#39;, full_name=&#39;CARTA.AnimationFrame.stokes&#39;, index=1,
+      number=2, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=701,
+  serialized_end=750,
+)
+
+
+_SPATIALPROFILE = _descriptor.Descriptor(
+  name=&#39;SpatialProfile&#39;,
+  full_name=&#39;CARTA.SpatialProfile&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;start&#39;, full_name=&#39;CARTA.SpatialProfile.start&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;end&#39;, full_name=&#39;CARTA.SpatialProfile.end&#39;, index=1,
+      number=2, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;raw_values_fp32&#39;, full_name=&#39;CARTA.SpatialProfile.raw_values_fp32&#39;, index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;coordinate&#39;, full_name=&#39;CARTA.SpatialProfile.coordinate&#39;, index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=752,
+  serialized_end=841,
+)
+
+
+_SPECTRALPROFILE = _descriptor.Descriptor(
+  name=&#39;SpectralProfile&#39;,
+  full_name=&#39;CARTA.SpectralProfile&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;coordinate&#39;, full_name=&#39;CARTA.SpectralProfile.coordinate&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;stats_type&#39;, full_name=&#39;CARTA.SpectralProfile.stats_type&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;raw_values_fp32&#39;, full_name=&#39;CARTA.SpectralProfile.raw_values_fp32&#39;, index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;raw_values_fp64&#39;, full_name=&#39;CARTA.SpectralProfile.raw_values_fp64&#39;, index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=843,
+  serialized_end=968,
+)
+
+
+_STATISTICSVALUE = _descriptor.Descriptor(
+  name=&#39;StatisticsValue&#39;,
+  full_name=&#39;CARTA.StatisticsValue&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;stats_type&#39;, full_name=&#39;CARTA.StatisticsValue.stats_type&#39;, index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;value&#39;, full_name=&#39;CARTA.StatisticsValue.value&#39;, index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=970,
+  serialized_end=1040,
+)
+
+
+_HISTOGRAM = _descriptor.Descriptor(
+  name=&#39;Histogram&#39;,
+  full_name=&#39;CARTA.Histogram&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;channel&#39;, full_name=&#39;CARTA.Histogram.channel&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;num_bins&#39;, full_name=&#39;CARTA.Histogram.num_bins&#39;, index=1,
+      number=2, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;bin_width&#39;, full_name=&#39;CARTA.Histogram.bin_width&#39;, index=2,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;first_bin_center&#39;, full_name=&#39;CARTA.Histogram.first_bin_center&#39;, index=3,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;bins&#39;, full_name=&#39;CARTA.Histogram.bins&#39;, index=4,
+      number=5, type=15, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;mean&#39;, full_name=&#39;CARTA.Histogram.mean&#39;, index=5,
+      number=6, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;std_dev&#39;, full_name=&#39;CARTA.Histogram.std_dev&#39;, index=6,
+      number=7, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1043,
+  serialized_end=1179,
+)
+
+
+_REGIONINFO = _descriptor.Descriptor(
+  name=&#39;RegionInfo&#39;,
+  full_name=&#39;CARTA.RegionInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;region_type&#39;, full_name=&#39;CARTA.RegionInfo.region_type&#39;, index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;control_points&#39;, full_name=&#39;CARTA.RegionInfo.control_points&#39;, index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;rotation&#39;, full_name=&#39;CARTA.RegionInfo.rotation&#39;, index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1181,
+  serialized_end=1289,
+)
+
+
+_REGIONSTYLE = _descriptor.Descriptor(
+  name=&#39;RegionStyle&#39;,
+  full_name=&#39;CARTA.RegionStyle&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;CARTA.RegionStyle.name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;color&#39;, full_name=&#39;CARTA.RegionStyle.color&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;line_width&#39;, full_name=&#39;CARTA.RegionStyle.line_width&#39;, index=2,
+      number=3, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;dash_list&#39;, full_name=&#39;CARTA.RegionStyle.dash_list&#39;, index=3,
+      number=4, type=15, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1291,
+  serialized_end=1372,
+)
+
+
+_CATALOGFILEINFO = _descriptor.Descriptor(
+  name=&#39;CatalogFileInfo&#39;,
+  full_name=&#39;CARTA.CatalogFileInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;CARTA.CatalogFileInfo.name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;type&#39;, full_name=&#39;CARTA.CatalogFileInfo.type&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;file_size&#39;, full_name=&#39;CARTA.CatalogFileInfo.file_size&#39;, index=2,
+      number=3, type=16, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;description&#39;, full_name=&#39;CARTA.CatalogFileInfo.description&#39;, index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;coosys&#39;, full_name=&#39;CARTA.CatalogFileInfo.coosys&#39;, index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;date&#39;, full_name=&#39;CARTA.CatalogFileInfo.date&#39;, index=5,
+      number=6, type=16, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1375,
+  serialized_end=1529,
+)
+
+
+_COOSYS = _descriptor.Descriptor(
+  name=&#39;Coosys&#39;,
+  full_name=&#39;CARTA.Coosys&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;equinox&#39;, full_name=&#39;CARTA.Coosys.equinox&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;epoch&#39;, full_name=&#39;CARTA.Coosys.epoch&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;system&#39;, full_name=&#39;CARTA.Coosys.system&#39;, index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1531,
+  serialized_end=1587,
+)
+
+
+_CATALOGHEADER = _descriptor.Descriptor(
+  name=&#39;CatalogHeader&#39;,
+  full_name=&#39;CARTA.CatalogHeader&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;CARTA.CatalogHeader.name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;data_type&#39;, full_name=&#39;CARTA.CatalogHeader.data_type&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;column_index&#39;, full_name=&#39;CARTA.CatalogHeader.column_index&#39;, index=2,
+      number=3, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;description&#39;, full_name=&#39;CARTA.CatalogHeader.description&#39;, index=3,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;units&#39;, full_name=&#39;CARTA.CatalogHeader.units&#39;, index=4,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1589,
+  serialized_end=1714,
+)
+
+
+_COLUMNDATA = _descriptor.Descriptor(
+  name=&#39;ColumnData&#39;,
+  full_name=&#39;CARTA.ColumnData&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;data_type&#39;, full_name=&#39;CARTA.ColumnData.data_type&#39;, index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;string_data&#39;, full_name=&#39;CARTA.ColumnData.string_data&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;binary_data&#39;, full_name=&#39;CARTA.ColumnData.binary_data&#39;, index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1716,
+  serialized_end=1808,
+)
+
+
+_FILTERCONFIG = _descriptor.Descriptor(
+  name=&#39;FilterConfig&#39;,
+  full_name=&#39;CARTA.FilterConfig&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;column_name&#39;, full_name=&#39;CARTA.FilterConfig.column_name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;comparison_operator&#39;, full_name=&#39;CARTA.FilterConfig.comparison_operator&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;value&#39;, full_name=&#39;CARTA.FilterConfig.value&#39;, index=2,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;secondary_value&#39;, full_name=&#39;CARTA.FilterConfig.secondary_value&#39;, index=3,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;sub_string&#39;, full_name=&#39;CARTA.FilterConfig.sub_string&#39;, index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1811,
+  serialized_end=1962,
+)
+
+
+_CATALOGIMAGEBOUNDS = _descriptor.Descriptor(
+  name=&#39;CatalogImageBounds&#39;,
+  full_name=&#39;CARTA.CatalogImageBounds&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;x_column_name&#39;, full_name=&#39;CARTA.CatalogImageBounds.x_column_name&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;y_column_name&#39;, full_name=&#39;CARTA.CatalogImageBounds.y_column_name&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;image_bounds&#39;, full_name=&#39;CARTA.CatalogImageBounds.image_bounds&#39;, index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1964,
+  serialized_end=2072,
+)
+
+
+_MATCHEDFRAMELIST = _descriptor.Descriptor(
+  name=&#39;MatchedFrameList&#39;,
+  full_name=&#39;CARTA.MatchedFrameList&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;frame_numbers&#39;, full_name=&#39;CARTA.MatchedFrameList.frame_numbers&#39;, index=0,
+      number=1, type=2, cpp_type=6, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2074,
+  serialized_end=2115,
+)
+
+_FILEINFO.fields_by_name[&#39;type&#39;].enum_type = enums__pb2._FILETYPE
+_FILEINFOEXTENDED.fields_by_name[&#39;header_entries&#39;].message_type = _HEADERENTRY
+_FILEINFOEXTENDED.fields_by_name[&#39;computed_entries&#39;].message_type = _HEADERENTRY
+_HEADERENTRY.fields_by_name[&#39;entry_type&#39;].enum_type = enums__pb2._ENTRYTYPE
+_SPECTRALPROFILE.fields_by_name[&#39;stats_type&#39;].enum_type = enums__pb2._STATSTYPE
+_STATISTICSVALUE.fields_by_name[&#39;stats_type&#39;].enum_type = enums__pb2._STATSTYPE
+_REGIONINFO.fields_by_name[&#39;region_type&#39;].enum_type = enums__pb2._REGIONTYPE
+_REGIONINFO.fields_by_name[&#39;control_points&#39;].message_type = _POINT
+_CATALOGFILEINFO.fields_by_name[&#39;type&#39;].enum_type = enums__pb2._CATALOGFILETYPE
+_CATALOGFILEINFO.fields_by_name[&#39;coosys&#39;].message_type = _COOSYS
+_CATALOGHEADER.fields_by_name[&#39;data_type&#39;].enum_type = enums__pb2._COLUMNTYPE
+_COLUMNDATA.fields_by_name[&#39;data_type&#39;].enum_type = enums__pb2._COLUMNTYPE
+_FILTERCONFIG.fields_by_name[&#39;comparison_operator&#39;].enum_type = enums__pb2._COMPARISONOPERATOR
+_CATALOGIMAGEBOUNDS.fields_by_name[&#39;image_bounds&#39;].message_type = _IMAGEBOUNDS
+DESCRIPTOR.message_types_by_name[&#39;Point&#39;] = _POINT
+DESCRIPTOR.message_types_by_name[&#39;FileInfo&#39;] = _FILEINFO
+DESCRIPTOR.message_types_by_name[&#39;FileInfoExtended&#39;] = _FILEINFOEXTENDED
+DESCRIPTOR.message_types_by_name[&#39;HeaderEntry&#39;] = _HEADERENTRY
+DESCRIPTOR.message_types_by_name[&#39;IntBounds&#39;] = _INTBOUNDS
+DESCRIPTOR.message_types_by_name[&#39;FloatBounds&#39;] = _FLOATBOUNDS
+DESCRIPTOR.message_types_by_name[&#39;DoubleBounds&#39;] = _DOUBLEBOUNDS
+DESCRIPTOR.message_types_by_name[&#39;ImageBounds&#39;] = _IMAGEBOUNDS
+DESCRIPTOR.message_types_by_name[&#39;AnimationFrame&#39;] = _ANIMATIONFRAME
+DESCRIPTOR.message_types_by_name[&#39;SpatialProfile&#39;] = _SPATIALPROFILE
+DESCRIPTOR.message_types_by_name[&#39;SpectralProfile&#39;] = _SPECTRALPROFILE
+DESCRIPTOR.message_types_by_name[&#39;StatisticsValue&#39;] = _STATISTICSVALUE
+DESCRIPTOR.message_types_by_name[&#39;Histogram&#39;] = _HISTOGRAM
+DESCRIPTOR.message_types_by_name[&#39;RegionInfo&#39;] = _REGIONINFO
+DESCRIPTOR.message_types_by_name[&#39;RegionStyle&#39;] = _REGIONSTYLE
+DESCRIPTOR.message_types_by_name[&#39;CatalogFileInfo&#39;] = _CATALOGFILEINFO
+DESCRIPTOR.message_types_by_name[&#39;Coosys&#39;] = _COOSYS
+DESCRIPTOR.message_types_by_name[&#39;CatalogHeader&#39;] = _CATALOGHEADER
+DESCRIPTOR.message_types_by_name[&#39;ColumnData&#39;] = _COLUMNDATA
+DESCRIPTOR.message_types_by_name[&#39;FilterConfig&#39;] = _FILTERCONFIG
+DESCRIPTOR.message_types_by_name[&#39;CatalogImageBounds&#39;] = _CATALOGIMAGEBOUNDS
+DESCRIPTOR.message_types_by_name[&#39;MatchedFrameList&#39;] = _MATCHEDFRAMELIST
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+Point = _reflection.GeneratedProtocolMessageType(&#39;Point&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _POINT,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.Point)
+  })
+_sym_db.RegisterMessage(Point)
+
+FileInfo = _reflection.GeneratedProtocolMessageType(&#39;FileInfo&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _FILEINFO,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.FileInfo)
+  })
+_sym_db.RegisterMessage(FileInfo)
+
+FileInfoExtended = _reflection.GeneratedProtocolMessageType(&#39;FileInfoExtended&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _FILEINFOEXTENDED,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.FileInfoExtended)
+  })
+_sym_db.RegisterMessage(FileInfoExtended)
+
+HeaderEntry = _reflection.GeneratedProtocolMessageType(&#39;HeaderEntry&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _HEADERENTRY,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.HeaderEntry)
+  })
+_sym_db.RegisterMessage(HeaderEntry)
+
+IntBounds = _reflection.GeneratedProtocolMessageType(&#39;IntBounds&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _INTBOUNDS,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.IntBounds)
+  })
+_sym_db.RegisterMessage(IntBounds)
+
+FloatBounds = _reflection.GeneratedProtocolMessageType(&#39;FloatBounds&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _FLOATBOUNDS,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.FloatBounds)
+  })
+_sym_db.RegisterMessage(FloatBounds)
+
+DoubleBounds = _reflection.GeneratedProtocolMessageType(&#39;DoubleBounds&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _DOUBLEBOUNDS,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.DoubleBounds)
+  })
+_sym_db.RegisterMessage(DoubleBounds)
+
+ImageBounds = _reflection.GeneratedProtocolMessageType(&#39;ImageBounds&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _IMAGEBOUNDS,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.ImageBounds)
+  })
+_sym_db.RegisterMessage(ImageBounds)
+
+AnimationFrame = _reflection.GeneratedProtocolMessageType(&#39;AnimationFrame&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _ANIMATIONFRAME,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.AnimationFrame)
+  })
+_sym_db.RegisterMessage(AnimationFrame)
+
+SpatialProfile = _reflection.GeneratedProtocolMessageType(&#39;SpatialProfile&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _SPATIALPROFILE,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.SpatialProfile)
+  })
+_sym_db.RegisterMessage(SpatialProfile)
+
+SpectralProfile = _reflection.GeneratedProtocolMessageType(&#39;SpectralProfile&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _SPECTRALPROFILE,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.SpectralProfile)
+  })
+_sym_db.RegisterMessage(SpectralProfile)
+
+StatisticsValue = _reflection.GeneratedProtocolMessageType(&#39;StatisticsValue&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _STATISTICSVALUE,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.StatisticsValue)
+  })
+_sym_db.RegisterMessage(StatisticsValue)
+
+Histogram = _reflection.GeneratedProtocolMessageType(&#39;Histogram&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _HISTOGRAM,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.Histogram)
+  })
+_sym_db.RegisterMessage(Histogram)
+
+RegionInfo = _reflection.GeneratedProtocolMessageType(&#39;RegionInfo&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _REGIONINFO,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.RegionInfo)
+  })
+_sym_db.RegisterMessage(RegionInfo)
+
+RegionStyle = _reflection.GeneratedProtocolMessageType(&#39;RegionStyle&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _REGIONSTYLE,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.RegionStyle)
+  })
+_sym_db.RegisterMessage(RegionStyle)
+
+CatalogFileInfo = _reflection.GeneratedProtocolMessageType(&#39;CatalogFileInfo&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _CATALOGFILEINFO,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.CatalogFileInfo)
+  })
+_sym_db.RegisterMessage(CatalogFileInfo)
+
+Coosys = _reflection.GeneratedProtocolMessageType(&#39;Coosys&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _COOSYS,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.Coosys)
+  })
+_sym_db.RegisterMessage(Coosys)
+
+CatalogHeader = _reflection.GeneratedProtocolMessageType(&#39;CatalogHeader&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _CATALOGHEADER,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.CatalogHeader)
+  })
+_sym_db.RegisterMessage(CatalogHeader)
+
+ColumnData = _reflection.GeneratedProtocolMessageType(&#39;ColumnData&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _COLUMNDATA,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.ColumnData)
+  })
+_sym_db.RegisterMessage(ColumnData)
+
+FilterConfig = _reflection.GeneratedProtocolMessageType(&#39;FilterConfig&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _FILTERCONFIG,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.FilterConfig)
+  })
+_sym_db.RegisterMessage(FilterConfig)
+
+CatalogImageBounds = _reflection.GeneratedProtocolMessageType(&#39;CatalogImageBounds&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _CATALOGIMAGEBOUNDS,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.CatalogImageBounds)
+  })
+_sym_db.RegisterMessage(CatalogImageBounds)
+
+MatchedFrameList = _reflection.GeneratedProtocolMessageType(&#39;MatchedFrameList&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _MATCHEDFRAMELIST,
+  &#39;__module__&#39; : &#39;defs_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.MatchedFrameList)
+  })
+_sym_db.RegisterMessage(MatchedFrameList)
+
+
+# @@protoc_insertion_point(module_scope)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.protobuf.defs_pb2.AnimationFrame"><code class="flex name class">
+<span>class <span class="ident">AnimationFrame</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.AnimationFrame.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.AnimationFrame.channel"><code class="name">var <span class="ident">channel</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.AnimationFrame.channel</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.AnimationFrame.stokes"><code class="name">var <span class="ident">stokes</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.AnimationFrame.stokes</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo"><code class="flex name class">
+<span>class <span class="ident">CatalogFileInfo</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.coosys"><code class="name">var <span class="ident">coosys</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogFileInfo.coosys</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.date"><code class="name">var <span class="ident">date</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogFileInfo.date</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.description"><code class="name">var <span class="ident">description</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogFileInfo.description</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.file_size"><code class="name">var <span class="ident">file_size</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogFileInfo.file_size</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogFileInfo.name</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogFileInfo.type"><code class="name">var <span class="ident">type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogFileInfo.type</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogHeader"><code class="flex name class">
+<span>class <span class="ident">CatalogHeader</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.CatalogHeader.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.CatalogHeader.column_index"><code class="name">var <span class="ident">column_index</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogHeader.column_index</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogHeader.data_type"><code class="name">var <span class="ident">data_type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogHeader.data_type</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogHeader.description"><code class="name">var <span class="ident">description</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogHeader.description</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogHeader.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogHeader.name</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogHeader.units"><code class="name">var <span class="ident">units</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogHeader.units</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogImageBounds"><code class="flex name class">
+<span>class <span class="ident">CatalogImageBounds</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.CatalogImageBounds.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.CatalogImageBounds.image_bounds"><code class="name">var <span class="ident">image_bounds</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogImageBounds.image_bounds</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogImageBounds.x_column_name"><code class="name">var <span class="ident">x_column_name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogImageBounds.x_column_name</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.CatalogImageBounds.y_column_name"><code class="name">var <span class="ident">y_column_name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.CatalogImageBounds.y_column_name</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.ColumnData"><code class="flex name class">
+<span>class <span class="ident">ColumnData</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.ColumnData.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.ColumnData.binary_data"><code class="name">var <span class="ident">binary_data</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ColumnData.binary_data</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.ColumnData.data_type"><code class="name">var <span class="ident">data_type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ColumnData.data_type</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.ColumnData.string_data"><code class="name">var <span class="ident">string_data</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ColumnData.string_data</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.Coosys"><code class="flex name class">
+<span>class <span class="ident">Coosys</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.Coosys.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.Coosys.epoch"><code class="name">var <span class="ident">epoch</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Coosys.epoch</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Coosys.equinox"><code class="name">var <span class="ident">equinox</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Coosys.equinox</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Coosys.system"><code class="name">var <span class="ident">system</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Coosys.system</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.DoubleBounds"><code class="flex name class">
+<span>class <span class="ident">DoubleBounds</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.DoubleBounds.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.DoubleBounds.max"><code class="name">var <span class="ident">max</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.DoubleBounds.max</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.DoubleBounds.min"><code class="name">var <span class="ident">min</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.DoubleBounds.min</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfo"><code class="flex name class">
+<span>class <span class="ident">FileInfo</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FileInfo.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FileInfo.HDU_list"><code class="name">var <span class="ident">HDU_list</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfo.HDU_list</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfo.date"><code class="name">var <span class="ident">date</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfo.date</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfo.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfo.name</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfo.size"><code class="name">var <span class="ident">size</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfo.size</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfo.type"><code class="name">var <span class="ident">type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfo.type</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended"><code class="flex name class">
+<span>class <span class="ident">FileInfoExtended</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.computed_entries"><code class="name">var <span class="ident">computed_entries</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.computed_entries</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.depth"><code class="name">var <span class="ident">depth</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.depth</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.dimensions"><code class="name">var <span class="ident">dimensions</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.dimensions</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.header_entries"><code class="name">var <span class="ident">header_entries</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.header_entries</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.height"><code class="name">var <span class="ident">height</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.height</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.stokes"><code class="name">var <span class="ident">stokes</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.stokes</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.stokes_vals"><code class="name">var <span class="ident">stokes_vals</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.stokes_vals</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FileInfoExtended.width"><code class="name">var <span class="ident">width</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FileInfoExtended.width</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.FilterConfig"><code class="flex name class">
+<span>class <span class="ident">FilterConfig</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FilterConfig.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FilterConfig.column_name"><code class="name">var <span class="ident">column_name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FilterConfig.column_name</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FilterConfig.comparison_operator"><code class="name">var <span class="ident">comparison_operator</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FilterConfig.comparison_operator</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FilterConfig.secondary_value"><code class="name">var <span class="ident">secondary_value</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FilterConfig.secondary_value</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FilterConfig.sub_string"><code class="name">var <span class="ident">sub_string</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FilterConfig.sub_string</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FilterConfig.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FilterConfig.value</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.FloatBounds"><code class="flex name class">
+<span>class <span class="ident">FloatBounds</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FloatBounds.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.FloatBounds.max"><code class="name">var <span class="ident">max</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FloatBounds.max</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.FloatBounds.min"><code class="name">var <span class="ident">min</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.FloatBounds.min</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.HeaderEntry"><code class="flex name class">
+<span>class <span class="ident">HeaderEntry</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.HeaderEntry.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.HeaderEntry.comment"><code class="name">var <span class="ident">comment</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.HeaderEntry.comment</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.HeaderEntry.entry_type"><code class="name">var <span class="ident">entry_type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.HeaderEntry.entry_type</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.HeaderEntry.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.HeaderEntry.name</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.HeaderEntry.numeric_value"><code class="name">var <span class="ident">numeric_value</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.HeaderEntry.numeric_value</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.HeaderEntry.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.HeaderEntry.value</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram"><code class="flex name class">
+<span>class <span class="ident">Histogram</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.Histogram.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.Histogram.bin_width"><code class="name">var <span class="ident">bin_width</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.bin_width</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram.bins"><code class="name">var <span class="ident">bins</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.bins</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram.channel"><code class="name">var <span class="ident">channel</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.channel</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram.first_bin_center"><code class="name">var <span class="ident">first_bin_center</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.first_bin_center</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram.mean"><code class="name">var <span class="ident">mean</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.mean</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram.num_bins"><code class="name">var <span class="ident">num_bins</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.num_bins</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Histogram.std_dev"><code class="name">var <span class="ident">std_dev</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Histogram.std_dev</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.ImageBounds"><code class="flex name class">
+<span>class <span class="ident">ImageBounds</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.ImageBounds.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.ImageBounds.x_max"><code class="name">var <span class="ident">x_max</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ImageBounds.x_max</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.ImageBounds.x_min"><code class="name">var <span class="ident">x_min</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ImageBounds.x_min</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.ImageBounds.y_max"><code class="name">var <span class="ident">y_max</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ImageBounds.y_max</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.ImageBounds.y_min"><code class="name">var <span class="ident">y_min</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ImageBounds.y_min</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.IntBounds"><code class="flex name class">
+<span>class <span class="ident">IntBounds</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.IntBounds.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.IntBounds.max"><code class="name">var <span class="ident">max</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.IntBounds.max</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.IntBounds.min"><code class="name">var <span class="ident">min</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.IntBounds.min</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.MatchedFrameList"><code class="flex name class">
+<span>class <span class="ident">MatchedFrameList</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.MatchedFrameList.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.MatchedFrameList.frame_numbers"><code class="name">var <span class="ident">frame_numbers</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.MatchedFrameList.frame_numbers</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.Point"><code class="flex name class">
+<span>class <span class="ident">Point</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.Point.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.Point.x"><code class="name">var <span class="ident">x</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Point.x</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.Point.y"><code class="name">var <span class="ident">y</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.Point.y</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionInfo"><code class="flex name class">
+<span>class <span class="ident">RegionInfo</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.RegionInfo.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.RegionInfo.control_points"><code class="name">var <span class="ident">control_points</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionInfo.control_points</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionInfo.region_type"><code class="name">var <span class="ident">region_type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionInfo.region_type</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionInfo.rotation"><code class="name">var <span class="ident">rotation</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionInfo.rotation</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionStyle"><code class="flex name class">
+<span>class <span class="ident">RegionStyle</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.RegionStyle.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.RegionStyle.color"><code class="name">var <span class="ident">color</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionStyle.color</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionStyle.dash_list"><code class="name">var <span class="ident">dash_list</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionStyle.dash_list</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionStyle.line_width"><code class="name">var <span class="ident">line_width</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionStyle.line_width</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.RegionStyle.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.RegionStyle.name</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpatialProfile"><code class="flex name class">
+<span>class <span class="ident">SpatialProfile</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.SpatialProfile.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.SpatialProfile.coordinate"><code class="name">var <span class="ident">coordinate</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpatialProfile.coordinate</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpatialProfile.end"><code class="name">var <span class="ident">end</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpatialProfile.end</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpatialProfile.raw_values_fp32"><code class="name">var <span class="ident">raw_values_fp32</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpatialProfile.raw_values_fp32</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpatialProfile.start"><code class="name">var <span class="ident">start</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpatialProfile.start</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpectralProfile"><code class="flex name class">
+<span>class <span class="ident">SpectralProfile</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.SpectralProfile.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.SpectralProfile.coordinate"><code class="name">var <span class="ident">coordinate</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpectralProfile.coordinate</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpectralProfile.raw_values_fp32"><code class="name">var <span class="ident">raw_values_fp32</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpectralProfile.raw_values_fp32</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpectralProfile.raw_values_fp64"><code class="name">var <span class="ident">raw_values_fp64</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpectralProfile.raw_values_fp64</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.SpectralProfile.stats_type"><code class="name">var <span class="ident">stats_type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.SpectralProfile.stats_type</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.defs_pb2.StatisticsValue"><code class="flex name class">
+<span>class <span class="ident">StatisticsValue</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.StatisticsValue.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.defs_pb2.StatisticsValue.stats_type"><code class="name">var <span class="ident">stats_type</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.StatisticsValue.stats_type</p></div>
+</dd>
+<dt id="src.protobuf.defs_pb2.StatisticsValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.StatisticsValue.value</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.protobuf" href="index.html">src.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.AnimationFrame" href="#src.protobuf.defs_pb2.AnimationFrame">AnimationFrame</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.AnimationFrame.DESCRIPTOR" href="#src.protobuf.defs_pb2.AnimationFrame.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.AnimationFrame.channel" href="#src.protobuf.defs_pb2.AnimationFrame.channel">channel</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.AnimationFrame.stokes" href="#src.protobuf.defs_pb2.AnimationFrame.stokes">stokes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.CatalogFileInfo" href="#src.protobuf.defs_pb2.CatalogFileInfo">CatalogFileInfo</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.DESCRIPTOR" href="#src.protobuf.defs_pb2.CatalogFileInfo.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.coosys" href="#src.protobuf.defs_pb2.CatalogFileInfo.coosys">coosys</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.date" href="#src.protobuf.defs_pb2.CatalogFileInfo.date">date</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.description" href="#src.protobuf.defs_pb2.CatalogFileInfo.description">description</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.file_size" href="#src.protobuf.defs_pb2.CatalogFileInfo.file_size">file_size</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.name" href="#src.protobuf.defs_pb2.CatalogFileInfo.name">name</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogFileInfo.type" href="#src.protobuf.defs_pb2.CatalogFileInfo.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.CatalogHeader" href="#src.protobuf.defs_pb2.CatalogHeader">CatalogHeader</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.CatalogHeader.DESCRIPTOR" href="#src.protobuf.defs_pb2.CatalogHeader.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogHeader.column_index" href="#src.protobuf.defs_pb2.CatalogHeader.column_index">column_index</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogHeader.data_type" href="#src.protobuf.defs_pb2.CatalogHeader.data_type">data_type</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogHeader.description" href="#src.protobuf.defs_pb2.CatalogHeader.description">description</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogHeader.name" href="#src.protobuf.defs_pb2.CatalogHeader.name">name</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogHeader.units" href="#src.protobuf.defs_pb2.CatalogHeader.units">units</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.CatalogImageBounds" href="#src.protobuf.defs_pb2.CatalogImageBounds">CatalogImageBounds</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.CatalogImageBounds.DESCRIPTOR" href="#src.protobuf.defs_pb2.CatalogImageBounds.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogImageBounds.image_bounds" href="#src.protobuf.defs_pb2.CatalogImageBounds.image_bounds">image_bounds</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogImageBounds.x_column_name" href="#src.protobuf.defs_pb2.CatalogImageBounds.x_column_name">x_column_name</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.CatalogImageBounds.y_column_name" href="#src.protobuf.defs_pb2.CatalogImageBounds.y_column_name">y_column_name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.ColumnData" href="#src.protobuf.defs_pb2.ColumnData">ColumnData</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.ColumnData.DESCRIPTOR" href="#src.protobuf.defs_pb2.ColumnData.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ColumnData.binary_data" href="#src.protobuf.defs_pb2.ColumnData.binary_data">binary_data</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ColumnData.data_type" href="#src.protobuf.defs_pb2.ColumnData.data_type">data_type</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ColumnData.string_data" href="#src.protobuf.defs_pb2.ColumnData.string_data">string_data</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.Coosys" href="#src.protobuf.defs_pb2.Coosys">Coosys</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.Coosys.DESCRIPTOR" href="#src.protobuf.defs_pb2.Coosys.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Coosys.epoch" href="#src.protobuf.defs_pb2.Coosys.epoch">epoch</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Coosys.equinox" href="#src.protobuf.defs_pb2.Coosys.equinox">equinox</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Coosys.system" href="#src.protobuf.defs_pb2.Coosys.system">system</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.DoubleBounds" href="#src.protobuf.defs_pb2.DoubleBounds">DoubleBounds</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.DoubleBounds.DESCRIPTOR" href="#src.protobuf.defs_pb2.DoubleBounds.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.DoubleBounds.max" href="#src.protobuf.defs_pb2.DoubleBounds.max">max</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.DoubleBounds.min" href="#src.protobuf.defs_pb2.DoubleBounds.min">min</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.FileInfo" href="#src.protobuf.defs_pb2.FileInfo">FileInfo</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.FileInfo.DESCRIPTOR" href="#src.protobuf.defs_pb2.FileInfo.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfo.HDU_list" href="#src.protobuf.defs_pb2.FileInfo.HDU_list">HDU_list</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfo.date" href="#src.protobuf.defs_pb2.FileInfo.date">date</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfo.name" href="#src.protobuf.defs_pb2.FileInfo.name">name</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfo.size" href="#src.protobuf.defs_pb2.FileInfo.size">size</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfo.type" href="#src.protobuf.defs_pb2.FileInfo.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.FileInfoExtended" href="#src.protobuf.defs_pb2.FileInfoExtended">FileInfoExtended</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.DESCRIPTOR" href="#src.protobuf.defs_pb2.FileInfoExtended.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.computed_entries" href="#src.protobuf.defs_pb2.FileInfoExtended.computed_entries">computed_entries</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.depth" href="#src.protobuf.defs_pb2.FileInfoExtended.depth">depth</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.dimensions" href="#src.protobuf.defs_pb2.FileInfoExtended.dimensions">dimensions</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.header_entries" href="#src.protobuf.defs_pb2.FileInfoExtended.header_entries">header_entries</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.height" href="#src.protobuf.defs_pb2.FileInfoExtended.height">height</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.stokes" href="#src.protobuf.defs_pb2.FileInfoExtended.stokes">stokes</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.stokes_vals" href="#src.protobuf.defs_pb2.FileInfoExtended.stokes_vals">stokes_vals</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FileInfoExtended.width" href="#src.protobuf.defs_pb2.FileInfoExtended.width">width</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.FilterConfig" href="#src.protobuf.defs_pb2.FilterConfig">FilterConfig</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.FilterConfig.DESCRIPTOR" href="#src.protobuf.defs_pb2.FilterConfig.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FilterConfig.column_name" href="#src.protobuf.defs_pb2.FilterConfig.column_name">column_name</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FilterConfig.comparison_operator" href="#src.protobuf.defs_pb2.FilterConfig.comparison_operator">comparison_operator</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FilterConfig.secondary_value" href="#src.protobuf.defs_pb2.FilterConfig.secondary_value">secondary_value</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FilterConfig.sub_string" href="#src.protobuf.defs_pb2.FilterConfig.sub_string">sub_string</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FilterConfig.value" href="#src.protobuf.defs_pb2.FilterConfig.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.FloatBounds" href="#src.protobuf.defs_pb2.FloatBounds">FloatBounds</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.FloatBounds.DESCRIPTOR" href="#src.protobuf.defs_pb2.FloatBounds.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FloatBounds.max" href="#src.protobuf.defs_pb2.FloatBounds.max">max</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.FloatBounds.min" href="#src.protobuf.defs_pb2.FloatBounds.min">min</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.HeaderEntry" href="#src.protobuf.defs_pb2.HeaderEntry">HeaderEntry</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.HeaderEntry.DESCRIPTOR" href="#src.protobuf.defs_pb2.HeaderEntry.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.HeaderEntry.comment" href="#src.protobuf.defs_pb2.HeaderEntry.comment">comment</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.HeaderEntry.entry_type" href="#src.protobuf.defs_pb2.HeaderEntry.entry_type">entry_type</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.HeaderEntry.name" href="#src.protobuf.defs_pb2.HeaderEntry.name">name</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.HeaderEntry.numeric_value" href="#src.protobuf.defs_pb2.HeaderEntry.numeric_value">numeric_value</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.HeaderEntry.value" href="#src.protobuf.defs_pb2.HeaderEntry.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.Histogram" href="#src.protobuf.defs_pb2.Histogram">Histogram</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.defs_pb2.Histogram.DESCRIPTOR" href="#src.protobuf.defs_pb2.Histogram.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.bin_width" href="#src.protobuf.defs_pb2.Histogram.bin_width">bin_width</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.bins" href="#src.protobuf.defs_pb2.Histogram.bins">bins</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.channel" href="#src.protobuf.defs_pb2.Histogram.channel">channel</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.first_bin_center" href="#src.protobuf.defs_pb2.Histogram.first_bin_center">first_bin_center</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.mean" href="#src.protobuf.defs_pb2.Histogram.mean">mean</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.num_bins" href="#src.protobuf.defs_pb2.Histogram.num_bins">num_bins</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Histogram.std_dev" href="#src.protobuf.defs_pb2.Histogram.std_dev">std_dev</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.ImageBounds" href="#src.protobuf.defs_pb2.ImageBounds">ImageBounds</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.ImageBounds.DESCRIPTOR" href="#src.protobuf.defs_pb2.ImageBounds.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ImageBounds.x_max" href="#src.protobuf.defs_pb2.ImageBounds.x_max">x_max</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ImageBounds.x_min" href="#src.protobuf.defs_pb2.ImageBounds.x_min">x_min</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ImageBounds.y_max" href="#src.protobuf.defs_pb2.ImageBounds.y_max">y_max</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.ImageBounds.y_min" href="#src.protobuf.defs_pb2.ImageBounds.y_min">y_min</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.IntBounds" href="#src.protobuf.defs_pb2.IntBounds">IntBounds</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.IntBounds.DESCRIPTOR" href="#src.protobuf.defs_pb2.IntBounds.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.IntBounds.max" href="#src.protobuf.defs_pb2.IntBounds.max">max</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.IntBounds.min" href="#src.protobuf.defs_pb2.IntBounds.min">min</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.MatchedFrameList" href="#src.protobuf.defs_pb2.MatchedFrameList">MatchedFrameList</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.MatchedFrameList.DESCRIPTOR" href="#src.protobuf.defs_pb2.MatchedFrameList.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.MatchedFrameList.frame_numbers" href="#src.protobuf.defs_pb2.MatchedFrameList.frame_numbers">frame_numbers</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.Point" href="#src.protobuf.defs_pb2.Point">Point</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.Point.DESCRIPTOR" href="#src.protobuf.defs_pb2.Point.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Point.x" href="#src.protobuf.defs_pb2.Point.x">x</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.Point.y" href="#src.protobuf.defs_pb2.Point.y">y</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.RegionInfo" href="#src.protobuf.defs_pb2.RegionInfo">RegionInfo</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.RegionInfo.DESCRIPTOR" href="#src.protobuf.defs_pb2.RegionInfo.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionInfo.control_points" href="#src.protobuf.defs_pb2.RegionInfo.control_points">control_points</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionInfo.region_type" href="#src.protobuf.defs_pb2.RegionInfo.region_type">region_type</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionInfo.rotation" href="#src.protobuf.defs_pb2.RegionInfo.rotation">rotation</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.RegionStyle" href="#src.protobuf.defs_pb2.RegionStyle">RegionStyle</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.RegionStyle.DESCRIPTOR" href="#src.protobuf.defs_pb2.RegionStyle.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionStyle.color" href="#src.protobuf.defs_pb2.RegionStyle.color">color</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionStyle.dash_list" href="#src.protobuf.defs_pb2.RegionStyle.dash_list">dash_list</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionStyle.line_width" href="#src.protobuf.defs_pb2.RegionStyle.line_width">line_width</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.RegionStyle.name" href="#src.protobuf.defs_pb2.RegionStyle.name">name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.SpatialProfile" href="#src.protobuf.defs_pb2.SpatialProfile">SpatialProfile</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.SpatialProfile.DESCRIPTOR" href="#src.protobuf.defs_pb2.SpatialProfile.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpatialProfile.coordinate" href="#src.protobuf.defs_pb2.SpatialProfile.coordinate">coordinate</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpatialProfile.end" href="#src.protobuf.defs_pb2.SpatialProfile.end">end</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpatialProfile.raw_values_fp32" href="#src.protobuf.defs_pb2.SpatialProfile.raw_values_fp32">raw_values_fp32</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpatialProfile.start" href="#src.protobuf.defs_pb2.SpatialProfile.start">start</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.SpectralProfile" href="#src.protobuf.defs_pb2.SpectralProfile">SpectralProfile</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.SpectralProfile.DESCRIPTOR" href="#src.protobuf.defs_pb2.SpectralProfile.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpectralProfile.coordinate" href="#src.protobuf.defs_pb2.SpectralProfile.coordinate">coordinate</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpectralProfile.raw_values_fp32" href="#src.protobuf.defs_pb2.SpectralProfile.raw_values_fp32">raw_values_fp32</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpectralProfile.raw_values_fp64" href="#src.protobuf.defs_pb2.SpectralProfile.raw_values_fp64">raw_values_fp64</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.SpectralProfile.stats_type" href="#src.protobuf.defs_pb2.SpectralProfile.stats_type">stats_type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.defs_pb2.StatisticsValue" href="#src.protobuf.defs_pb2.StatisticsValue">StatisticsValue</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.defs_pb2.StatisticsValue.DESCRIPTOR" href="#src.protobuf.defs_pb2.StatisticsValue.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.StatisticsValue.stats_type" href="#src.protobuf.defs_pb2.StatisticsValue.stats_type">stats_type</a></code></li>
+<li><code><a title="src.protobuf.defs_pb2.StatisticsValue.value" href="#src.protobuf.defs_pb2.StatisticsValue.value">value</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>
