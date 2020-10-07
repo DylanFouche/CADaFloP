@@ -4,6 +4,9 @@
 #Ignore large test images
 test_images/
 
+#Ignore linter configuration
+.flake8
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
