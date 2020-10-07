@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>src.protobuf.contour_image_pb2 API documentation</title>
+<meta name="description" content="Generated protocol buffer code." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.protobuf.contour_image_pb2</code></h1>
+</header>
+<section id="section-intro">
+<p>Generated protocol buffer code.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+# Generated by the protocol buffer compiler.  DO NOT EDIT!
+# source: contour_image.proto
+&#34;&#34;&#34;Generated protocol buffer code.&#34;&#34;&#34;
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
+from google.protobuf import symbol_database as _symbol_database
+# @@protoc_insertion_point(imports)
+
+_sym_db = _symbol_database.Default()
+
+
+from src.protobuf import defs_pb2 as defs__pb2
+
+
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name=&#39;contour_image.proto&#39;,
+  package=&#39;CARTA&#39;,
+  syntax=&#39;proto3&#39;,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b&#39;\n\x13\x63ontour_image.proto\x12\x05\x43\x41RTA\x1a\ndefs.proto\&#34;\xc4\x01\n\x10\x43ontourImageData\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0f\x12\x19\n\x11reference_file_id\x18\x02 \x01(\x07\x12(\n\x0cimage_bounds\x18\x03 \x01(\x0b\x32\x12.CARTA.ImageBounds\x12\x0f\n\x07\x63hannel\x18\x04 \x01(\x0f\x12\x0e\n\x06stokes\x18\x05 \x01(\x0f\x12\&#39;\n\x0c\x63ontour_sets\x18\x06 \x03(\x0b\x32\x11.CARTA.ContourSet\x12\x10\n\x08progress\x18\x07 \x01(\x01\&#34;\x91\x01\n\nContourSet\x12\r\n\x05level\x18\x01 \x01(\x01\x12\x19\n\x11\x64\x65\x63imation_factor\x18\x02 \x01(\x05\x12\x17\n\x0fraw_coordinates\x18\x03 \x01(\x0c\x12\x19\n\x11raw_start_indices\x18\x04 \x01(\x0c\x12%\n\x1duncompressed_coordinates_size\x18\x05 \x01(\x05\x62\x06proto3&#39;
+  ,
+  dependencies=[defs__pb2.DESCRIPTOR,])
+
+
+
+
+_CONTOURIMAGEDATA = _descriptor.Descriptor(
+  name=&#39;ContourImageData&#39;,
+  full_name=&#39;CARTA.ContourImageData&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;file_id&#39;, full_name=&#39;CARTA.ContourImageData.file_id&#39;, index=0,
+      number=1, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;reference_file_id&#39;, full_name=&#39;CARTA.ContourImageData.reference_file_id&#39;, index=1,
+      number=2, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;image_bounds&#39;, full_name=&#39;CARTA.ContourImageData.image_bounds&#39;, index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;channel&#39;, full_name=&#39;CARTA.ContourImageData.channel&#39;, index=3,
+      number=4, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;stokes&#39;, full_name=&#39;CARTA.ContourImageData.stokes&#39;, index=4,
+      number=5, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;contour_sets&#39;, full_name=&#39;CARTA.ContourImageData.contour_sets&#39;, index=5,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;progress&#39;, full_name=&#39;CARTA.ContourImageData.progress&#39;, index=6,
+      number=7, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=43,
+  serialized_end=239,
+)
+
+
+_CONTOURSET = _descriptor.Descriptor(
+  name=&#39;ContourSet&#39;,
+  full_name=&#39;CARTA.ContourSet&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;level&#39;, full_name=&#39;CARTA.ContourSet.level&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;decimation_factor&#39;, full_name=&#39;CARTA.ContourSet.decimation_factor&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;raw_coordinates&#39;, full_name=&#39;CARTA.ContourSet.raw_coordinates&#39;, index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;raw_start_indices&#39;, full_name=&#39;CARTA.ContourSet.raw_start_indices&#39;, index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name=&#39;uncompressed_coordinates_size&#39;, full_name=&#39;CARTA.ContourSet.uncompressed_coordinates_size&#39;, index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=242,
+  serialized_end=387,
+)
+
+_CONTOURIMAGEDATA.fields_by_name[&#39;image_bounds&#39;].message_type = defs__pb2._IMAGEBOUNDS
+_CONTOURIMAGEDATA.fields_by_name[&#39;contour_sets&#39;].message_type = _CONTOURSET
+DESCRIPTOR.message_types_by_name[&#39;ContourImageData&#39;] = _CONTOURIMAGEDATA
+DESCRIPTOR.message_types_by_name[&#39;ContourSet&#39;] = _CONTOURSET
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+ContourImageData = _reflection.GeneratedProtocolMessageType(&#39;ContourImageData&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _CONTOURIMAGEDATA,
+  &#39;__module__&#39; : &#39;contour_image_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.ContourImageData)
+  })
+_sym_db.RegisterMessage(ContourImageData)
+
+ContourSet = _reflection.GeneratedProtocolMessageType(&#39;ContourSet&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _CONTOURSET,
+  &#39;__module__&#39; : &#39;contour_image_pb2&#39;
+  # @@protoc_insertion_point(class_scope:CARTA.ContourSet)
+  })
+_sym_db.RegisterMessage(ContourSet)
+
+
+# @@protoc_insertion_point(module_scope)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData"><code class="flex name class">
+<span>class <span class="ident">ContourImageData</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.channel"><code class="name">var <span class="ident">channel</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.channel</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.contour_sets"><code class="name">var <span class="ident">contour_sets</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.contour_sets</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.file_id"><code class="name">var <span class="ident">file_id</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.file_id</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.image_bounds"><code class="name">var <span class="ident">image_bounds</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.image_bounds</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.progress"><code class="name">var <span class="ident">progress</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.progress</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.reference_file_id"><code class="name">var <span class="ident">reference_file_id</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.reference_file_id</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourImageData.stokes"><code class="name">var <span class="ident">stokes</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourImageData.stokes</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourSet"><code class="flex name class">
+<span>class <span class="ident">ContourSet</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.protobuf.contour_image_pb2.ContourSet.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.protobuf.contour_image_pb2.ContourSet.decimation_factor"><code class="name">var <span class="ident">decimation_factor</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourSet.decimation_factor</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourSet.level"><code class="name">var <span class="ident">level</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourSet.level</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourSet.raw_coordinates"><code class="name">var <span class="ident">raw_coordinates</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourSet.raw_coordinates</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourSet.raw_start_indices"><code class="name">var <span class="ident">raw_start_indices</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourSet.raw_start_indices</p></div>
+</dd>
+<dt id="src.protobuf.contour_image_pb2.ContourSet.uncompressed_coordinates_size"><code class="name">var <span class="ident">uncompressed_coordinates_size</span></code></dt>
+<dd>
+<div class="desc"><p>Field CARTA.ContourSet.uncompressed_coordinates_size</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.protobuf" href="index.html">src.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.protobuf.contour_image_pb2.ContourImageData" href="#src.protobuf.contour_image_pb2.ContourImageData">ContourImageData</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.DESCRIPTOR" href="#src.protobuf.contour_image_pb2.ContourImageData.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.channel" href="#src.protobuf.contour_image_pb2.ContourImageData.channel">channel</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.contour_sets" href="#src.protobuf.contour_image_pb2.ContourImageData.contour_sets">contour_sets</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.file_id" href="#src.protobuf.contour_image_pb2.ContourImageData.file_id">file_id</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.image_bounds" href="#src.protobuf.contour_image_pb2.ContourImageData.image_bounds">image_bounds</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.progress" href="#src.protobuf.contour_image_pb2.ContourImageData.progress">progress</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.reference_file_id" href="#src.protobuf.contour_image_pb2.ContourImageData.reference_file_id">reference_file_id</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourImageData.stokes" href="#src.protobuf.contour_image_pb2.ContourImageData.stokes">stokes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.protobuf.contour_image_pb2.ContourSet" href="#src.protobuf.contour_image_pb2.ContourSet">ContourSet</a></code></h4>
+<ul class="">
+<li><code><a title="src.protobuf.contour_image_pb2.ContourSet.DESCRIPTOR" href="#src.protobuf.contour_image_pb2.ContourSet.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourSet.decimation_factor" href="#src.protobuf.contour_image_pb2.ContourSet.decimation_factor">decimation_factor</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourSet.level" href="#src.protobuf.contour_image_pb2.ContourSet.level">level</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourSet.raw_coordinates" href="#src.protobuf.contour_image_pb2.ContourSet.raw_coordinates">raw_coordinates</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourSet.raw_start_indices" href="#src.protobuf.contour_image_pb2.ContourSet.raw_start_indices">raw_start_indices</a></code></li>
+<li><code><a title="src.protobuf.contour_image_pb2.ContourSet.uncompressed_coordinates_size" href="#src.protobuf.contour_image_pb2.ContourSet.uncompressed_coordinates_size">uncompressed_coordinates_size</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

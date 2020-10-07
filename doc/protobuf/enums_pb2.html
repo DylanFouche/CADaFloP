@@ -1,0 +1,1539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>src.protobuf.enums_pb2 API documentation</title>
+<meta name="description" content="Generated protocol buffer code." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.protobuf.enums_pb2</code></h1>
+</header>
+<section id="section-intro">
+<p>Generated protocol buffer code.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+# Generated by the protocol buffer compiler.  DO NOT EDIT!
+# source: enums.proto
+&#34;&#34;&#34;Generated protocol buffer code.&#34;&#34;&#34;
+from google.protobuf.internal import enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
+from google.protobuf import symbol_database as _symbol_database
+# @@protoc_insertion_point(imports)
+
+_sym_db = _symbol_database.Default()
+
+
+
+
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name=&#39;enums.proto&#39;,
+  package=&#39;CARTA&#39;,
+  syntax=&#39;proto3&#39;,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b&#39;\n\x0b\x65nums.proto\x12\x05\x43\x41RTA*\xc3\x0c\n\tEventType\x12\x0f\n\x0b\x45MPTY_EVENT\x10\x00\x12\x13\n\x0fREGISTER_VIEWER\x10\x01\x12\x15\n\x11\x46ILE_LIST_REQUEST\x10\x02\x12\x15\n\x11\x46ILE_INFO_REQUEST\x10\x03\x12\r\n\tOPEN_FILE\x10\x04\x12\x16\n\x12SET_IMAGE_CHANNELS\x10\x06\x12\x0e\n\nSET_CURSOR\x10\x07\x12\x1c\n\x18SET_SPATIAL_REQUIREMENTS\x10\x08\x12\x1e\n\x1aSET_HISTOGRAM_REQUIREMENTS\x10\t\x12\x1a\n\x16SET_STATS_REQUIREMENTS\x10\n\x12\x0e\n\nSET_REGION\x10\x0b\x12\x11\n\rREMOVE_REGION\x10\x0c\x12\x0e\n\nCLOSE_FILE\x10\r\x12\x1d\n\x19SET_SPECTRAL_REQUIREMENTS\x10\x0e\x12\x13\n\x0fSTART_ANIMATION\x10\x0f\x12\x17\n\x13START_ANIMATION_ACK\x10\x10\x12\x12\n\x0eSTOP_ANIMATION\x10\x11\x12\x17\n\x13REGISTER_VIEWER_ACK\x10\x12\x12\x16\n\x12\x46ILE_LIST_RESPONSE\x10\x13\x12\x16\n\x12\x46ILE_INFO_RESPONSE\x10\x14\x12\x11\n\rOPEN_FILE_ACK\x10\x15\x12\x12\n\x0eSET_REGION_ACK\x10\x16\x12\x19\n\x15REGION_HISTOGRAM_DATA\x10\x17\x12\x18\n\x14SPATIAL_PROFILE_DATA\x10\x19\x12\x19\n\x15SPECTRAL_PROFILE_DATA\x10\x1a\x12\x15\n\x11REGION_STATS_DATA\x10\x1b\x12\x0e\n\nERROR_DATA\x10\x1c\x12\x1a\n\x16\x41NIMATION_FLOW_CONTROL\x10\x1d\x12\x16\n\x12\x41\x44\x44_REQUIRED_TILES\x10\x1e\x12\x19\n\x15REMOVE_REQUIRED_TILES\x10\x1f\x12\x14\n\x10RASTER_TILE_DATA\x10 \x12\x17\n\x13REGION_LIST_REQUEST\x10!\x12\x18\n\x14REGION_LIST_RESPONSE\x10\&#34;\x12\x1c\n\x18REGION_FILE_INFO_REQUEST\x10#\x12\x1d\n\x19REGION_FILE_INFO_RESPONSE\x10$\x12\x11\n\rIMPORT_REGION\x10%\x12\x15\n\x11IMPORT_REGION_ACK\x10&amp;\x12\x11\n\rEXPORT_REGION\x10\&#39;\x12\x15\n\x11\x45XPORT_REGION_ACK\x10(\x12\x18\n\x14SET_USER_PREFERENCES\x10)\x12\x1c\n\x18SET_USER_PREFERENCES_ACK\x10*\x12\x13\n\x0fSET_USER_LAYOUT\x10+\x12\x17\n\x13SET_USER_LAYOUT_ACK\x10,\x12\x1a\n\x16SET_CONTOUR_PARAMETERS\x10-\x12\x16\n\x12\x43ONTOUR_IMAGE_DATA\x10.\x12\x12\n\x0eRESUME_SESSION\x10/\x12\x16\n\x12RESUME_SESSION_ACK\x10\x30\x12\x14\n\x10RASTER_TILE_SYNC\x10\x31\x12\x18\n\x14\x43\x41TALOG_LIST_REQUEST\x10\x32\x12\x19\n\x15\x43\x41TALOG_LIST_RESPONSE\x10\x33\x12\x1d\n\x19\x43\x41TALOG_FILE_INFO_REQUEST\x10\x34\x12\x1e\n\x1a\x43\x41TALOG_FILE_INFO_RESPONSE\x10\x35\x12\x15\n\x11OPEN_CATALOG_FILE\x10\x36\x12\x19\n\x15OPEN_CATALOG_FILE_ACK\x10\x37\x12\x16\n\x12\x43LOSE_CATALOG_FILE\x10\x38\x12\x1a\n\x16\x43\x41TALOG_FILTER_REQUEST\x10\x39\x12\x1b\n\x17\x43\x41TALOG_FILTER_RESPONSE\x10:\x12\x15\n\x11SCRIPTING_REQUEST\x10;\x12\x16\n\x12SCRIPTING_RESPONSE\x10&lt;\x12\x12\n\x0eMOMENT_REQUEST\x10=\x12\x13\n\x0fMOMENT_RESPONSE\x10&gt;\x12\x13\n\x0fMOMENT_PROGRESS\x10?\x12\x14\n\x10STOP_MOMENT_CALC\x10@\x12\r\n\tSAVE_FILE\x10\x41\x12\x11\n\rSAVE_FILE_ACK\x10\x42\x12\x19\n\x15SPECTRAL_LINE_REQUEST\x10\x43\x12\x1a\n\x16SPECTRAL_LINE_RESPONSE\x10\x44*#\n\x0bSessionType\x12\x07\n\x03NEW\x10\x00\x12\x0b\n\x07RESUMED\x10\x01*X\n\x08\x46ileType\x12\x08\n\x04\x43\x41SA\x10\x00\x12\x08\n\x04\x43RTF\x10\x01\x12\x0b\n\x07\x44S9_REG\x10\x02\x12\x08\n\x04\x46ITS\x10\x03\x12\x08\n\x04HDF5\x10\x04\x12\n\n\x06MIRIAD\x10\x05\x12\x0b\n\x07UNKNOWN\x10\x06*%\n\nRenderMode\x12\n\n\x06RASTER\x10\x00\x12\x0b\n\x07\x43ONTOUR\x10\x01*,\n\x0f\x43ompressionType\x12\x08\n\x04NONE\x10\x00\x12\x07\n\x03ZFP\x10\x01\x12\x06\n\x02SZ\x10\x02*e\n\nRegionType\x12\t\n\x05POINT\x10\x00\x12\x08\n\x04LINE\x10\x01\x12\x0c\n\x08POLYLINE\x10\x02\x12\r\n\tRECTANGLE\x10\x03\x12\x0b\n\x07\x45LLIPSE\x10\x04\x12\x0b\n\x07\x41NNULUS\x10\x05\x12\x0b\n\x07POLYGON\x10\x06*D\n\rSmoothingMode\x12\x0f\n\x0bNoSmoothing\x10\x00\x12\x10\n\x0c\x42lockAverage\x10\x01\x12\x10\n\x0cGaussianBlur\x10\x02*\xd5\x01\n\tStatsType\x12\r\n\tNumPixels\x10\x00\x12\x0c\n\x08NanCount\x10\x01\x12\x07\n\x03Sum\x10\x02\x12\x0f\n\x0b\x46luxDensity\x10\x03\x12\x08\n\x04Mean\x10\x04\x12\x07\n\x03RMS\x10\x05\x12\t\n\x05Sigma\x10\x06\x12\t\n\x05SumSq\x10\x07\x12\x07\n\x03Min\x10\x08\x12\x07\n\x03Max\x10\t\x12\x07\n\x03\x42lc\x10\n\x12\x07\n\x03Trc\x10\x0b\x12\n\n\x06MinPos\x10\x0c\x12\n\n\x06MaxPos\x10\r\x12\x08\n\x04\x42lcf\x10\x0e\x12\x08\n\x04Trcf\x10\x0f\x12\x0b\n\x07MinPosf\x10\x10\x12\x0b\n\x07MaxPosf\x10\x11*J\n\rErrorSeverity\x12\t\n\x05\x44\x45\x42UG\x10\x00\x12\x08\n\x04INFO\x10\x01\x12\x0b\n\x07WARNING\x10\x02\x12\t\n\x05\x45RROR\x10\x03\x12\x0c\n\x08\x43RITICAL\x10\x04*+\n\tEntryType\x12\n\n\x06STRING\x10\x00\x12\t\n\x05\x46LOAT\x10\x01\x12\x07\n\x03INT\x10\x02*\x89\x01\n\x12\x43lientFeatureFlags\x12\x17\n\x13\x43LIENT_FEATURE_NONE\x10\x00\x12\n\n\x06WEB_GL\x10\x01\x12\x0c\n\x08WEB_GL_2\x10\x02\x12\x10\n\x0cWEB_ASSEMBLY\x10\x04\x12\x18\n\x14WEB_ASSEMBLY_THREADS\x10\x08\x12\x14\n\x10OFFSCREEN_CANVAS\x10\x10*\xaf\x01\n\x12ServerFeatureFlags\x12\x17\n\x13SERVER_FEATURE_NONE\x10\x00\x12\x12\n\x0eSZ_COMPRESSION\x10\x01\x12\x14\n\x10HEVC_COMPRESSION\x10\x02\x12\x15\n\x11NVENC_COMPRESSION\x10\x04\x12\x17\n\x13REGION_WRITE_ACCESS\x10\x08\x12\x14\n\x10USER_PREFERENCES\x10\x10\x12\x10\n\x0cUSER_LAYOUTS\x10 *\x9f\x01\n\x10\x46ileFeatureFlags\x12\x15\n\x11\x46ILE_FEATURE_NONE\x10\x00\x12\x13\n\x0fROTATED_DATASET\x10\x01\x12\x16\n\x12\x43HANNEL_HISTOGRAMS\x10\x02\x12\x13\n\x0f\x43UBE_HISTOGRAMS\x10\x04\x12\x11\n\rCHANNEL_STATS\x10\x08\x12\x0e\n\nMEAN_IMAGE\x10\x10\x12\x0f\n\x0bMIP_DATASET\x10 *&amp;\n\x0e\x43oordinateType\x12\t\n\x05PIXEL\x10\x00\x12\t\n\x05WORLD\x10\x01*-\n\x0f\x43\x61talogFileType\x12\r\n\tFITSTable\x10\x00\x12\x0b\n\x07VOTable\x10\x01*\xa8\x01\n\nColumnType\x12\x13\n\x0fUnsupportedType\x10\x00\x12\n\n\x06String\x10\x01\x12\t\n\x05Uint8\x10\x02\x12\x08\n\x04Int8\x10\x03\x12\n\n\x06Uint16\x10\x04\x12\t\n\x05Int16\x10\x05\x12\n\n\x06Uint32\x10\x06\x12\t\n\x05Int32\x10\x07\x12\n\n\x06Uint64\x10\x08\x12\t\n\x05Int64\x10\t\x12\t\n\x05\x46loat\x10\n\x12\n\n\x06\x44ouble\x10\x0b\x12\x08\n\x04\x42ool\x10\x0c*\x8d\x01\n\x12\x43omparisonOperator\x12\t\n\x05\x45qual\x10\x00\x12\x0c\n\x08NotEqual\x10\x01\x12\n\n\x06Lesser\x10\x02\x12\x0b\n\x07Greater\x10\x03\x12\x11\n\rLessorOrEqual\x10\x04\x12\x12\n\x0eGreaterOrEqual\x10\x05\x12\r\n\tRangeOpen\x10\x06\x12\x0f\n\x0bRangeClosed\x10\x07*,\n\x0bSortingType\x12\r\n\tAscending\x10\x00\x12\x0e\n\nDescending\x10\x01*\xaa\x03\n\x06Moment\x12\x18\n\x14MEAN_OF_THE_SPECTRUM\x10\x00\x12\x1e\n\x1aINTEGRATED_OF_THE_SPECTRUM\x10\x01\x12\x1c\n\x18INTENSITY_WEIGHTED_COORD\x10\x02\x12.\n*INTENSITY_WEIGHTED_DISPERSION_OF_THE_COORD\x10\x03\x12\x1a\n\x16MEDIAN_OF_THE_SPECTRUM\x10\x04\x12\x15\n\x11MEDIAN_COORDINATE\x10\x05\x12&amp;\n\&#34;STD_ABOUT_THE_MEAN_OF_THE_SPECTRUM\x10\x06\x12\x17\n\x13RMS_OF_THE_SPECTRUM\x10\x07\x12&amp;\n\&#34;ABS_MEAN_DEVIATION_OF_THE_SPECTRUM\x10\x08\x12\x17\n\x13MAX_OF_THE_SPECTRUM\x10\t\x12$\n COORD_OF_THE_MAX_OF_THE_SPECTRUM\x10\n\x12\x17\n\x13MIN_OF_THE_SPECTRUM\x10\x0b\x12$\n COORD_OF_THE_MIN_OF_THE_SPECTRUM\x10\x0c*&amp;\n\nMomentAxis\x12\x0c\n\x08SPECTRAL\x10\x00\x12\n\n\x06STOKES\x10\x01*0\n\nMomentMask\x12\x08\n\x04None\x10\x00\x12\x0b\n\x07Include\x10\x01\x12\x0b\n\x07\x45xclude\x10\x02\x62\x06proto3&#39;
+)
+
+_EVENTTYPE = _descriptor.EnumDescriptor(
+  name=&#39;EventType&#39;,
+  full_name=&#39;CARTA.EventType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;EMPTY_EVENT&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGISTER_VIEWER&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FILE_LIST_REQUEST&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FILE_INFO_REQUEST&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;OPEN_FILE&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_IMAGE_CHANNELS&#39;, index=5, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_CURSOR&#39;, index=6, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_SPATIAL_REQUIREMENTS&#39;, index=7, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_HISTOGRAM_REQUIREMENTS&#39;, index=8, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_STATS_REQUIREMENTS&#39;, index=9, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_REGION&#39;, index=10, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REMOVE_REGION&#39;, index=11, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CLOSE_FILE&#39;, index=12, number=13,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_SPECTRAL_REQUIREMENTS&#39;, index=13, number=14,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;START_ANIMATION&#39;, index=14, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;START_ANIMATION_ACK&#39;, index=15, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;STOP_ANIMATION&#39;, index=16, number=17,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGISTER_VIEWER_ACK&#39;, index=17, number=18,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FILE_LIST_RESPONSE&#39;, index=18, number=19,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FILE_INFO_RESPONSE&#39;, index=19, number=20,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;OPEN_FILE_ACK&#39;, index=20, number=21,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_REGION_ACK&#39;, index=21, number=22,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_HISTOGRAM_DATA&#39;, index=22, number=23,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SPATIAL_PROFILE_DATA&#39;, index=23, number=25,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SPECTRAL_PROFILE_DATA&#39;, index=24, number=26,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_STATS_DATA&#39;, index=25, number=27,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ERROR_DATA&#39;, index=26, number=28,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ANIMATION_FLOW_CONTROL&#39;, index=27, number=29,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ADD_REQUIRED_TILES&#39;, index=28, number=30,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REMOVE_REQUIRED_TILES&#39;, index=29, number=31,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RASTER_TILE_DATA&#39;, index=30, number=32,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_LIST_REQUEST&#39;, index=31, number=33,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_LIST_RESPONSE&#39;, index=32, number=34,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_FILE_INFO_REQUEST&#39;, index=33, number=35,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_FILE_INFO_RESPONSE&#39;, index=34, number=36,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;IMPORT_REGION&#39;, index=35, number=37,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;IMPORT_REGION_ACK&#39;, index=36, number=38,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;EXPORT_REGION&#39;, index=37, number=39,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;EXPORT_REGION_ACK&#39;, index=38, number=40,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_USER_PREFERENCES&#39;, index=39, number=41,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_USER_PREFERENCES_ACK&#39;, index=40, number=42,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_USER_LAYOUT&#39;, index=41, number=43,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_USER_LAYOUT_ACK&#39;, index=42, number=44,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SET_CONTOUR_PARAMETERS&#39;, index=43, number=45,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CONTOUR_IMAGE_DATA&#39;, index=44, number=46,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RESUME_SESSION&#39;, index=45, number=47,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RESUME_SESSION_ACK&#39;, index=46, number=48,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RASTER_TILE_SYNC&#39;, index=47, number=49,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CATALOG_LIST_REQUEST&#39;, index=48, number=50,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CATALOG_LIST_RESPONSE&#39;, index=49, number=51,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CATALOG_FILE_INFO_REQUEST&#39;, index=50, number=52,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CATALOG_FILE_INFO_RESPONSE&#39;, index=51, number=53,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;OPEN_CATALOG_FILE&#39;, index=52, number=54,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;OPEN_CATALOG_FILE_ACK&#39;, index=53, number=55,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CLOSE_CATALOG_FILE&#39;, index=54, number=56,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CATALOG_FILTER_REQUEST&#39;, index=55, number=57,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CATALOG_FILTER_RESPONSE&#39;, index=56, number=58,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SCRIPTING_REQUEST&#39;, index=57, number=59,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SCRIPTING_RESPONSE&#39;, index=58, number=60,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MOMENT_REQUEST&#39;, index=59, number=61,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MOMENT_RESPONSE&#39;, index=60, number=62,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MOMENT_PROGRESS&#39;, index=61, number=63,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;STOP_MOMENT_CALC&#39;, index=62, number=64,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SAVE_FILE&#39;, index=63, number=65,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SAVE_FILE_ACK&#39;, index=64, number=66,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SPECTRAL_LINE_REQUEST&#39;, index=65, number=67,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SPECTRAL_LINE_RESPONSE&#39;, index=66, number=68,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=23,
+  serialized_end=1626,
+)
+_sym_db.RegisterEnumDescriptor(_EVENTTYPE)
+
+EventType = enum_type_wrapper.EnumTypeWrapper(_EVENTTYPE)
+_SESSIONTYPE = _descriptor.EnumDescriptor(
+  name=&#39;SessionType&#39;,
+  full_name=&#39;CARTA.SessionType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NEW&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RESUMED&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1628,
+  serialized_end=1663,
+)
+_sym_db.RegisterEnumDescriptor(_SESSIONTYPE)
+
+SessionType = enum_type_wrapper.EnumTypeWrapper(_SESSIONTYPE)
+_FILETYPE = _descriptor.EnumDescriptor(
+  name=&#39;FileType&#39;,
+  full_name=&#39;CARTA.FileType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CASA&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CRTF&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;DS9_REG&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FITS&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;HDF5&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MIRIAD&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UNKNOWN&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1665,
+  serialized_end=1753,
+)
+_sym_db.RegisterEnumDescriptor(_FILETYPE)
+
+FileType = enum_type_wrapper.EnumTypeWrapper(_FILETYPE)
+_RENDERMODE = _descriptor.EnumDescriptor(
+  name=&#39;RenderMode&#39;,
+  full_name=&#39;CARTA.RenderMode&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RASTER&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CONTOUR&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1755,
+  serialized_end=1792,
+)
+_sym_db.RegisterEnumDescriptor(_RENDERMODE)
+
+RenderMode = enum_type_wrapper.EnumTypeWrapper(_RENDERMODE)
+_COMPRESSIONTYPE = _descriptor.EnumDescriptor(
+  name=&#39;CompressionType&#39;,
+  full_name=&#39;CARTA.CompressionType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NONE&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ZFP&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SZ&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1794,
+  serialized_end=1838,
+)
+_sym_db.RegisterEnumDescriptor(_COMPRESSIONTYPE)
+
+CompressionType = enum_type_wrapper.EnumTypeWrapper(_COMPRESSIONTYPE)
+_REGIONTYPE = _descriptor.EnumDescriptor(
+  name=&#39;RegionType&#39;,
+  full_name=&#39;CARTA.RegionType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;POINT&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;LINE&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;POLYLINE&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RECTANGLE&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ELLIPSE&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ANNULUS&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;POLYGON&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1840,
+  serialized_end=1941,
+)
+_sym_db.RegisterEnumDescriptor(_REGIONTYPE)
+
+RegionType = enum_type_wrapper.EnumTypeWrapper(_REGIONTYPE)
+_SMOOTHINGMODE = _descriptor.EnumDescriptor(
+  name=&#39;SmoothingMode&#39;,
+  full_name=&#39;CARTA.SmoothingMode&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NoSmoothing&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;BlockAverage&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;GaussianBlur&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1943,
+  serialized_end=2011,
+)
+_sym_db.RegisterEnumDescriptor(_SMOOTHINGMODE)
+
+SmoothingMode = enum_type_wrapper.EnumTypeWrapper(_SMOOTHINGMODE)
+_STATSTYPE = _descriptor.EnumDescriptor(
+  name=&#39;StatsType&#39;,
+  full_name=&#39;CARTA.StatsType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NumPixels&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NanCount&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Sum&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FluxDensity&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Mean&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RMS&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Sigma&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SumSq&#39;, index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Min&#39;, index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Max&#39;, index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Blc&#39;, index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Trc&#39;, index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MinPos&#39;, index=12, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MaxPos&#39;, index=13, number=13,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Blcf&#39;, index=14, number=14,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Trcf&#39;, index=15, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MinPosf&#39;, index=16, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MaxPosf&#39;, index=17, number=17,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2014,
+  serialized_end=2227,
+)
+_sym_db.RegisterEnumDescriptor(_STATSTYPE)
+
+StatsType = enum_type_wrapper.EnumTypeWrapper(_STATSTYPE)
+_ERRORSEVERITY = _descriptor.EnumDescriptor(
+  name=&#39;ErrorSeverity&#39;,
+  full_name=&#39;CARTA.ErrorSeverity&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;DEBUG&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;INFO&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;WARNING&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ERROR&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CRITICAL&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2229,
+  serialized_end=2303,
+)
+_sym_db.RegisterEnumDescriptor(_ERRORSEVERITY)
+
+ErrorSeverity = enum_type_wrapper.EnumTypeWrapper(_ERRORSEVERITY)
+_ENTRYTYPE = _descriptor.EnumDescriptor(
+  name=&#39;EntryType&#39;,
+  full_name=&#39;CARTA.EntryType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;STRING&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FLOAT&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;INT&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2305,
+  serialized_end=2348,
+)
+_sym_db.RegisterEnumDescriptor(_ENTRYTYPE)
+
+EntryType = enum_type_wrapper.EnumTypeWrapper(_ENTRYTYPE)
+_CLIENTFEATUREFLAGS = _descriptor.EnumDescriptor(
+  name=&#39;ClientFeatureFlags&#39;,
+  full_name=&#39;CARTA.ClientFeatureFlags&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CLIENT_FEATURE_NONE&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;WEB_GL&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;WEB_GL_2&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;WEB_ASSEMBLY&#39;, index=3, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;WEB_ASSEMBLY_THREADS&#39;, index=4, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;OFFSCREEN_CANVAS&#39;, index=5, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2351,
+  serialized_end=2488,
+)
+_sym_db.RegisterEnumDescriptor(_CLIENTFEATUREFLAGS)
+
+ClientFeatureFlags = enum_type_wrapper.EnumTypeWrapper(_CLIENTFEATUREFLAGS)
+_SERVERFEATUREFLAGS = _descriptor.EnumDescriptor(
+  name=&#39;ServerFeatureFlags&#39;,
+  full_name=&#39;CARTA.ServerFeatureFlags&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SERVER_FEATURE_NONE&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SZ_COMPRESSION&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;HEVC_COMPRESSION&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NVENC_COMPRESSION&#39;, index=3, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;REGION_WRITE_ACCESS&#39;, index=4, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;USER_PREFERENCES&#39;, index=5, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;USER_LAYOUTS&#39;, index=6, number=32,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2491,
+  serialized_end=2666,
+)
+_sym_db.RegisterEnumDescriptor(_SERVERFEATUREFLAGS)
+
+ServerFeatureFlags = enum_type_wrapper.EnumTypeWrapper(_SERVERFEATUREFLAGS)
+_FILEFEATUREFLAGS = _descriptor.EnumDescriptor(
+  name=&#39;FileFeatureFlags&#39;,
+  full_name=&#39;CARTA.FileFeatureFlags&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FILE_FEATURE_NONE&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ROTATED_DATASET&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CHANNEL_HISTOGRAMS&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CUBE_HISTOGRAMS&#39;, index=3, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CHANNEL_STATS&#39;, index=4, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MEAN_IMAGE&#39;, index=5, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MIP_DATASET&#39;, index=6, number=32,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2669,
+  serialized_end=2828,
+)
+_sym_db.RegisterEnumDescriptor(_FILEFEATUREFLAGS)
+
+FileFeatureFlags = enum_type_wrapper.EnumTypeWrapper(_FILEFEATUREFLAGS)
+_COORDINATETYPE = _descriptor.EnumDescriptor(
+  name=&#39;CoordinateType&#39;,
+  full_name=&#39;CARTA.CoordinateType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;PIXEL&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;WORLD&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2830,
+  serialized_end=2868,
+)
+_sym_db.RegisterEnumDescriptor(_COORDINATETYPE)
+
+CoordinateType = enum_type_wrapper.EnumTypeWrapper(_COORDINATETYPE)
+_CATALOGFILETYPE = _descriptor.EnumDescriptor(
+  name=&#39;CatalogFileType&#39;,
+  full_name=&#39;CARTA.CatalogFileType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FITSTable&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;VOTable&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2870,
+  serialized_end=2915,
+)
+_sym_db.RegisterEnumDescriptor(_CATALOGFILETYPE)
+
+CatalogFileType = enum_type_wrapper.EnumTypeWrapper(_CATALOGFILETYPE)
+_COLUMNTYPE = _descriptor.EnumDescriptor(
+  name=&#39;ColumnType&#39;,
+  full_name=&#39;CARTA.ColumnType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UnsupportedType&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;String&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Uint8&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Int8&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Uint16&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Int16&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Uint32&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Int32&#39;, index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Uint64&#39;, index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Int64&#39;, index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Float&#39;, index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Double&#39;, index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Bool&#39;, index=12, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2918,
+  serialized_end=3086,
+)
+_sym_db.RegisterEnumDescriptor(_COLUMNTYPE)
+
+ColumnType = enum_type_wrapper.EnumTypeWrapper(_COLUMNTYPE)
+_COMPARISONOPERATOR = _descriptor.EnumDescriptor(
+  name=&#39;ComparisonOperator&#39;,
+  full_name=&#39;CARTA.ComparisonOperator&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Equal&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NotEqual&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Lesser&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Greater&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;LessorOrEqual&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;GreaterOrEqual&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RangeOpen&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RangeClosed&#39;, index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3089,
+  serialized_end=3230,
+)
+_sym_db.RegisterEnumDescriptor(_COMPARISONOPERATOR)
+
+ComparisonOperator = enum_type_wrapper.EnumTypeWrapper(_COMPARISONOPERATOR)
+_SORTINGTYPE = _descriptor.EnumDescriptor(
+  name=&#39;SortingType&#39;,
+  full_name=&#39;CARTA.SortingType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Ascending&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Descending&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3232,
+  serialized_end=3276,
+)
+_sym_db.RegisterEnumDescriptor(_SORTINGTYPE)
+
+SortingType = enum_type_wrapper.EnumTypeWrapper(_SORTINGTYPE)
+_MOMENT = _descriptor.EnumDescriptor(
+  name=&#39;Moment&#39;,
+  full_name=&#39;CARTA.Moment&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MEAN_OF_THE_SPECTRUM&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;INTEGRATED_OF_THE_SPECTRUM&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;INTENSITY_WEIGHTED_COORD&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;INTENSITY_WEIGHTED_DISPERSION_OF_THE_COORD&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MEDIAN_OF_THE_SPECTRUM&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MEDIAN_COORDINATE&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;STD_ABOUT_THE_MEAN_OF_THE_SPECTRUM&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;RMS_OF_THE_SPECTRUM&#39;, index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ABS_MEAN_DEVIATION_OF_THE_SPECTRUM&#39;, index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MAX_OF_THE_SPECTRUM&#39;, index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;COORD_OF_THE_MAX_OF_THE_SPECTRUM&#39;, index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MIN_OF_THE_SPECTRUM&#39;, index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;COORD_OF_THE_MIN_OF_THE_SPECTRUM&#39;, index=12, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3279,
+  serialized_end=3705,
+)
+_sym_db.RegisterEnumDescriptor(_MOMENT)
+
+Moment = enum_type_wrapper.EnumTypeWrapper(_MOMENT)
+_MOMENTAXIS = _descriptor.EnumDescriptor(
+  name=&#39;MomentAxis&#39;,
+  full_name=&#39;CARTA.MomentAxis&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SPECTRAL&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;STOKES&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3707,
+  serialized_end=3745,
+)
+_sym_db.RegisterEnumDescriptor(_MOMENTAXIS)
+
+MomentAxis = enum_type_wrapper.EnumTypeWrapper(_MOMENTAXIS)
+_MOMENTMASK = _descriptor.EnumDescriptor(
+  name=&#39;MomentMask&#39;,
+  full_name=&#39;CARTA.MomentMask&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;None&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Include&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;Exclude&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3747,
+  serialized_end=3795,
+)
+_sym_db.RegisterEnumDescriptor(_MOMENTMASK)
+
+MomentMask = enum_type_wrapper.EnumTypeWrapper(_MOMENTMASK)
+EMPTY_EVENT = 0
+REGISTER_VIEWER = 1
+FILE_LIST_REQUEST = 2
+FILE_INFO_REQUEST = 3
+OPEN_FILE = 4
+SET_IMAGE_CHANNELS = 6
+SET_CURSOR = 7
+SET_SPATIAL_REQUIREMENTS = 8
+SET_HISTOGRAM_REQUIREMENTS = 9
+SET_STATS_REQUIREMENTS = 10
+SET_REGION = 11
+REMOVE_REGION = 12
+CLOSE_FILE = 13
+SET_SPECTRAL_REQUIREMENTS = 14
+START_ANIMATION = 15
+START_ANIMATION_ACK = 16
+STOP_ANIMATION = 17
+REGISTER_VIEWER_ACK = 18
+FILE_LIST_RESPONSE = 19
+FILE_INFO_RESPONSE = 20
+OPEN_FILE_ACK = 21
+SET_REGION_ACK = 22
+REGION_HISTOGRAM_DATA = 23
+SPATIAL_PROFILE_DATA = 25
+SPECTRAL_PROFILE_DATA = 26
+REGION_STATS_DATA = 27
+ERROR_DATA = 28
+ANIMATION_FLOW_CONTROL = 29
+ADD_REQUIRED_TILES = 30
+REMOVE_REQUIRED_TILES = 31
+RASTER_TILE_DATA = 32
+REGION_LIST_REQUEST = 33
+REGION_LIST_RESPONSE = 34
+REGION_FILE_INFO_REQUEST = 35
+REGION_FILE_INFO_RESPONSE = 36
+IMPORT_REGION = 37
+IMPORT_REGION_ACK = 38
+EXPORT_REGION = 39
+EXPORT_REGION_ACK = 40
+SET_USER_PREFERENCES = 41
+SET_USER_PREFERENCES_ACK = 42
+SET_USER_LAYOUT = 43
+SET_USER_LAYOUT_ACK = 44
+SET_CONTOUR_PARAMETERS = 45
+CONTOUR_IMAGE_DATA = 46
+RESUME_SESSION = 47
+RESUME_SESSION_ACK = 48
+RASTER_TILE_SYNC = 49
+CATALOG_LIST_REQUEST = 50
+CATALOG_LIST_RESPONSE = 51
+CATALOG_FILE_INFO_REQUEST = 52
+CATALOG_FILE_INFO_RESPONSE = 53
+OPEN_CATALOG_FILE = 54
+OPEN_CATALOG_FILE_ACK = 55
+CLOSE_CATALOG_FILE = 56
+CATALOG_FILTER_REQUEST = 57
+CATALOG_FILTER_RESPONSE = 58
+SCRIPTING_REQUEST = 59
+SCRIPTING_RESPONSE = 60
+MOMENT_REQUEST = 61
+MOMENT_RESPONSE = 62
+MOMENT_PROGRESS = 63
+STOP_MOMENT_CALC = 64
+SAVE_FILE = 65
+SAVE_FILE_ACK = 66
+SPECTRAL_LINE_REQUEST = 67
+SPECTRAL_LINE_RESPONSE = 68
+NEW = 0
+RESUMED = 1
+CASA = 0
+CRTF = 1
+DS9_REG = 2
+FITS = 3
+HDF5 = 4
+MIRIAD = 5
+UNKNOWN = 6
+RASTER = 0
+CONTOUR = 1
+NONE = 0
+ZFP = 1
+SZ = 2
+POINT = 0
+LINE = 1
+POLYLINE = 2
+RECTANGLE = 3
+ELLIPSE = 4
+ANNULUS = 5
+POLYGON = 6
+NoSmoothing = 0
+BlockAverage = 1
+GaussianBlur = 2
+NumPixels = 0
+NanCount = 1
+Sum = 2
+FluxDensity = 3
+Mean = 4
+RMS = 5
+Sigma = 6
+SumSq = 7
+Min = 8
+Max = 9
+Blc = 10
+Trc = 11
+MinPos = 12
+MaxPos = 13
+Blcf = 14
+Trcf = 15
+MinPosf = 16
+MaxPosf = 17
+DEBUG = 0
+INFO = 1
+WARNING = 2
+ERROR = 3
+CRITICAL = 4
+STRING = 0
+FLOAT = 1
+INT = 2
+CLIENT_FEATURE_NONE = 0
+WEB_GL = 1
+WEB_GL_2 = 2
+WEB_ASSEMBLY = 4
+WEB_ASSEMBLY_THREADS = 8
+OFFSCREEN_CANVAS = 16
+SERVER_FEATURE_NONE = 0
+SZ_COMPRESSION = 1
+HEVC_COMPRESSION = 2
+NVENC_COMPRESSION = 4
+REGION_WRITE_ACCESS = 8
+USER_PREFERENCES = 16
+USER_LAYOUTS = 32
+FILE_FEATURE_NONE = 0
+ROTATED_DATASET = 1
+CHANNEL_HISTOGRAMS = 2
+CUBE_HISTOGRAMS = 4
+CHANNEL_STATS = 8
+MEAN_IMAGE = 16
+MIP_DATASET = 32
+PIXEL = 0
+WORLD = 1
+FITSTable = 0
+VOTable = 1
+UnsupportedType = 0
+String = 1
+Uint8 = 2
+Int8 = 3
+Uint16 = 4
+Int16 = 5
+Uint32 = 6
+Int32 = 7
+Uint64 = 8
+Int64 = 9
+Float = 10
+Double = 11
+Bool = 12
+Equal = 0
+NotEqual = 1
+Lesser = 2
+Greater = 3
+LessorOrEqual = 4
+GreaterOrEqual = 5
+RangeOpen = 6
+RangeClosed = 7
+Ascending = 0
+Descending = 1
+MEAN_OF_THE_SPECTRUM = 0
+INTEGRATED_OF_THE_SPECTRUM = 1
+INTENSITY_WEIGHTED_COORD = 2
+INTENSITY_WEIGHTED_DISPERSION_OF_THE_COORD = 3
+MEDIAN_OF_THE_SPECTRUM = 4
+MEDIAN_COORDINATE = 5
+STD_ABOUT_THE_MEAN_OF_THE_SPECTRUM = 6
+RMS_OF_THE_SPECTRUM = 7
+ABS_MEAN_DEVIATION_OF_THE_SPECTRUM = 8
+MAX_OF_THE_SPECTRUM = 9
+COORD_OF_THE_MAX_OF_THE_SPECTRUM = 10
+MIN_OF_THE_SPECTRUM = 11
+COORD_OF_THE_MIN_OF_THE_SPECTRUM = 12
+SPECTRAL = 0
+STOKES = 1
+globals()[&#39;None&#39;] = 0
+Include = 1
+Exclude = 2
+
+
+DESCRIPTOR.enum_types_by_name[&#39;EventType&#39;] = _EVENTTYPE
+DESCRIPTOR.enum_types_by_name[&#39;SessionType&#39;] = _SESSIONTYPE
+DESCRIPTOR.enum_types_by_name[&#39;FileType&#39;] = _FILETYPE
+DESCRIPTOR.enum_types_by_name[&#39;RenderMode&#39;] = _RENDERMODE
+DESCRIPTOR.enum_types_by_name[&#39;CompressionType&#39;] = _COMPRESSIONTYPE
+DESCRIPTOR.enum_types_by_name[&#39;RegionType&#39;] = _REGIONTYPE
+DESCRIPTOR.enum_types_by_name[&#39;SmoothingMode&#39;] = _SMOOTHINGMODE
+DESCRIPTOR.enum_types_by_name[&#39;StatsType&#39;] = _STATSTYPE
+DESCRIPTOR.enum_types_by_name[&#39;ErrorSeverity&#39;] = _ERRORSEVERITY
+DESCRIPTOR.enum_types_by_name[&#39;EntryType&#39;] = _ENTRYTYPE
+DESCRIPTOR.enum_types_by_name[&#39;ClientFeatureFlags&#39;] = _CLIENTFEATUREFLAGS
+DESCRIPTOR.enum_types_by_name[&#39;ServerFeatureFlags&#39;] = _SERVERFEATUREFLAGS
+DESCRIPTOR.enum_types_by_name[&#39;FileFeatureFlags&#39;] = _FILEFEATUREFLAGS
+DESCRIPTOR.enum_types_by_name[&#39;CoordinateType&#39;] = _COORDINATETYPE
+DESCRIPTOR.enum_types_by_name[&#39;CatalogFileType&#39;] = _CATALOGFILETYPE
+DESCRIPTOR.enum_types_by_name[&#39;ColumnType&#39;] = _COLUMNTYPE
+DESCRIPTOR.enum_types_by_name[&#39;ComparisonOperator&#39;] = _COMPARISONOPERATOR
+DESCRIPTOR.enum_types_by_name[&#39;SortingType&#39;] = _SORTINGTYPE
+DESCRIPTOR.enum_types_by_name[&#39;Moment&#39;] = _MOMENT
+DESCRIPTOR.enum_types_by_name[&#39;MomentAxis&#39;] = _MOMENTAXIS
+DESCRIPTOR.enum_types_by_name[&#39;MomentMask&#39;] = _MOMENTMASK
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+
+# @@protoc_insertion_point(module_scope)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.protobuf" href="index.html">src.protobuf</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>
