@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.1" />
-<title>src.frontend.client API documentation</title>
+<title>client API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>src.frontend.client</code></h1>
+<h1 class="title">Module <code>client</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -131,6 +131,7 @@ class Client:
         If num_bins is -1, will use default number of bins.
 
         :param num_bins: The integer number of bins for the histogram (Default value = -1)
+        :return: the histogram
 
         &#34;&#34;&#34;
         async def __get_region_histogram(self):
@@ -153,13 +154,17 @@ class Client:
         return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))
 
     def get_region_statistics(self):
-        &#34;&#34;&#34;Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.&#34;&#34;&#34;
+        &#34;&#34;&#34;Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.
+
+        :return: the statistics tuple
+
+        &#34;&#34;&#34;
         async def __get_region_statistics(self):
             try:
                 req, req_type = construct_set_stats_requirements()
                 await self.ws.send(add_message_header(req, req_type))
                 logging.info(
-                    &#34;\t[%s]\tSent SET_STATS_REQUIREMETNS to server %s.&#34;, self.name, self.server)
+                    &#34;\t[%s]\tSent SET_STATS_REQUIREMENTS to server %s.&#34;, self.name, self.server)
                 message = await self.ws.recv()
                 stats_type, stats_id, stats = strip_message_header(message)
                 logging.info(
@@ -186,7 +191,7 @@ class Client:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="src.frontend.client.Client"><code class="flex name class">
+<dt id="client.Client"><code class="flex name class">
 <span>class <span class="ident">Client</span></span>
 <span>(</span><span>name, address, port, is_carta_client=False)</span>
 </code></dt>
@@ -292,6 +297,7 @@ class Client:
         If num_bins is -1, will use default number of bins.
 
         :param num_bins: The integer number of bins for the histogram (Default value = -1)
+        :return: the histogram
 
         &#34;&#34;&#34;
         async def __get_region_histogram(self):
@@ -314,13 +320,17 @@ class Client:
         return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))
 
     def get_region_statistics(self):
-        &#34;&#34;&#34;Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.&#34;&#34;&#34;
+        &#34;&#34;&#34;Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.
+
+        :return: the statistics tuple
+
+        &#34;&#34;&#34;
         async def __get_region_statistics(self):
             try:
                 req, req_type = construct_set_stats_requirements()
                 await self.ws.send(add_message_header(req, req_type))
                 logging.info(
-                    &#34;\t[%s]\tSent SET_STATS_REQUIREMETNS to server %s.&#34;, self.name, self.server)
+                    &#34;\t[%s]\tSent SET_STATS_REQUIREMENTS to server %s.&#34;, self.name, self.server)
                 message = await self.ws.recv()
                 stats_type, stats_id, stats = strip_message_header(message)
                 logging.info(
@@ -339,7 +349,7 @@ class Client:
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="src.frontend.client.Client.connect_to_server"><code class="name flex">
+<dt id="client.Client.connect_to_server"><code class="name flex">
 <span>def <span class="ident">connect_to_server</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -364,13 +374,14 @@ class Client:
     self.ws = asyncio.get_event_loop().run_until_complete(__connect_to_server(self))</code></pre>
 </details>
 </dd>
-<dt id="src.frontend.client.Client.get_region_histogram"><code class="name flex">
+<dt id="client.Client.get_region_histogram"><code class="name flex">
 <span>def <span class="ident">get_region_histogram</span></span>(<span>self, num_bins=-1)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Send a SET_HISTOGRAM_REQUIREMENTS and wait to recieve a REGION_HISTOGRAM_DATA.</p>
 <p>If num_bins is -1, will use default number of bins.</p>
-<p>:param num_bins: The integer number of bins for the histogram (Default value = -1)</p></div>
+<p>:param num_bins: The integer number of bins for the histogram (Default value = -1)
+:return: the histogram</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -381,6 +392,7 @@ class Client:
     If num_bins is -1, will use default number of bins.
 
     :param num_bins: The integer number of bins for the histogram (Default value = -1)
+    :return: the histogram
 
     &#34;&#34;&#34;
     async def __get_region_histogram(self):
@@ -403,23 +415,28 @@ class Client:
     return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))</code></pre>
 </details>
 </dd>
-<dt id="src.frontend.client.Client.get_region_statistics"><code class="name flex">
+<dt id="client.Client.get_region_statistics"><code class="name flex">
 <span>def <span class="ident">get_region_statistics</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.</p></div>
+<div class="desc"><p>Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.</p>
+<p>:return: the statistics tuple</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_region_statistics(self):
-    &#34;&#34;&#34;Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.&#34;&#34;&#34;
+    &#34;&#34;&#34;Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.
+
+    :return: the statistics tuple
+
+    &#34;&#34;&#34;
     async def __get_region_statistics(self):
         try:
             req, req_type = construct_set_stats_requirements()
             await self.ws.send(add_message_header(req, req_type))
             logging.info(
-                &#34;\t[%s]\tSent SET_STATS_REQUIREMETNS to server %s.&#34;, self.name, self.server)
+                &#34;\t[%s]\tSent SET_STATS_REQUIREMENTS to server %s.&#34;, self.name, self.server)
             message = await self.ws.recv()
             stats_type, stats_id, stats = strip_message_header(message)
             logging.info(
@@ -437,7 +454,7 @@ class Client:
     return asyncio.get_event_loop().run_until_complete(__get_region_statistics(self))</code></pre>
 </details>
 </dd>
-<dt id="src.frontend.client.Client.open_file"><code class="name flex">
+<dt id="client.Client.open_file"><code class="name flex">
 <span>def <span class="ident">open_file</span></span>(<span>self, file, directory)</span>
 </code></dt>
 <dd>
@@ -480,7 +497,7 @@ class Client:
     asyncio.get_event_loop().run_until_complete(__open_file(self))</code></pre>
 </details>
 </dd>
-<dt id="src.frontend.client.Client.register_viewer"><code class="name flex">
+<dt id="client.Client.register_viewer"><code class="name flex">
 <span>def <span class="ident">register_viewer</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -523,21 +540,16 @@ class Client:
 <ul></ul>
 </div>
 <ul id="index">
-<li><h3>Super-module</h3>
-<ul>
-<li><code><a title="src.frontend" href="index.html">src.frontend</a></code></li>
-</ul>
-</li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="src.frontend.client.Client" href="#src.frontend.client.Client">Client</a></code></h4>
+<h4><code><a title="client.Client" href="#client.Client">Client</a></code></h4>
 <ul class="">
-<li><code><a title="src.frontend.client.Client.connect_to_server" href="#src.frontend.client.Client.connect_to_server">connect_to_server</a></code></li>
-<li><code><a title="src.frontend.client.Client.get_region_histogram" href="#src.frontend.client.Client.get_region_histogram">get_region_histogram</a></code></li>
-<li><code><a title="src.frontend.client.Client.get_region_statistics" href="#src.frontend.client.Client.get_region_statistics">get_region_statistics</a></code></li>
-<li><code><a title="src.frontend.client.Client.open_file" href="#src.frontend.client.Client.open_file">open_file</a></code></li>
-<li><code><a title="src.frontend.client.Client.register_viewer" href="#src.frontend.client.Client.register_viewer">register_viewer</a></code></li>
+<li><code><a title="client.Client.connect_to_server" href="#client.Client.connect_to_server">connect_to_server</a></code></li>
+<li><code><a title="client.Client.get_region_histogram" href="#client.Client.get_region_histogram">get_region_histogram</a></code></li>
+<li><code><a title="client.Client.get_region_statistics" href="#client.Client.get_region_statistics">get_region_statistics</a></code></li>
+<li><code><a title="client.Client.open_file" href="#client.Client.open_file">open_file</a></code></li>
+<li><code><a title="client.Client.register_viewer" href="#client.Client.register_viewer">register_viewer</a></code></li>
 </ul>
 </li>
 </ul>

@@ -103,6 +103,7 @@ class Client:
         If num_bins is -1, will use default number of bins.
 
         :param num_bins: The integer number of bins for the histogram (Default value = -1)
+        :return: the histogram
 
         """
         async def __get_region_histogram(self):
@@ -125,13 +126,17 @@ class Client:
         return asyncio.get_event_loop().run_until_complete(__get_region_histogram(self))
 
     def get_region_statistics(self):
-        """Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA."""
+        """Send a SET_STATS_REQUIREMETNS and wait to recieve a REGION_STATS_DATA.
+
+        :return: the statistics tuple
+
+        """
         async def __get_region_statistics(self):
             try:
                 req, req_type = construct_set_stats_requirements()
                 await self.ws.send(add_message_header(req, req_type))
                 logging.info(
-                    "\t[%s]\tSent SET_STATS_REQUIREMETNS to server %s.", self.name, self.server)
+                    "\t[%s]\tSent SET_STATS_REQUIREMENTS to server %s.", self.name, self.server)
                 message = await self.ws.recv()
                 stats_type, stats_id, stats = strip_message_header(message)
                 logging.info(
